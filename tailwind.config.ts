@@ -6,7 +6,8 @@ const config = {
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
-  ],
+    './src/**/*.{ts,tsx}',
+	],
   prefix: "",
   theme: {
     container: {
@@ -18,56 +19,73 @@ const config = {
     },
     extend: {
       colors: {
-        // Garrison Brand Colors - From Logo
-        navy: {
-          deep: '#0F1C2E',
-          DEFAULT: '#1B365D',
-          light: '#264573',
+        // Garrison Brand Colors
+        brand: {
+          navy: '#000080',
+          gold: '#FFD700',
         },
-        gold: {
-          dark: '#B8860B',
-          DEFAULT: '#C5A572',
-          light: '#D4B896',
+        neutral: {
+          ink: '#1A1A1A',
+          cloud: '#F5F7FA',
+          line: '#E5E7EB',
         },
-        border: "rgba(197, 165, 114, 0.2)",
-        input: "#0F1C2E",
-        ring: "#C5A572",
-        background: "#0F1C2E",
-        foreground: "#FFFFFF",
+        // Shadcn UI integration
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: '#C5A572',
-          foreground: '#0F1C2E',
-        },
-        secondary: {
-          DEFAULT: '#1B365D',
+          DEFAULT: '#000080', // Navy
           foreground: '#FFFFFF',
         },
+        secondary: {
+          DEFAULT: '#FFD700', // Gold
+          foreground: '#000080', // Navy text on gold
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
         muted: {
-          DEFAULT: '#1B365D',
-          foreground: 'rgba(255, 255, 255, 0.6)',
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: '#B8860B',
-          foreground: '#0F1C2E',
+          DEFAULT: '#FFD700', // Gold
+          foreground: '#000080',
         },
-      },
-      fontFamily: {
-        serif: ['Playfair Display', 'serif'],
-        sans: ['Inter', 'sans-serif'],
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
       },
       borderRadius: {
-        lg: "0.75rem",
-        md: "0.5rem",
-        sm: "0.25rem",
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
-      animation: {
-        "fade-in": "fadeIn 0.8s ease-out forwards",
+      fontFamily: {
+        sans: ['Roboto', 'sans-serif'],
+        heading: ['Montserrat', 'sans-serif'],
       },
       keyframes: {
-        fadeIn: {
-          "0%": { opacity: "0", transform: "translateY(20px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
