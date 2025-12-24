@@ -509,7 +509,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <p className="text-white/60 text-sm">Call Us Directly</p>
-                    <p className="text-xl font-bold text-white">(239) 738-3444</p>
+                    <p className="text-xl font-bold text-white">(239) 291-3444</p>
                   </div>
                 </a>
 
@@ -644,7 +644,7 @@ export default function HomePage() {
                 <li>
                   <a href="tel:2392913444" className="text-white/60 hover:text-[#C5A572] transition-colors flex items-center">
                     <Phone className="w-4 h-4 mr-2" />
-                    (239) 738-3444
+                    (239) 291-3444
                   </a>
                 </li>
                 <li>
