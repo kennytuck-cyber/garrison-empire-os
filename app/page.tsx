@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, Shield, Clock, Users, Target, Phone, Mail, MapPin, CheckCircle2, Star, Home, Building, Handshake, ChevronDown, Play } from 'lucide-react'
+import { ArrowRight, Shield, Clock, Users, Target, Phone, Mail, MapPin, CheckCircle2, Star, Home, Building, HeartHandshake, ChevronDown, Play } from 'lucide-react'
 import { useState } from 'react'
 
 export default function HomePage() {
@@ -165,7 +165,7 @@ export default function HomePage() {
 
                   <div className="flex items-start space-x-4">
                     <div className="w-14 h-14 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Handshake className="w-7 h-7 text-[#0F1C2E]" />
+                      <HeartHandshake className="w-7 h-7 text-[#0F1C2E]" />
                     </div>
                     <div>
                       <h4 className="font-bold text-xl text-white mb-1">No Hassle Closing</h4>
