@@ -1,7 +1,7 @@
 # Garrison Empire OS - Full Stack Web Platform
 
 ## Overview
-Production-ready Next.js application integrating the complete Garrison Empire operating system.
+Production-ready Next.js application integrating the complete Garrison Empire operating system (os).
 
 ## Architecture
 
