@@ -1,27 +1,11 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { getDeals } from '@/lib/notion'
+import { NextResponse } from 'next/server'
 
-export async function GET(request: NextRequest) {
+export const dynamic = 'force-dynamic'
+
+export async function GET() {
   try {
-    const searchParams = request.nextUrl.searchParams
-    const status = searchParams.get('status') || undefined
-
-    const deals = await getDeals(status)
-
-    // Transform Notion data to cleaner format
-    const transformedDeals = deals.map((deal: any) => ({
-      id: deal.id,
-      name: deal.properties?.Name?.title?.[0]?.text?.content || 'Untitled',
-      status: deal.properties?.Status?.select?.name || 'Unknown',
-      phone: deal.properties?.Phone?.phone_number || '',
-      email: deal.properties?.Email?.email || '',
-      address: deal.properties?.['Property Address']?.rich_text?.[0]?.text?.content || '',
-      timeline: deal.properties?.Timeline?.select?.name || '',
-      createdAt: deal.created_time,
-      updatedAt: deal.last_edited_time,
-    }))
-
-    return NextResponse.json({ deals: transformedDeals })
+    // Return empty array for now - we'll connect Notion later
+    return NextResponse.json({ deals: [] })
   } catch (error) {
     console.error('Error fetching deals:', error)
     return NextResponse.json(
