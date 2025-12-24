@@ -1,59 +1,61 @@
-import { NextResponse } from 'next/server'
-import { createDeal } from '@/lib/notion'
-import { z } from 'zod'
+import { NextRequest, NextResponse } from 'next/server'
+import { createLead } from '@/lib/notion'
 
-const leadSchema = z.object({
-  name: z.string().min(2, 'Name is required'),
-  phone: z.string().min(10, 'Valid phone number required'),
-  email: z.string().email('Valid email required'),
-  address: z.string().min(5, 'Property address required'),
-  timeline: z.string(),
-  source: z.string().optional(),
-})
-
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     
-    // Validate input
-    const validatedData = leadSchema.parse(body)
+    const { name, phone, email, address, timeline, source } = body
 
-    // Create deal in Notion
-    const result = await createDeal({
-      name: validatedData.name,
-      phone: validatedData.phone,
-      email: validatedData.email,
-      address: validatedData.address,
-      timeline: validatedData.timeline,
-      source: validatedData.source || 'Website',
-    })
-
-    // Optional: Send to Zapier webhook if configured
-    if (process.env.ZAPIER_WEBHOOK_URL) {
-      await fetch(process.env.ZAPIER_WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(validatedData),
-      })
-    }
-
-    return NextResponse.json({ 
-      success: true, 
-      message: 'Thank you! We\'ll contact you within 24-48 hours.',
-      dealId: result.id,
-    })
-  } catch (error) {
-    if (error instanceof z.ZodError) {
+    // Validate required fields
+    if (!name || !phone || !email || !address) {
       return NextResponse.json(
-        { success: false, error: error.errors[0].message },
+        { error: 'Missing required fields: name, phone, email, address' },
         { status: 400 }
       )
     }
 
-    console.error('Lead submission error:', error)
+    // Create lead in Notion
+    const lead = await createLead({
+      name,
+      phone,
+      email,
+      address,
+      timeline,
+      source: source || 'Website Form'
+    })
+
+    // Optional: Send notification via Zapier webhook
+    if (process.env.ZAPIER_WEBHOOK_URL) {
+      fetch(process.env.ZAPIER_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          phone,
+          email,
+          address,
+          timeline,
+          source: 'Website',
+          timestamp: new Date().toISOString()
+        })
+      }).catch(err => console.error('Zapier webhook error:', err))
+    }
+
+    return NextResponse.json({ 
+      success: true, 
+      message: 'Lead created successfully',
+      id: lead.id 
+    })
+  } catch (error) {
+    console.error('Error creating lead:', error)
     return NextResponse.json(
-      { success: false, error: 'Failed to submit. Please try again.' },
+      { error: 'Failed to create lead' },
       { status: 500 }
     )
   }
+}
+
+export async function GET() {
+  return NextResponse.json({ message: 'Leads API - Use POST to submit a lead' })
 }

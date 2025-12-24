@@ -1,51 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 240 100% 25%; /* Navy */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 51 100% 50%; /* Gold */
-    --secondary-foreground: 240 100% 25%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 51 100% 50%; /* Gold */
-    --accent-foreground: 240 100% 25%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 240 100% 25%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
+    /* Garrison Brand Colors - From Logo */
+    --navy-deep: #0F1C2E;
+    --navy-mid: #1B365D;
+    --navy-light: #264573;
+    --gold: #B8860B;
+    --gold-light: #C5A572;
+    --gold-bright: #D4B896;
+    
+    --background: 213 36% 12%;
     --foreground: 0 0% 100%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 0 0% 100%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 0 0% 100%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 51 100% 50%;
-    --secondary-foreground: 240 100% 25%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 51 100% 50%;
-    --accent-foreground: 240 100% 25%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 51 100% 50%;
   }
 }
 
@@ -53,49 +23,157 @@
   * {
     @apply border-border;
   }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
-    @apply bg-background text-foreground;
-    font-family: 'Roboto', sans-serif;
+    @apply bg-[#0F1C2E] text-white antialiased;
+    font-family: 'Inter', sans-serif;
   }
+  
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .font-serif {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .font-sans {
+    font-family: 'Inter', sans-serif;
   }
 }
 
-/* Custom Garrison Styles */
-.garrison-gradient {
-  background: linear-gradient(135deg, #000080 0%, #0000CD 100%);
-}
-
-.garrison-gold-gradient {
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-}
-
-.text-shadow-navy {
-  text-shadow: 0 2px 4px rgba(0, 0, 128, 0.3);
-}
-
-.lighthouse-pattern {
-  background-image: 
-    radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 50%, rgba(0, 0, 128, 0.05) 0%, transparent 50%);
-}
-
-/* Scrollbar Styling */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-neutral-cloud;
+  background: #0F1C2E;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-brand-navy rounded-lg;
+  background: linear-gradient(180deg, #B8860B, #C5A572);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-brand-gold;
+  background: linear-gradient(180deg, #C5A572, #D4B896);
+}
+
+/* Selection */
+::selection {
+  background: rgba(197, 165, 114, 0.3);
+  color: white;
+}
+
+/* Focus States */
+*:focus-visible {
+  outline: 2px solid #C5A572;
+  outline-offset: 2px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    #B8860B 0%,
+    #D4B896 25%,
+    #B8860B 50%,
+    #D4B896 75%,
+    #B8860B 100%
+  );
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, #C5A572 0%, #D4B896 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(27, 54, 93, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(184, 134, 11, 0.15);
+}
+
+/* Gold glow effect */
+.gold-glow {
+  box-shadow: 0 0 30px rgba(184, 134, 11, 0.2),
+              0 0 60px rgba(184, 134, 11, 0.1);
+}
+
+/* Form autofill styling */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+select:-webkit-autofill {
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px #0F1C2E inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Smooth image loading */
+img {
+  transition: opacity 0.3s ease;
+}
+
+/* Button press effect */
+button:active {
+  transform: scale(0.98);
+}
+
+/* Grain overlay */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+  mix-blend-mode: overlay;
 }
