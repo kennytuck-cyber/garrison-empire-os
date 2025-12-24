@@ -47,9 +47,9 @@ export default function HomePage() {
 
             {/* CTA Button */}
             <div className="flex items-center space-x-4">
-              <a href="tel:2397383444" className="hidden md:flex items-center text-[#C5A572] hover:text-[#D4B896] transition-colors">
+              <a href="tel:2392913444" className="hidden md:flex items-center text-[#C5A572] hover:text-[#D4B896] transition-colors">
                 <Phone className="w-4 h-4 mr-2" />
-                <span className="font-semibold">(239) 738-3444</span>
+                <span className="font-semibold">(239) 291-3444</span>
               </a>
               <Link 
                 href="#contact" 
@@ -128,7 +128,7 @@ export default function HomePage() {
                   <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <a 
-                  href="tel:2397383444" 
+                  href="tel:2392913444" 
                   className="bg-white/5 backdrop-blur-sm text-white border border-white/20 px-10 py-5 rounded font-semibold text-lg hover:bg-white/10 transition-all inline-flex items-center justify-center"
                 >
                   <Phone className="mr-3 w-5 h-5" />
@@ -503,7 +503,7 @@ export default function HomePage() {
 
               {/* Contact Info */}
               <div className="space-y-6">
-                <a href="tel:2397383444" className="flex items-center space-x-4 group">
+                <a href="tel:2392913444" className="flex items-center space-x-4 group">
                   <div className="w-14 h-14 bg-[#C5A572]/10 rounded-xl flex items-center justify-center border border-[#C5A572]/20 group-hover:bg-[#C5A572]/20 transition-colors">
                     <Phone className="w-6 h-6 text-[#C5A572]" />
                   </div>
@@ -642,7 +642,7 @@ export default function HomePage() {
               <h4 className="font-bold text-white mb-6 uppercase tracking-wide text-sm">Contact</h4>
               <ul className="space-y-4">
                 <li>
-                  <a href="tel:2397383444" className="text-white/60 hover:text-[#C5A572] transition-colors flex items-center">
+                  <a href="tel:2392913444" className="text-white/60 hover:text-[#C5A572] transition-colors flex items-center">
                     <Phone className="w-4 h-4 mr-2" />
                     (239) 738-3444
                   </a>
@@ -678,7 +678,7 @@ export default function HomePage() {
       {/* Floating Mobile CTA */}
       <div className="fixed bottom-6 right-6 md:hidden z-50">
         <a 
-          href="tel:2397383444"
+          href="tel:2392913444"
           className="w-16 h-16 bg-gradient-to-r from-[#B8860B] to-[#C5A572] rounded-full flex items-center justify-center shadow-2xl shadow-[#B8860B]/40"
         >
           <Phone className="w-7 h-7 text-[#0F1C2E]" />
