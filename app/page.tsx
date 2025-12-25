@@ -5,17 +5,28 @@ import { useState } from 'react'
 
 export default function HomePage() {
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     phone: '',
     email: '',
     address: '',
+    unit: '',
+    city: '',
+    state: 'FL',
+    zip: '',
+    county: '',
+    isOwner: '',
+    occupancy: '',
+    reasonForSelling: '',
+    otherReason: '',
+    askingPrice: '',
     timeline: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
   const [error, setError] = useState('')
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
   }
@@ -25,19 +36,42 @@ export default function HomePage() {
     setIsSubmitting(true)
     setError('')
 
+    // Construct full address for display
+    const fullAddress = `${formData.address}${formData.unit ? ' ' + formData.unit : ''}, ${formData.city}, ${formData.state} ${formData.zip}`
+
     try {
       const response = await fetch('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
+          fullAddress,
+          name: `${formData.firstName} ${formData.lastName}`,
+          reason: formData.reasonForSelling === 'Other' ? formData.otherReason : formData.reasonForSelling,
           source: 'Website Contact Form'
         })
       })
 
       if (response.ok) {
         setShowSuccess(true)
-        setFormData({ name: '', phone: '', email: '', address: '', timeline: '' })
+        setFormData({
+          firstName: '',
+          lastName: '',
+          phone: '',
+          email: '',
+          address: '',
+          unit: '',
+          city: '',
+          state: 'FL',
+          zip: '',
+          county: '',
+          isOwner: '',
+          occupancy: '',
+          reasonForSelling: '',
+          otherReason: '',
+          askingPrice: '',
+          timeline: ''
+        })
       } else {
         const data = await response.json()
         setError(data.error || 'Something went wrong. Please try again.')
@@ -48,6 +82,38 @@ export default function HomePage() {
       setIsSubmitting(false)
     }
   }
+
+  const floridaCounties = [
+    'Alachua', 'Baker', 'Bay', 'Bradford', 'Brevard', 'Broward', 'Calhoun', 'Charlotte', 
+    'Citrus', 'Clay', 'Collier', 'Columbia', 'DeSoto', 'Dixie', 'Duval', 'Escambia', 
+    'Flagler', 'Franklin', 'Gadsden', 'Gilchrist', 'Glades', 'Gulf', 'Hamilton', 'Hardee', 
+    'Hendry', 'Hernando', 'Highlands', 'Hillsborough', 'Holmes', 'Indian River', 'Jackson', 
+    'Jefferson', 'Lafayette', 'Lake', 'Lee', 'Leon', 'Levy', 'Liberty', 'Madison', 'Manatee', 
+    'Marion', 'Martin', 'Miami-Dade', 'Monroe', 'Nassau', 'Okaloosa', 'Okeechobee', 'Orange', 
+    'Osceola', 'Palm Beach', 'Pasco', 'Pinellas', 'Polk', 'Putnam', 'Santa Rosa', 'Sarasota', 
+    'Seminole', 'St. Johns', 'St. Lucie', 'Sumter', 'Suwannee', 'Taylor', 'Union', 'Volusia', 
+    'Wakulla', 'Walton', 'Washington'
+  ]
+
+  const sellingReasons = [
+    'Inherited Property',
+    'Pre-Foreclosure',
+    'Divorce',
+    'Tired Landlord',
+    'Code Violations',
+    'Vacant Property',
+    'Behind on Payments',
+    'Relocating',
+    'Downsizing',
+    'Major Repairs Needed',
+    'Problem Tenants',
+    'Tax Liens',
+    'Job Loss',
+    'Medical Bills',
+    'Bankruptcy',
+    'Retiring',
+    'Other'
+  ]
 
   return (
     <div className="min-h-screen bg-[#0F1C2E] text-white overflow-x-hidden">
@@ -562,9 +628,9 @@ export default function HomePage() {
       {/* Contact / CTA Section */}
       <section id="contact" className="py-24 bg-[#0F1C2E] relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Left - Info */}
-            <div>
+          <div className="grid lg:grid-cols-5 gap-12">
+            {/* Left - Info (2 columns) */}
+            <div className="lg:col-span-2">
               <span className="text-[#C5A572] text-sm font-bold tracking-[0.2em] uppercase">Get Started</span>
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-4 mb-6">
                 Ready for Your
@@ -609,9 +675,10 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right - Form */}
-            <div className="bg-[#1B365D]/50 backdrop-blur-sm border border-[#C5A572]/20 rounded-2xl p-8 md:p-10 shadow-2xl">
-              <h3 className="text-2xl font-serif font-bold text-white mb-6">Get Your Cash Offer</h3>
+            {/* Right - Form (3 columns) */}
+            <div className="lg:col-span-3 bg-[#1B365D]/50 backdrop-blur-sm border border-[#C5A572]/20 rounded-2xl p-8 shadow-2xl">
+              <h3 className="text-2xl font-serif font-bold text-white mb-2">Get Your Cash Offer</h3>
+              <p className="text-white/60 text-sm mb-6">Complete the form below and we'll prepare your custom offer.</p>
               
               {error && (
                 <div className="mb-6 p-4 bg-red-500/20 border border-red-500/50 rounded-xl text-red-200 text-sm">
@@ -620,22 +687,38 @@ export default function HomePage() {
               )}
 
               <form onSubmit={handleSubmit} className="space-y-5">
-                <div>
-                  <label className="block text-sm font-medium text-white/80 mb-2">Full Name *</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    placeholder="John Smith"
-                    className="w-full px-5 py-4 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-xl text-white placeholder:text-white/40 focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all"
-                  />
+                {/* Name Row */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-medium text-[#C5A572] mb-1.5 uppercase tracking-wide">First Name *</label>
+                    <input
+                      type="text"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="John"
+                      className="w-full px-4 py-3 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-lg text-white placeholder:text-white/40 focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-[#C5A572] mb-1.5 uppercase tracking-wide">Last Name *</label>
+                    <input
+                      type="text"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="Smith"
+                      className="w-full px-4 py-3 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-lg text-white placeholder:text-white/40 focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all text-sm"
+                    />
+                  </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-5">
+                {/* Contact Row */}
+                <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-white/80 mb-2">Phone *</label>
+                    <label className="block text-xs font-medium text-[#C5A572] mb-1.5 uppercase tracking-wide">Phone *</label>
                     <input
                       type="tel"
                       name="phone"
@@ -643,11 +726,11 @@ export default function HomePage() {
                       onChange={handleInputChange}
                       required
                       placeholder="(239) 555-0123"
-                      className="w-full px-5 py-4 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-xl text-white placeholder:text-white/40 focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all"
+                      className="w-full px-4 py-3 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-lg text-white placeholder:text-white/40 focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all text-sm"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-white/80 mb-2">Email *</label>
+                    <label className="block text-xs font-medium text-[#C5A572] mb-1.5 uppercase tracking-wide">Email *</label>
                     <input
                       type="email"
                       name="email"
@@ -655,44 +738,208 @@ export default function HomePage() {
                       onChange={handleInputChange}
                       required
                       placeholder="john@email.com"
-                      className="w-full px-5 py-4 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-xl text-white placeholder:text-white/40 focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all"
+                      className="w-full px-4 py-3 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-lg text-white placeholder:text-white/40 focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all text-sm"
                     />
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-white/80 mb-2">Property Address *</label>
-                  <input
-                    type="text"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleInputChange}
-                    required
-                    placeholder="123 Main St, City, FL 33XXX"
-                    className="w-full px-5 py-4 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-xl text-white placeholder:text-white/40 focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all"
-                  />
+                {/* Property Address Section */}
+                <div className="pt-4 border-t border-[#C5A572]/10">
+                  <p className="text-xs font-medium text-[#C5A572] mb-3 uppercase tracking-wide">Property Information</p>
+                  
+                  {/* Address Row */}
+                  <div className="grid grid-cols-4 gap-4 mb-4">
+                    <div className="col-span-3">
+                      <label className="block text-xs font-medium text-white/60 mb-1.5">Street Address *</label>
+                      <input
+                        type="text"
+                        name="address"
+                        value={formData.address}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="123 Main Street"
+                        className="w-full px-4 py-3 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-lg text-white placeholder:text-white/40 focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-white/60 mb-1.5">Unit #</label>
+                      <input
+                        type="text"
+                        name="unit"
+                        value={formData.unit}
+                        onChange={handleInputChange}
+                        placeholder="Apt 4B"
+                        className="w-full px-4 py-3 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-lg text-white placeholder:text-white/40 focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all text-sm"
+                      />
+                    </div>
+                  </div>
+
+                  {/* City/State/Zip Row */}
+                  <div className="grid grid-cols-6 gap-4 mb-4">
+                    <div className="col-span-2">
+                      <label className="block text-xs font-medium text-white/60 mb-1.5">City *</label>
+                      <input
+                        type="text"
+                        name="city"
+                        value={formData.city}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="Fort Myers"
+                        className="w-full px-4 py-3 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-lg text-white placeholder:text-white/40 focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-white/60 mb-1.5">State</label>
+                      <select
+                        name="state"
+                        value={formData.state}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-lg text-white focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all text-sm appearance-none"
+                      >
+                        <option value="FL">FL</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-white/60 mb-1.5">Zip *</label>
+                      <input
+                        type="text"
+                        name="zip"
+                        value={formData.zip}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="33901"
+                        className="w-full px-4 py-3 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-lg text-white placeholder:text-white/40 focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all text-sm"
+                      />
+                    </div>
+                    <div className="col-span-2">
+                      <label className="block text-xs font-medium text-white/60 mb-1.5">County *</label>
+                      <select
+                        name="county"
+                        value={formData.county}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-lg text-white focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all text-sm appearance-none"
+                      >
+                        <option value="">Select County...</option>
+                        {floridaCounties.map(county => (
+                          <option key={county} value={county}>{county}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Owner/Occupancy Row */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-medium text-white/60 mb-1.5">Are you the owner? *</label>
+                      <select
+                        name="isOwner"
+                        value={formData.isOwner}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-lg text-white focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all text-sm appearance-none"
+                      >
+                        <option value="">Select...</option>
+                        <option value="Yes">Yes, I own the property</option>
+                        <option value="No - Authorized Rep">No, but I'm authorized to sell</option>
+                        <option value="No - Heir">No, I'm an heir/beneficiary</option>
+                        <option value="No - Other">No, other situation</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-white/60 mb-1.5">Occupancy Status *</label>
+                      <select
+                        name="occupancy"
+                        value={formData.occupancy}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-lg text-white focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all text-sm appearance-none"
+                      >
+                        <option value="">Select...</option>
+                        <option value="Owner Occupied">Owner Occupied</option>
+                        <option value="Tenant Occupied">Tenant Occupied</option>
+                        <option value="Vacant">Vacant</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-white/80 mb-2">Timeline to Sell</label>
-                  <select 
-                    name="timeline"
-                    value={formData.timeline}
-                    onChange={handleInputChange}
-                    className="w-full px-5 py-4 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-xl text-white focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all appearance-none"
-                  >
-                    <option value="">Select timeline...</option>
-                    <option value="ASAP - Within 2 weeks">ASAP - Within 2 weeks</option>
-                    <option value="Within 30 days">Within 30 days</option>
-                    <option value="30-60 days">30-60 days</option>
-                    <option value="Flexible / Exploring options">Flexible / Exploring options</option>
-                  </select>
+                {/* Situation Section */}
+                <div className="pt-4 border-t border-[#C5A572]/10">
+                  <p className="text-xs font-medium text-[#C5A572] mb-3 uppercase tracking-wide">Your Situation</p>
+                  
+                  <div className="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                      <label className="block text-xs font-medium text-white/60 mb-1.5">Main reason for selling? *</label>
+                      <select
+                        name="reasonForSelling"
+                        value={formData.reasonForSelling}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-lg text-white focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all text-sm appearance-none"
+                      >
+                        <option value="">Select reason...</option>
+                        {sellingReasons.map(reason => (
+                          <option key={reason} value={reason}>{reason}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-white/60 mb-1.5">Timeline to sell *</label>
+                      <select
+                        name="timeline"
+                        value={formData.timeline}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-lg text-white focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all text-sm appearance-none"
+                      >
+                        <option value="">Select timeline...</option>
+                        <option value="ASAP">ASAP - Within 2 weeks</option>
+                        <option value="30 days">Within 30 days</option>
+                        <option value="30-60 days">30-60 days</option>
+                        <option value="60-90 days">60-90 days</option>
+                        <option value="Flexible">Flexible / Just exploring</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Other Reason (conditional) */}
+                  {formData.reasonForSelling === 'Other' && (
+                    <div className="mb-4">
+                      <label className="block text-xs font-medium text-white/60 mb-1.5">Please describe your situation</label>
+                      <input
+                        type="text"
+                        name="otherReason"
+                        value={formData.otherReason}
+                        onChange={handleInputChange}
+                        placeholder="Tell us more about your situation..."
+                        className="w-full px-4 py-3 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-lg text-white placeholder:text-white/40 focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all text-sm"
+                      />
+                    </div>
+                  )}
+
+                  {/* Asking Price - Strategic Phrasing */}
+                  <div>
+                    <label className="block text-xs font-medium text-white/60 mb-1.5">What's the minimum you'd need to walk away with?</label>
+                    <div className="relative">
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40">$</span>
+                      <input
+                        type="text"
+                        name="askingPrice"
+                        value={formData.askingPrice}
+                        onChange={handleInputChange}
+                        placeholder="e.g., 150,000"
+                        className="w-full pl-8 pr-4 py-3 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-lg text-white placeholder:text-white/40 focus:border-[#C5A572] focus:ring-1 focus:ring-[#C5A572] focus:outline-none transition-all text-sm"
+                      />
+                    </div>
+                    <p className="text-white/40 text-xs mt-1.5 italic">This helps us prepare the most competitive offer for you.</p>
+                  </div>
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-[#B8860B] to-[#C5A572] text-[#0F1C2E] px-8 py-5 rounded-xl font-bold text-lg hover:from-[#C5A572] hover:to-[#D4B896] transition-all shadow-xl shadow-[#B8860B]/25 flex items-center justify-center mt-8 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-gradient-to-r from-[#B8860B] to-[#C5A572] text-[#0F1C2E] px-8 py-4 rounded-xl font-bold text-lg hover:from-[#C5A572] hover:to-[#D4B896] transition-all shadow-xl shadow-[#B8860B]/25 flex items-center justify-center mt-6 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>
@@ -710,8 +957,8 @@ export default function HomePage() {
                   )}
                 </button>
 
-                <p className="text-center text-white/40 text-sm pt-4">
-                  100% confidential. No spam. Unsubscribe anytime.
+                <p className="text-center text-white/40 text-xs pt-2">
+                  🔒 100% confidential. Your information is secure and never shared.
                 </p>
               </form>
             </div>
