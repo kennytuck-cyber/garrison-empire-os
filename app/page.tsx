@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { ArrowRight, Shield, Clock, Users, Target, Phone, Mail, MapPin, CheckCircle2, Star, ChevronDown, HeartHandshake, X, Building } from 'lucide-react'
+import { ArrowRight, Shield, Clock, Users, Target, Phone, Mail, MapPin, CheckCircle2, Star, ChevronDown, HeartHandshake, X, Building, HelpCircle } from 'lucide-react'
 import { useState } from 'react'
 
 export default function HomePage() {
@@ -25,6 +25,9 @@ export default function HomePage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
   const [error, setError] = useState('')
+  
+  // FAQ State
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -81,6 +84,57 @@ export default function HomePage() {
       setIsSubmitting(false)
     }
   }
+
+  const faqs = [
+    {
+      question: "How do you determine your offer price?",
+      answer: "We evaluate several factors: the property's current condition, needed repairs, recent comparable sales in your area, and current market conditions. Our offers typically range from 70-85% of the after-repair value, minus estimated repair costs."
+    },
+    {
+      question: "Do I have to accept your offer?",
+      answer: "Absolutely not. Our offers are completely no-obligation. You are free to accept, counter, or decline. There is no pressure and no cost to you for receiving an offer."
+    },
+    {
+      question: "Do I need to make any repairs before selling?",
+      answer: "No. We buy houses in as-is condition, regardless of needed repairs. Broken HVAC, roof issues, water damage, outdated everything—we handle it all."
+    },
+    {
+      question: "How fast can you close?",
+      answer: "We can close in as little as 7 days if needed, though 10-14 days is more typical to allow time for title work. If you need more time, we are flexible and can work around your schedule."
+    },
+    {
+      question: "Will I have to pay any fees or commissions?",
+      answer: "No. There are no real estate agent commissions, no closing costs for you to pay, and no hidden fees. The price we offer is the amount you receive at closing (minus any existing mortgage payoffs)."
+    },
+    {
+      question: "What if I still have a mortgage on the property?",
+      answer: "That is fine—most sellers do. At closing, the proceeds from the sale first pay off your existing mortgage, and you keep the remainder. We work with the title company to ensure a smooth payoff."
+    },
+    {
+      question: "What types of houses do you buy?",
+      answer: "We buy single-family homes, condos, townhouses, duplexes, and small multi-family properties throughout Southwest and Central Florida. Any condition, any situation."
+    },
+    {
+      question: "Do you buy houses with tenants?",
+      answer: "Yes. We purchase tenant-occupied properties regularly. You don't need to evict anyone or wait for leases to expire. We handle the tenant situation after closing."
+    },
+    {
+      question: "What if my house has code violations or liens?",
+      answer: "We buy properties with code violations, liens, and other title issues regularly. In many cases, we can negotiate with code enforcement to reduce fines."
+    },
+    {
+      question: "Can I sell if I'm in pre-foreclosure?",
+      answer: "Yes, and time is critical. Selling before foreclosure completes can protect your credit and preserve any equity. We can often close fast enough to stop the foreclosure process."
+    },
+    {
+      question: "How is this different from listing with a realtor?",
+      answer: "When you list with a realtor, you pay 6% commission, closing costs, and often have to make repairs. It takes 3-6 months. When you sell to us, there are zero fees, zero repairs, and we close in days, not months."
+    },
+    {
+      question: "Why should I trust you?",
+      answer: "Garrison Point Solutions is a veteran-owned company built on 23 years of Coast Guard service. We bring military integrity, discipline, and transparency to every transaction."
+    }
+  ]
 
   const floridaCounties = [
     'Alachua', 'Baker', 'Bay', 'Bradford', 'Brevard', 'Broward', 'Calhoun', 'Charlotte', 
@@ -579,8 +633,44 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-24 bg-[#0F1C2E] border-t border-[#C5A572]/10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-[#C5A572] text-sm font-bold tracking-[0.2em] uppercase">Common Questions</span>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-4 mb-6">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-white/60 max-w-2xl mx-auto">
+              Transparent answers for confident decisions.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {faqs.map((faq, index) => (
+              <div 
+                key={index}
+                className="bg-[#1B365D]/20 border border-[#C5A572]/10 rounded-xl p-6 hover:border-[#C5A572]/30 transition-all cursor-pointer"
+                onClick={() => setOpenFaq(openFaq === index ? null : index)}
+              >
+                <div className="flex justify-between items-start">
+                  <h3 className="text-lg font-bold text-white pr-4">{faq.question}</h3>
+                  <ChevronDown className={`w-5 h-5 text-[#C5A572] flex-shrink-0 transition-transform ${openFaq === index ? 'rotate-180' : ''}`} />
+                </div>
+                
+                {openFaq === index && (
+                  <p className="text-white/70 mt-4 leading-relaxed animate-fade-in">
+                    {faq.answer}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Contact / CTA Section */}
-      <section id="contact" className="py-24 bg-[#0F1C2E] relative">
+      <section id="contact" className="py-24 bg-[#1B365D]/30 relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-5 gap-12">
             {/* Left - Info (2 columns) */}
