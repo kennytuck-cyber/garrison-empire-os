@@ -129,7 +129,7 @@ export const SITE_CONTENT = {
     solution: "A cash sale is the fastest way to stop foreclosure. We can close in days, paying off the debt before the auction occurs.",
   },
 
-  // --- 3 BLOG POSTS ---
+  // --- 12 BLOG POSTS ---
   'how-to-sell-inherited-house-florida-guide': {
     type: 'blog',
     title: 'How to Sell an Inherited House in Florida (Complete Guide)',
@@ -185,6 +185,161 @@ export const SITE_CONTENT = {
       "Voluntarily give the house back to the bank. You lose all equity and damage your credit.",
       "## 5. Sell for Cash",
       "Sell the house to us before the auction. Pay off the loan, keep the remaining equity, and walk away with your credit intact."
+    ]
+  },
+  'cash-home-buyers-vs-real-estate-agents': {
+    type: 'blog',
+    title: 'Cash Home Buyers vs Real Estate Agents: Pros and Cons',
+    description: 'Should you list with an agent or sell to a cash buyer? We compare the timeline, costs, and convenience of both options.',
+    h1: 'Cash Home Buyers vs Real Estate Agents: Which is Right for You?',
+    intro: "Selling a house is not one-size-fits-all. While listing with an agent is great for perfect homes, it may not suit sellers who need speed or have property issues. Here is a side-by-side comparison.",
+    content: [
+      "## 1. The Timeline",
+      "**Real Estate Agent:** 3-6 months. You have to prep the house, list it, host showings, wait for an offer, and then wait 30-45 days for the buyer's financing.",
+      "**Cash Buyer:** 7-14 days. Since we use our own cash, we skip the banks and inspections. We can close as soon as the title work is ready.",
+      "## 2. The Costs",
+      "**Real Estate Agent:** You pay 6% commission, 2-3% in closing costs, plus repairs and staging. On a $300k house, that is $18k-$25k right off the top.",
+      "**Cash Buyer:** Zero commissions. We usually cover all closing costs. The offer we make is the amount you see at closing.",
+      "## 3. The Condition of the Home",
+      "**Real Estate Agent:** Buyers expect 'move-in ready.' You will likely need to paint, fix roofs, and update kitchens to get a good offer.",
+      "**Cash Buyer:** We buy 'As-Is.' We don't care about the roof, the AC, or the clutter. We buy it exactly how it sits."
+    ]
+  },
+  'how-much-do-cash-home-buyers-pay': {
+    type: 'blog',
+    title: 'How Much Do Cash Home Buyers Pay? (Real Numbers)',
+    description: 'Wondering how cash offers are calculated? We explain the formula used by investors so you know if the offer is fair.',
+    h1: 'How Much Do Cash Home Buyers Pay?',
+    intro: "The biggest question sellers have is: 'Will I get a lowball offer?' The truth is, reputable buyers use a specific formula to determine a fair price based on risk and renovations.",
+    content: [
+      "## The Investor's Formula",
+      "Most cash buyers follow this math: **(After Repair Value x 75%) - Repairs = Your Cash Offer**.",
+      "## An Example with Real Numbers",
+      "Imagine your house would be worth **$300,000** if it were fully renovated (new roof, new kitchen, etc.).",
+      "But, it currently needs **$40,000** in repairs.",
+      "**The Math:** ($300k x 75%) is $225k. Subtract the $40k in repairs.",
+      "**The Offer:** ~$185,000 cash.",
+      "## What You Get in Exchange",
+      "While the offer is lower than full retail, you save the 6% agent commission ($18k), closing costs ($6k), holding costs (insurance/taxes for 6 months), and the stress of renovations. For many, the 'net' amount in their pocket is surprisingly close."
+    ]
+  },
+  'selling-house-with-code-violations-florida': {
+    type: 'blog',
+    title: 'Selling a House With Code Violations in Florida',
+    description: 'Stuck with liens, open permits, or daily fines? Learn how to sell a house with code violations without fixing them yourself.',
+    h1: 'Selling a House With Code Violations in Florida',
+    intro: "Code violations can be a nightmare. From unpermitted additions to overgrown yards, daily fines can stack up into the tens of thousands. Traditional buyers won't touch these properties, but you can still sell.",
+    content: [
+      "## The 'Daily Fine' Trap",
+      "If you ignore a violation, the city or county can charge daily fines (often $100-$500/day). Over a year, this can become a lien larger than your mortgage.",
+      "## Can You Sell with Liens?",
+      "Yes, but the liens must be paid off at closing. If the fines exceed your equity, you might have to bring money to the table—unless you sell to an expert.",
+      "## How We Handle Violations",
+      "We specialize in buying 'problem' properties. Because we are experienced, we can often:",
+      "1. **Negotiate** with the city to reduce the fines.",
+      "2. **Fix** the violations ourselves after buying the house.",
+      "3. **Buy the house As-Is**, taking the burden off your shoulders immediately."
+    ]
+  },
+  'how-fast-can-you-sell-house-for-cash': {
+    type: 'blog',
+    title: 'How Fast Can You Sell a House for Cash?',
+    description: 'Need to sell immediately? We break down the day-by-day timeline of a cash sale from contact to closing.',
+    h1: 'How Fast Can You Sell a House for Cash?',
+    intro: "In a traditional market, selling takes 60-90 days. But what if you face foreclosure next week? Or need to relocate for a job by Monday? Here is the realistic timeline of a cash sale.",
+    content: [
+      "## Day 1: The Contact",
+      "You fill out our form or call us. We ask a few simple questions about the property's condition.",
+      "## Day 2: The Offer",
+      "We research the neighborhood and, if possible, do a quick walkthrough. We present you with a firm cash offer.",
+      "## Days 3-7: Title Work",
+      "If you accept, we send the contract to a local title company. They check for liens and prepare the deed. This is usually the longest part, but expedited title searches can take just a few days.",
+      "## Day 7+: Closing",
+      "You sign the papers (or a mobile notary comes to you), and the funds are wired to your bank account. The house is sold.",
+      "**Bottom Line:** We can move as fast as the title company allows—often in as little as 7 days."
+    ]
+  },
+  'what-happens-mortgage-sell-to-investor': {
+    type: 'blog',
+    title: 'What Happens to Your Mortgage When You Sell to an Investor?',
+    description: 'Do you still have a mortgage? Learn how the payoff process works when selling your house for cash.',
+    h1: 'What Happens to Your Mortgage When You Sell to an Investor?',
+    intro: "A common misconception is that you can't sell for cash if you still owe money to the bank. That is not true. In fact, most people we buy from have a mortgage.",
+    content: [
+      "## The Closing Process",
+      "When we buy your house, the sale proceeds pay off your debt automatically. Here is the flow:",
+      "1. The title company requests a **'Payoff Statement'** from your lender.",
+      "2. At closing, the money from our purchase goes *directly* to your lender to pay the balance in full.",
+      "3. Any remaining money goes directly to you via check or wire transfer.",
+      "## What If I Am 'Underwater'?",
+      "If you owe more than the house is worth, a standard cash sale might require you to pay the difference. However, we can help you explore a **Short Sale**, where we negotiate with the bank to accept less than the full mortgage amount."
+    ]
+  },
+  'sell-house-as-is-or-fix-it-up': {
+    type: 'blog',
+    title: 'Should I Sell My House As-Is or Fix It Up?',
+    description: 'Debating whether to renovate before selling? We analyze the ROI of repairs vs the speed of selling as-is.',
+    h1: 'Should I Sell My House As-Is or Fix It Up?',
+    intro: "It is the classic dilemma: Do you spend $20,000 fixing the kitchen to get a higher price, or do you sell now and save the cash? The answer depends on your goals.",
+    content: [
+      "## When to Fix It Up",
+      "If your house is mostly updated and just needs paint or carpet, doing the work yourself can yield a higher sales price on the MLS. This is best if you have time (3-6 months) and cash on hand for contractors.",
+      "## When to Sell As-Is",
+      "**1. Major Systems are Broken:** Replacing a roof ($15k) or AC ($8k) rarely gives you a 100% return on investment.",
+      "**2. You Don't Have Cash:** Contractors require deposits. If you are cash-poor, renovations aren't an option.",
+      "**3. Stress Factor:** Managing contractors is a full-time job. Selling As-Is eliminates that stress entirely.",
+      "**The Verdict:** If the repairs are cosmetic, fix them. If they are structural or expensive, selling As-Is is often the smarter financial move."
+    ]
+  },
+  'hidden-costs-selling-realtor': {
+    type: 'blog',
+    title: 'The Hidden Costs of Selling Through a Realtor',
+    description: 'The sales price isn\'t what you keep. We reveal the hidden fees and closing costs that reduce your final profit.',
+    h1: 'The Hidden Costs of Selling Through a Realtor',
+    intro: "You see a house sell for $300,000 and think the seller walked away with $300,000. In reality, the 'net' profit is much lower after fees. Before listing, be aware of these costs.",
+    content: [
+      "## 1. The Commission (6%)",
+      "This is the big one. On a $300k sale, **$18,000** goes immediately to the agents.",
+      "## 2. Closing Costs (2-4%)",
+      "Sellers in Florida often pay for the title search, documentary stamps, and recording fees. That's another **$6,000 - $9,000** gone.",
+      "## 3. Repair Credits (1-2%)",
+      "After the inspection, the buyer will likely ask for a credit to fix the roof or electrical. That's another **$3,000 - $5,000** off the price.",
+      "## 4. Holding Costs",
+      "While the house sits on the market for 4 months, you are still paying the mortgage, taxes, insurance, and utilities. That can easily add up to **$5,000+**.",
+      "**Total Hit:** You might lose 10-12% of the sale price in fees. A cash offer has zero fees, meaning our offer is effectively 10-12% higher than it looks compared to a retail listing."
+    ]
+  },
+  'selling-house-during-divorce-florida': {
+    type: 'blog',
+    title: 'Selling a House During Divorce in Florida',
+    description: 'Divorce is hard enough. Learn how a quick cash sale can help both parties split equity and move on peacefully.',
+    h1: 'Selling a House During Divorce in Florida',
+    intro: "The marital home is often the most valuable asset in a divorce, and the biggest source of conflict. Deciding who stays, who pays, or how to sell can drag out proceedings for months.",
+    content: [
+      "## The Problem with Listing",
+      "Listing a home requires cooperation. Both spouses must agree on the listing price, allow showings, and agree on repair costs. If communication is difficult, this process can become a nightmare.",
+      "## The Cash Sale Solution",
+      "Selling to a cash buyer offers a 'clean break.'",
+      "**1. Speed:** We close in weeks, not months.",
+      "**2. No Arguments:** No fighting over who pays for the new roof or how to stage the living room.",
+      "**3. Simple Math:** We provide one clear number. The title company splits the check exactly as your divorce decree instructs.",
+      "This allows both parties to collect their equity and move forward with their lives immediately."
+    ]
+  },
+  'pre-foreclosure-vs-foreclosure-difference': {
+    type: 'blog',
+    title: 'Pre-Foreclosure vs Foreclosure: Know the Difference',
+    description: 'Confusion about your status can cost you your home. We explain the difference between pre-foreclosure and the final auction.',
+    h1: 'Pre-Foreclosure vs Foreclosure: Know the Difference',
+    intro: "If you have missed mortgage payments, you have likely heard these terms thrown around. Understanding exactly where you stand in the process is the key to saving your equity.",
+    content: [
+      "## What is Pre-Foreclosure?",
+      "Pre-foreclosure begins the moment you receive a **Notice of Default** or **Lis Pendens**. It means the legal process has started, but you still own the house.",
+      "**Good News:** During this time, you can still sell the house, pay off the debt, and keep any remaining profit. This is your window of opportunity.",
+      "## What is Foreclosure?",
+      "Foreclosure is the final step—usually an auction at the county courthouse. Once the gavel falls, you lose ownership, you lose all your equity, and you are often evicted.",
+      "## Why You Must Act Now",
+      "In Florida, the timeline from 'Pre' to 'Final' can vary, but once the auction date is set, your options shrink rapidly. Selling during pre-foreclosure is the only way to control the outcome and protect your credit score."
     ]
   }
 }
