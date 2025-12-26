@@ -7,66 +7,33 @@ export const metadata = {
   description: 'Expert advice on selling inherited property, foreclosure, divorce, and problem properties in Florida.',
 }
 
-// 1. EXACT IMAGE MAPPING
+// 1. EXACT IMAGE MAPPING (Matches your uploaded files)
 const getImageForPost = (title: string) => {
   const t = (title || '').toLowerCase()
 
-  // 1. Inherited House
-  if (t.includes('inherited')) {
-    return '/images/home-inheritance-inherited-estate-probate-family.webp'
-  }
-  // 2. Mortgage / Investor
-  if (t.includes('mortgage') && t.includes('investor')) {
-    return '/images/real-estate-cash-buy-sell-offer-florida-home.webp'
-  }
-  // 3. As-Is vs Fix
-  if (t.includes('as-is') || t.includes('fix it up')) {
-    return '/images/home-cash-sell-offer-buy-real-estate-florida-property.webp'
-  }
-  // 4. Pre-Foreclosure Options
-  if (t.includes('pre-foreclosure') && t.includes('options')) {
-    return '/images/deal-forclosure-cash-closing-title-florida--2.webp' 
-  }
-  // 5. How Much Cash Buyers Pay
-  if (t.includes('how much') && t.includes('cash home buyers')) {
-    return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
-  }
-  // 6. Cash Buyers vs Agents
-  if (t.includes('vs real estate agents') || t.includes('cash home buyers vs')) {
-    return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
-  }
-  // 7. Code Violations
-  if (t.includes('code violations')) {
-    return '/images/code-violations-home-sell-cash-offer-florida-hoa.webp'
-  }
-  // 8. How Fast Can You Sell
-  if (t.includes('how fast can you sell')) {
-    return '/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
-  }
-  // 9. Hidden Costs Realtor
-  if (t.includes('hidden costs') && t.includes('realtor')) {
-    return '/images/home-cash-offer-real-estate-florida-buy-sell-property.webp'
-  }
-  // 10. Pre-Foreclosure vs Foreclosure
-  if (t.includes('pre-foreclosure vs foreclosure')) {
-    return '/images/frames-for-your-heart-2d4lAQAlbDA-unsplash.webp'
-  }
-  // 11. Divorce
-  if (t.includes('divorce')) {
-    return '/images/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
-  }
-  // 12. We Buy Houses Fort Myers
-  if (t.includes('fort myers') && t.includes('expect')) {
-    return '/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
-  }
+  // --- WEBP FILES ---
+  if (t.includes('inherited')) return '/images/home-inheritance-inherited-estate-probate-family.webp'
+  if (t.includes('mortgage') && t.includes('investor')) return '/images/real-estate-cash-buy-sell-offer-florida-home.webp'
+  if (t.includes('as-is') || t.includes('fix it up')) return '/images/home-cash-sell-offer-buy-real-estate-florida-property.webp'
+  if (t.includes('pre-foreclosure') && t.includes('options')) return '/images/deal-forclosure-cash-closing-title-florida--2.webp' 
+  if (t.includes('code violations')) return '/images/code-violations-home-sell-cash-offer-florida-hoa.webp'
+  if (t.includes('hidden costs') && t.includes('realtor')) return '/images/home-cash-offer-real-estate-florida-buy-sell-property.webp'
+  if (t.includes('pre-foreclosure vs foreclosure')) return '/images/frames-for-your-heart-2d4lAQAlbDA-unsplash.webp'
+  
+  // --- JPG FILES ---
+  if (t.includes('how much') && t.includes('cash home buyers')) return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
+  if (t.includes('vs real estate agents') || t.includes('cash home buyers vs')) return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
+  if (t.includes('how fast can you sell')) return '/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
+  if (t.includes('divorce')) return '/images/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
+  if (t.includes('fort myers') && t.includes('expect')) return '/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
 
-  // Fallback default image
+  // Fallback
   return '/images/florida-home-cash-real-estate-sell-buy-fas-2.webp'
 }
 
 export default function BlogIndex() {
   // Filter content to only show blog posts
-  // Cast SITE_CONTENT to any to avoid TypeScript indexing errors
+  // Cast to 'any' to prevent TypeScript errors during build
   const posts = Object.entries(SITE_CONTENT as any).filter(([_, data]: [string, any]) => data.type === 'blog')
 
   return (
@@ -86,7 +53,6 @@ export default function BlogIndex() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 -mt-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map(([slug, post]: [string, any]) => {
-            // Get the correct image based on the post title
             const imagePath = getImageForPost(post.h1 || post.title || '')
             
             return (
