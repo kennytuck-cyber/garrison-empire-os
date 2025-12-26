@@ -318,4 +318,15 @@ export default function HomePage() {
                     <div><label className="block text-xs font-medium text-white/60 mb-1.5">Timeline *</label><select name="timeline" value={formData.timeline} onChange={handleInputChange} required className="w-full px-4 py-3 bg-[#0F1C2E] border border-[#C5A572]/20 rounded-lg text-white text-sm"><option value="">Select...</option><option value="ASAP">ASAP</option><option value="30 days">30 Days</option><option value="60 days">60 Days</option></select></div>
                   </div>
                 </div>
-                <button type="submit" disabled={isSubmitting} className="w-full bg-gradient-to-r from-[#B8860B] to-[#C5A572] text-[#0F1C2E] px-8 py-4 rounded-xl font-bold text
+                <button type="submit" disabled={isSubmitting} className="w-full bg-gradient-to-r from-[#B8860B] to-[#C5A572] text-[#0F1C2E] px-8 py-4 rounded-xl font-bold text-lg hover:from-[#C5A572] hover:to-[#D4B896] transition-all shadow-xl shadow-[#B8860B]/25 flex items-center justify-center mt-6 disabled:opacity-50">
+                  {isSubmitting ? "Submitting..." : "Get My Cash Offer"} <ArrowRight className="ml-2 w-5 h-5" />
+                </button>
+                <p className="text-center text-white/40 text-xs pt-2">🔒 100% confidential. Secure transmission.</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}
