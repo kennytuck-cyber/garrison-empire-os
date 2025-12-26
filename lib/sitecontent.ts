@@ -1,138 +1,131 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+export const SITE_CONTENT = {
+  // LOCATION PAGES
+  'sell-house-fast-fort-myers': {
+    type: 'location',
+    title: 'Sell Your House Fast in Fort Myers, FL | Cash Offer in 24 Hours | Garrison Point Solutions',
+    description: 'Need to sell your Fort Myers house fast? Get a fair cash offer within 24 hours. No repairs, no fees, no commissions. Close in as little as 7 days.',
+    h1: 'Sell Your House Fast in Fort Myers, FL',
+    intro: "Need to sell your Fort Myers home quickly? Whether you're facing foreclosure, dealing with an inherited property, relocating for work, or simply tired of being a landlord, we can help. Garrison Point Solutions buys houses in any condition throughout Fort Myers and Lee County for cash.",
+    city: 'Fort Myers',
+    neighborhoods: ['Downtown Fort Myers & River District', 'McGregor Boulevard Corridor', 'Gateway & Daniels Corridor', 'Lehigh Acres', 'San Carlos Park', 'Fort Myers Beach', 'North Fort Myers', 'Tice & Palm Beach Boulevard'],
+  },
+  'sell-house-fast-cape-coral': {
+    type: 'location',
+    title: 'Sell Your House Fast in Cape Coral, FL | Cash Offer in 24 Hours | Garrison Point',
+    description: 'Sell your Cape Coral house fast for cash. Fair offers within 24 hours, close in 7 days. No repairs, no fees. We buy Gulf access, canal front & dry lot homes.',
+    h1: 'Sell Your House Fast in Cape Coral, FL',
+    intro: "Cape Coral's unique canal system and diverse housing stock—from Gulf access properties to dry lots—can make traditional selling complicated. If you need to sell your Cape Coral home quickly, Garrison Point Solutions offers a simpler path. We buy houses in any condition, in any location, for cash.",
+    city: 'Cape Coral',
+    neighborhoods: ['Southwest Cape Coral (Gulf Access)', 'Southeast Cape Coral', 'Northwest Cape Coral', 'Northeast Cape Coral', 'Cape Coral Parkway Corridor', 'Pine Island Road Corridor', 'Del Prado Boulevard Area'],
+  },
+  'sell-house-fast-naples': {
+    type: 'location',
+    title: 'Sell Your House Fast in Naples, FL | Discreet Cash Offers | Garrison Point Solutions',
+    description: 'Need to sell your Naples home quickly and discreetly? Cash offers within 24 hours. No listings, no showings. Serving Naples, Marco Island & Collier County.',
+    h1: 'Sell Your House Fast in Naples, FL',
+    intro: "Naples and Collier County homeowners often value discretion as much as speed when selling a property. Whether you're handling an estate, going through a life transition, or simply prefer to keep your sale private, Garrison Point Solutions offers confidential cash purchases throughout the Naples area.",
+    city: 'Naples',
+    neighborhoods: ['Old Naples & Downtown', 'Park Shore & Pelican Bay', 'North Naples & Vanderbilt Beach', 'East Naples & Lely Resort', 'Golden Gate & Golden Gate Estates', 'Marco Island', 'Bonita Springs'],
+  },
+  'sell-house-fast-lakeland': {
+    type: 'location',
+    title: 'Sell Your House Fast in Lakeland, FL | Cash Offers in 24 Hours | Garrison Point',
+    description: 'Sell your Lakeland house fast for cash. We buy homes in any condition throughout Polk County. Cash offer in 24 hours, close in 7-14 days.',
+    h1: 'Sell Your House Fast in Lakeland, FL',
+    intro: "Lakeland sits at the heart of Florida's I-4 corridor, making it a hub for families and investors alike. If you own a property in Lakeland or anywhere in Polk County and need to sell quickly, Garrison Point Solutions can help. We buy houses in any condition, in any situation, for cash.",
+    city: 'Lakeland',
+    neighborhoods: ['Downtown Lakeland & Dixieland', 'Lake Morton & Lake Hollingsworth', 'Lakeland Highlands', 'Mulberry', 'Bartow', 'Winter Haven', 'Auburndale'],
+  },
+  'sell-house-fast-orlando': {
+    type: 'location',
+    title: 'Sell Your House Fast in Orlando, FL | Cash Offer in 24 Hours | Garrison Point',
+    description: 'Sell your Orlando house fast for cash. Fair offers within 24 hours, close in as little as 7 days. No repairs, no commissions. We buy houses throughout Central Florida.',
+    h1: 'Sell Your House Fast in Orlando, FL',
+    intro: "Orlando's fast-paced real estate market doesn't always work in every seller's favor. If you need to sell your Orlando home quickly—whether due to relocation, financial pressure, or an unwanted inherited property—Garrison Point Solutions offers a straightforward alternative to the traditional listing process.",
+    city: 'Orlando',
+    neighborhoods: ['Downtown Orlando & Thornton Park', 'College Park & Winter Park', 'Maitland & Altamonte Springs', 'Kissimmee & St. Cloud', 'Ocoee & Winter Garden', 'Apopka', 'Lake Nona & Hunters Creek'],
+  },
+  'cash-home-buyers-lee-county': {
+    type: 'location',
+    title: 'Cash Home Buyers in Lee County, FL | We Buy Houses for Cash | Garrison Point',
+    description: 'Looking for cash home buyers in Lee County? We buy houses in Fort Myers, Cape Coral, Lehigh Acres & more. Cash offer in 24 hours.',
+    h1: 'Cash Home Buyers in Lee County, FL',
+    intro: "Looking for a cash home buyer in Lee County? Garrison Point Solutions is a local, veteran-owned company that purchases homes directly from homeowners for cash. No real estate agents, no listings, no waiting for buyer financing—just a simple, straightforward sale.",
+    city: 'Lee County',
+    neighborhoods: ['Fort Myers & North Fort Myers', 'Cape Coral', 'Lehigh Acres', 'Bonita Springs', 'Estero', 'Fort Myers Beach', 'Sanibel & Captiva'],
+  },
+  'cash-home-buyers-polk-county': {
+    type: 'location',
+    title: 'Cash Home Buyers in Polk County, FL | We Buy Houses Lakeland | Garrison Point',
+    description: 'Cash home buyers serving all of Polk County, FL. We buy houses in Lakeland, Winter Haven, Bartow & beyond. Cash offer in 24 hours.',
+    h1: 'Cash Home Buyers in Polk County, FL',
+    intro: "Polk County homeowners looking to sell fast have a trusted option in Garrison Point Solutions. As experienced cash home buyers, we purchase properties throughout Lakeland, Winter Haven, Bartow, and all Polk County communities—regardless of condition or situation.",
+    city: 'Polk County',
+    neighborhoods: ['Lakeland', 'Winter Haven', 'Bartow', 'Auburndale', 'Haines City', 'Lake Wales', 'Mulberry', 'Davenport'],
+  },
 
-\f0\fs24 \cf0 export const SITE_CONTENT = \{\
-  // LOCATION PAGES [cite: 44-261]\
-  'sell-house-fast-fort-myers': \{\
-    type: 'location',\
-    title: 'Sell Your House Fast in Fort Myers, FL | Cash Offer in 24 Hours | Garrison Point Solutions',\
-    description: 'Need to sell your Fort Myers house fast? Get a fair cash offer within 24 hours. No repairs, no fees, no commissions. Close in as little as 7 days.',\
-    h1: 'Sell Your House Fast in Fort Myers, FL',\
-    intro: "Need to sell your Fort Myers home quickly? Whether you're facing foreclosure, dealing with an inherited property, relocating for work, or simply tired of being a landlord, we can help. Garrison Point Solutions buys houses in any condition throughout Fort Myers and Lee County for cash.",\
-    city: 'Fort Myers',\
-    neighborhoods: ['Downtown Fort Myers & River District', 'McGregor Boulevard Corridor', 'Gateway & Daniels Corridor', 'Lehigh Acres', 'San Carlos Park', 'Fort Myers Beach', 'North Fort Myers', 'Tice & Palm Beach Boulevard'],\
-  \},\
-  'sell-house-fast-cape-coral': \{\
-    type: 'location',\
-    title: 'Sell Your House Fast in Cape Coral, FL | Cash Offer in 24 Hours | Garrison Point',\
-    description: 'Sell your Cape Coral house fast for cash. Fair offers within 24 hours, close in 7 days. No repairs, no fees. We buy Gulf access, canal front & dry lot homes.',\
-    h1: 'Sell Your House Fast in Cape Coral, FL',\
-    intro: "Cape Coral's unique canal system and diverse housing stock\'97from Gulf access properties to dry lots\'97can make traditional selling complicated. If you need to sell your Cape Coral home quickly, Garrison Point Solutions offers a simpler path. We buy houses in any condition, in any location, for cash.",\
-    city: 'Cape Coral',\
-    neighborhoods: ['Southwest Cape Coral (Gulf Access)', 'Southeast Cape Coral', 'Northwest Cape Coral', 'Northeast Cape Coral', 'Cape Coral Parkway Corridor', 'Pine Island Road Corridor', 'Del Prado Boulevard Area'],\
-  \},\
-  'sell-house-fast-naples': \{\
-    type: 'location',\
-    title: 'Sell Your House Fast in Naples, FL | Discreet Cash Offers | Garrison Point Solutions',\
-    description: 'Need to sell your Naples home quickly and discreetly? Cash offers within 24 hours. No listings, no showings. Serving Naples, Marco Island & Collier County.',\
-    h1: 'Sell Your House Fast in Naples, FL',\
-    intro: "Naples and Collier County homeowners often value discretion as much as speed when selling a property. Whether you're handling an estate, going through a life transition, or simply prefer to keep your sale private, Garrison Point Solutions offers confidential cash purchases throughout the Naples area.",\
-    city: 'Naples',\
-    neighborhoods: ['Old Naples & Downtown', 'Park Shore & Pelican Bay', 'North Naples & Vanderbilt Beach', 'East Naples & Lely Resort', 'Golden Gate & Golden Gate Estates', 'Marco Island', 'Bonita Springs'],\
-  \},\
-  'sell-house-fast-lakeland': \{\
-    type: 'location',\
-    title: 'Sell Your House Fast in Lakeland, FL | Cash Offers in 24 Hours | Garrison Point',\
-    description: 'Sell your Lakeland house fast for cash. We buy homes in any condition throughout Polk County. Cash offer in 24 hours, close in 7-14 days.',\
-    h1: 'Sell Your House Fast in Lakeland, FL',\
-    intro: "Lakeland sits at the heart of Florida's I-4 corridor, making it a hub for families and investors alike. If you own a property in Lakeland or anywhere in Polk County and need to sell quickly, Garrison Point Solutions can help. We buy houses in any condition, in any situation, for cash.",\
-    city: 'Lakeland',\
-    neighborhoods: ['Downtown Lakeland & Dixieland', 'Lake Morton & Lake Hollingsworth', 'Lakeland Highlands', 'Mulberry', 'Bartow', 'Winter Haven', 'Auburndale'],\
-  \},\
-  'sell-house-fast-orlando': \{\
-    type: 'location',\
-    title: 'Sell Your House Fast in Orlando, FL | Cash Offer in 24 Hours | Garrison Point',\
-    description: 'Sell your Orlando house fast for cash. Fair offers within 24 hours, close in as little as 7 days. No repairs, no commissions. We buy houses throughout Central Florida.',\
-    h1: 'Sell Your House Fast in Orlando, FL',\
-    intro: "Orlando's fast-paced real estate market doesn't always work in every seller's favor. If you need to sell your Orlando home quickly\'97whether due to relocation, financial pressure, or an unwanted inherited property\'97Garrison Point Solutions offers a straightforward alternative to the traditional listing process.",\
-    city: 'Orlando',\
-    neighborhoods: ['Downtown Orlando & Thornton Park', 'College Park & Winter Park', 'Maitland & Altamonte Springs', 'Kissimmee & St. Cloud', 'Ocoee & Winter Garden', 'Apopka', 'Lake Nona & Hunters Creek'],\
-  \},\
-  'cash-home-buyers-lee-county': \{\
-    type: 'location',\
-    title: 'Cash Home Buyers in Lee County, FL | We Buy Houses for Cash | Garrison Point',\
-    description: 'Looking for cash home buyers in Lee County? We buy houses in Fort Myers, Cape Coral, Lehigh Acres & more. Cash offer in 24 hours.',\
-    h1: 'Cash Home Buyers in Lee County, FL',\
-    intro: "Looking for a cash home buyer in Lee County? Garrison Point Solutions is a local, veteran-owned company that purchases homes directly from homeowners for cash. No real estate agents, no listings, no waiting for buyer financing\'97just a simple, straightforward sale.",\
-    city: 'Lee County',\
-    neighborhoods: ['Fort Myers & North Fort Myers', 'Cape Coral', 'Lehigh Acres', 'Bonita Springs', 'Estero', 'Fort Myers Beach', 'Sanibel & Captiva'],\
-  \},\
-  'cash-home-buyers-polk-county': \{\
-    type: 'location',\
-    title: 'Cash Home Buyers in Polk County, FL | We Buy Houses Lakeland | Garrison Point',\
-    description: 'Cash home buyers serving all of Polk County, FL. We buy houses in Lakeland, Winter Haven, Bartow & beyond. Cash offer in 24 hours.',\
-    h1: 'Cash Home Buyers in Polk County, FL',\
-    intro: "Polk County homeowners looking to sell fast have a trusted option in Garrison Point Solutions. As experienced cash home buyers, we purchase properties throughout Lakeland, Winter Haven, Bartow, and all Polk County communities\'97regardless of condition or situation.",\
-    city: 'Polk County',\
-    neighborhoods: ['Lakeland', 'Winter Haven', 'Bartow', 'Auburndale', 'Haines City', 'Lake Wales', 'Mulberry', 'Davenport'],\
-  \},\
-\
-  // SITUATION PAGES [cite: 262-455]\
-  'sell-inherited-house-florida': \{\
-    type: 'situation',\
-    title: 'Sell an Inherited House in Florida | Cash Buyers for Probate | Garrison Point',\
-    description: 'Inherited a house in Florida? We buy inherited properties for cash, even during probate. Skip the hassle of repairs, clean-out & listing.',\
-    h1: 'Sell an Inherited House in Florida',\
-    intro: "Inheriting a property can feel like inheriting a burden\'97especially when you're dealing with grief, distance, or disagreements among family members. If you've inherited a Florida home and want to sell it quickly without the hassle of repairs, clean-outs, or the traditional listing process, Garrison Point Solutions can help.",\
-    painPoints: ['Probate process complexity', 'Maintenance costs piling up', 'Distance from the property', 'Disagreements among heirs', 'Property full of belongings'],\
-    solution: "We work with executors and heirs to facilitate timely sales, often before probate is complete. Sell as-is and leave the clean-out to us.",\
-  \},\
-  'sell-house-pre-foreclosure': \{\
-    type: 'situation',\
-    title: 'Sell Your House in Pre-Foreclosure | Stop Foreclosure in Florida | Garrison Point',\
-    description: 'Facing foreclosure in Florida? Sell your house fast for cash before the auction. We can close in 7 days to stop foreclosure, save your credit & walk away with cash.',\
-    h1: 'Sell Your House in Pre-Foreclosure',\
-    intro: "If you've received a foreclosure notice or are behind on mortgage payments, time is critical. But you have more options than you might think. Selling your house before the foreclosure is complete can protect your credit, preserve your equity, and give you a fresh start.",\
-    painPoints: ['Looming auction date', 'Damaged credit score', 'Stress of legal notices', 'Losing all equity'],\
-    solution: "We can close in 7-14 days, often before your foreclosure date. This stops the process, pays off the lender, and saves your credit.",\
-  \},\
-  'sell-house-during-divorce': \{\
-    type: 'situation',\
-    title: 'Sell Your House During Divorce in Florida | Quick & Fair Cash Sales | Garrison Point',\
-    description: 'Going through a divorce in Florida? Sell your house fast for cash to simplify the process. We help divorcing couples get fair cash offers.',\
-    h1: 'Sell Your House During Divorce in Florida',\
-    intro: "Divorce is difficult enough without the added stress of selling a home. When both parties want to move forward quickly and divide assets fairly, a traditional home sale can drag out the process for months. A cash sale to Garrison Point Solutions can help you both close this chapter faster.",\
-    painPoints: ['Need for a clean break', 'Disagreements on listing price', 'Paying mortgage on two homes', 'Public showings during a private time'],\
-    solution: "One fair offer, one closing date, and a clean split of the proceeds. No arguments over repairs or staging.",\
-  \},\
-  'sell-rental-property-with-tenants': \{\
-    type: 'situation',\
-    title: 'Sell Rental Property with Tenants in Florida | We Buy Tenant-Occupied Homes',\
-    description: 'Tired landlord? Sell your rental property with tenants in place. We buy tenant-occupied homes in Florida for cash. No eviction needed.',\
-    h1: 'Sell Your Rental Property with Tenants',\
-    intro: "Being a landlord isn't for everyone\'97and selling a tenant-occupied property through traditional channels can be complicated. If you're ready to exit the landlord business without the hassle of evictions, vacancies, or waiting for a lease to end, Garrison Point Solutions can help.",\
-    painPoints: ['Problem tenants not paying', 'Eviction process costs', 'Vacancies reducing income', 'Deferred maintenance'],\
-    solution: "We buy properties with tenants in place. You don't need to evict anyone; we handle the leases and tenants after closing.",\
-  \},\
-  'sell-house-with-code-violations': \{\
-    type: 'situation',\
-    title: 'Sell House with Code Violations in Florida | We Buy Properties with Liens',\
-    description: 'Have code violations or liens on your Florida property? We buy houses with code enforcement issues, unpermitted work & accumulated fines.',\
-    h1: 'Sell a House with Code Violations in Florida',\
-    intro: "Code violations can make selling a house seem impossible. Daily fines accumulate, traditional buyers run away, and the cost of repairs can exceed the property's value. If you're stuck with a property that has code enforcement issues, Garrison Point Solutions can provide a way out.",\
-    painPoints: ['Accumulating daily fines', 'Unpermitted work', 'City liens', 'Unable to list on MLS', 'Structural issues'],\
-    solution: "We buy the property as-is and negotiate with code enforcement ourselves. We take on the burden so you can walk away.",\
-  \},\
-  'sell-house-as-is-florida': \{\
-    type: 'situation',\
-    title: 'Sell Your House As-Is in Florida | No Repairs Needed | Cash Buyers',\
-    description: 'Sell your Florida house as-is for cash. No repairs, no cleaning, no staging. We buy houses in any condition.',\
-    h1: 'Sell Your House As-Is in Florida',\
-    intro: "Not every house is ready for a magazine photoshoot\'97and that's okay. If your Florida home needs repairs you can't afford, updates you don't want to make, or cleaning you don't have time for, Garrison Point Solutions will buy it exactly as it is.",\
-    painPoints: ['Expensive roof or HVAC repairs', 'Outdated interiors', 'Water or storm damage', 'No time to manage contractors', 'Hoarder situations'],\
-    solution: "We buy in 'As-Is' condition. No repairs, no cleaning, no staging. Leave behind anything you don't want.",\
-  \},\
-  'avoid-foreclosure-florida': \{\
-    type: 'situation',\
-    title: 'Avoid Foreclosure in Florida | Stop Foreclosure by Selling Your House',\
-    description: 'Facing foreclosure in Florida? Learn how to avoid it by selling your house for cash. We can close fast enough to stop the foreclosure process.',\
-    h1: 'Avoid Foreclosure in Florida',\
-    intro: "If you're facing foreclosure in Florida, you may feel like there's no way out. But foreclosure isn't inevitable\'97you have options, and time is on your side if you act now. One of the most effective ways to avoid foreclosure is to sell your house before the process completes.",\
-    painPoints: ['Deficiency judgments', '7 years of damaged credit', 'Public record of foreclosure', 'Losing 100% of equity'],\
-    solution: "A cash sale is the fastest way to stop foreclosure. We can close in days, paying off the debt before the auction occurs.",\
-  \}\
-\}}
+  // SITUATION PAGES
+  'sell-inherited-house-florida': {
+    type: 'situation',
+    title: 'Sell an Inherited House in Florida | Cash Buyers for Probate | Garrison Point',
+    description: 'Inherited a house in Florida? We buy inherited properties for cash, even during probate. Skip the hassle of repairs, clean-out & listing.',
+    h1: 'Sell an Inherited House in Florida',
+    intro: "Inheriting a property can feel like inheriting a burden—especially when you're dealing with grief, distance, or disagreements among family members. If you've inherited a Florida home and want to sell it quickly without the hassle of repairs, clean-outs, or the traditional listing process, Garrison Point Solutions can help.",
+    painPoints: ['Probate process complexity', 'Maintenance costs piling up', 'Distance from the property', 'Disagreements among heirs', 'Property full of belongings'],
+    solution: "We work with executors and heirs to facilitate timely sales, often before probate is complete. Sell as-is and leave the clean-out to us.",
+  },
+  'sell-house-pre-foreclosure': {
+    type: 'situation',
+    title: 'Sell Your House in Pre-Foreclosure | Stop Foreclosure in Florida | Garrison Point',
+    description: 'Facing foreclosure in Florida? Sell your house fast for cash before the auction. We can close in 7 days to stop foreclosure, save your credit & walk away with cash.',
+    h1: 'Sell Your House in Pre-Foreclosure',
+    intro: "If you've received a foreclosure notice or are behind on mortgage payments, time is critical. But you have more options than you might think. Selling your house before the foreclosure is complete can protect your credit, preserve your equity, and give you a fresh start.",
+    painPoints: ['Looming auction date', 'Damaged credit score', 'Stress of legal notices', 'Losing all equity'],
+    solution: "We can close in 7-14 days, often before your foreclosure date. This stops the process, pays off the lender, and saves your credit.",
+  },
+  'sell-house-during-divorce': {
+    type: 'situation',
+    title: 'Sell Your House During Divorce in Florida | Quick & Fair Cash Sales | Garrison Point',
+    description: 'Going through a divorce in Florida? Sell your house fast for cash to simplify the process. We help divorcing couples get fair cash offers.',
+    h1: 'Sell Your House During Divorce in Florida',
+    intro: "Divorce is difficult enough without the added stress of selling a home. When both parties want to move forward quickly and divide assets fairly, a traditional home sale can drag out the process for months. A cash sale to Garrison Point Solutions can help you both close this chapter faster.",
+    painPoints: ['Need for a clean break', 'Disagreements on listing price', 'Paying mortgage on two homes', 'Public showings during a private time'],
+    solution: "One fair offer, one closing date, and a clean split of the proceeds. No arguments over repairs or staging.",
+  },
+  'sell-rental-property-with-tenants': {
+    type: 'situation',
+    title: 'Sell Rental Property with Tenants in Florida | We Buy Tenant-Occupied Homes',
+    description: 'Tired landlord? Sell your rental property with tenants in place. We buy tenant-occupied homes in Florida for cash. No eviction needed.',
+    h1: 'Sell Your Rental Property with Tenants',
+    intro: "Being a landlord isn't for everyone—and selling a tenant-occupied property through traditional channels can be complicated. If you're ready to exit the landlord business without the hassle of evictions, vacancies, or waiting for a lease to end, Garrison Point Solutions can help.",
+    painPoints: ['Problem tenants not paying', 'Eviction process costs', 'Vacancies reducing income', 'Deferred maintenance'],
+    solution: "We buy properties with tenants in place. You don't need to evict anyone; we handle the leases and tenants after closing.",
+  },
+  'sell-house-with-code-violations': {
+    type: 'situation',
+    title: 'Sell House with Code Violations in Florida | We Buy Properties with Liens',
+    description: 'Have code violations or liens on your Florida property? We buy houses with code enforcement issues, unpermitted work & accumulated fines.',
+    h1: 'Sell a House with Code Violations in Florida',
+    intro: "Code violations can make selling a house seem impossible. Daily fines accumulate, traditional buyers run away, and the cost of repairs can exceed the property's value. If you're stuck with a property that has code enforcement issues, Garrison Point Solutions can provide a way out.",
+    painPoints: ['Accumulating daily fines', 'Unpermitted work', 'City liens', 'Unable to list on MLS', 'Structural issues'],
+    solution: "We buy the property as-is and negotiate with code enforcement ourselves. We take on the burden so you can walk away.",
+  },
+  'sell-house-as-is-florida': {
+    type: 'situation',
+    title: 'Sell Your House As-Is in Florida | No Repairs Needed | Cash Buyers',
+    description: 'Sell your Florida house as-is for cash. No repairs, no cleaning, no staging. We buy houses in any condition.',
+    h1: 'Sell Your House As-Is in Florida',
+    intro: "Not every house is ready for a magazine photoshoot—and that's okay. If your Florida home needs repairs you can't afford, updates you don't want to make, or cleaning you don't have time for, Garrison Point Solutions will buy it exactly as it is.",
+    painPoints: ['Expensive roof or HVAC repairs', 'Outdated interiors', 'Water or storm damage', 'No time to manage contractors', 'Hoarder situations'],
+    solution: "We buy in 'As-Is' condition. No repairs, no cleaning, no staging. Leave behind anything you don't want.",
+  },
+  'avoid-foreclosure-florida': {
+    type: 'situation',
+    title: 'Avoid Foreclosure in Florida | Stop Foreclosure by Selling Your House',
+    description: 'Facing foreclosure in Florida? Learn how to avoid it by selling your house for cash. We can close fast enough to stop the foreclosure process.',
+    h1: 'Avoid Foreclosure in Florida',
+    intro: "If you're facing foreclosure in Florida, you may feel like there's no way out. But foreclosure isn't inevitable—you have options, and time is on your side if you act now. One of the most effective ways to avoid foreclosure is to sell your house before the process completes.",
+    painPoints: ['Deficiency judgments', '7 years of damaged credit', 'Public record of foreclosure', 'Losing 100% of equity'],
+    solution: "A cash sale is the fastest way to stop foreclosure. We can close in days, paying off the debt before the auction occurs.",
+  }
+}
