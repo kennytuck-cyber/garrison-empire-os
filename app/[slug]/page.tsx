@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { CheckCircle2, ArrowRight, Phone, MapPin, Clock, Shield } from 'lucide-react'
 
+// Define the shape of our content
 interface ContentItem {
   type: string;
   title: string;
@@ -13,7 +14,7 @@ interface ContentItem {
   neighborhoods?: string[];
   painPoints?: string[];
   solution?: string;
-  content?: string[]; // Added for blog posts
+  content?: string[];
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
@@ -52,19 +53,32 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
           </p>
           
           <div className="prose prose-invert max-w-none">
-            {content.content?.map((paragraph, index) => (
-              <div key={index} className="mb-6">
-                {paragraph.startsWith('##') ? (
-                  <h2 className="text-2xl font-bold text-white mt-8 mb-4">
+            {content.content?.map((paragraph, index) => {
+              // Handle Headers
+              if (paragraph.startsWith('##')) {
+                return (
+                  <h2 key={index} className="text-2xl font-bold text-white mt-10 mb-4">
                     {paragraph.replace('## ', '')}
                   </h2>
-                ) : paragraph.startsWith('**') ? (
-                  <p className="text-white/80 font-bold mb-4">{paragraph}</p>
-                ) : (
-                  <p className="text-white/80 leading-relaxed">{paragraph}</p>
-                )}
-              </div>
-            ))}
+                )
+              }
+              
+              // Handle Bold Text (**bold**) inside paragraphs
+              // We split the text by '**'. Odd segments are bold, even are normal.
+              const parts = paragraph.split('**');
+              
+              return (
+                <p key={index} className="text-white/80 leading-relaxed mb-6">
+                  {parts.map((part, i) => 
+                    i % 2 === 1 ? (
+                      <strong key={i} className="text-white font-bold">{part}</strong>
+                    ) : (
+                      part
+                    )
+                  )}
+                </p>
+              )
+            })}
           </div>
 
           <div className="mt-16 p-8 bg-[#1B365D] rounded-2xl border border-[#C5A572]/20 text-center">
@@ -79,10 +93,9 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
     )
   }
 
-  // --- LANDING PAGE LAYOUT (Existing) ---
+  // --- LANDING PAGE LAYOUT (Standard) ---
   return (
     <div className="min-h-screen bg-[#0F1C2E]">
-      {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-[#0F1C2E]">
           <div className="absolute inset-0 bg-gradient-to-r from-[#0F1C2E] via-[#0F1C2E]/95 to-[#1B365D]/40" />
@@ -119,17 +132,13 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {/* Main Content Grid */}
       <section className="py-20 bg-[#1B365D]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
-            
-            {/* Left Column: Details */}
             <div>
               <h2 className="text-3xl font-serif font-bold text-white mb-8">
                 {content.type === 'location' ? `Why Sell Your ${content.city} Home to Us?` : 'Why Choose a Cash Sale?'}
               </h2>
-              
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-[#C5A572]/10 rounded-xl flex items-center justify-center flex-shrink-0 border border-[#C5A572]/20">
@@ -140,7 +149,6 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
                     <p className="text-white/60">We can close in as little as 7 days. No waiting for banks or inspections.</p>
                   </div>
                 </div>
-                
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-[#C5A572]/10 rounded-xl flex items-center justify-center flex-shrink-0 border border-[#C5A572]/20">
                     <Shield className="w-6 h-6 text-[#C5A572]" />
@@ -150,7 +158,6 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
                     <p className="text-white/60">23 years of Coast Guard service means we operate with discipline and transparency.</p>
                   </div>
                 </div>
-
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-[#C5A572]/10 rounded-xl flex items-center justify-center flex-shrink-0 border border-[#C5A572]/20">
                     <CheckCircle2 className="w-6 h-6 text-[#C5A572]" />
@@ -163,7 +170,6 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
               </div>
             </div>
 
-            {/* Right Column: Specifics */}
             <div className="bg-[#0F1C2E] p-8 rounded-2xl border border-[#C5A572]/20">
               {content.type === 'location' && content.neighborhoods && (
                 <>
@@ -200,12 +206,10 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
                 </>
               )}
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-20 bg-[#0F1C2E] border-t border-[#C5A572]/10 text-center">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-6">
