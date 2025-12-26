@@ -3,17 +3,45 @@ import { SITE_CONTENT } from '@/lib/siteContent'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { CheckCircle2, ArrowRight, Phone, MapPin, Clock, Shield } from 'lucide-react'
-import { motion } from 'framer-motion' // Need this for animations
+import { motion } from 'framer-motion'
 
-// --- IMAGE MAPPING ---
-// This assigns specific images based on keywords in the URL slug
+// --- SMART IMAGE MAPPING ---
+// This assigns your specific uploaded images to the correct pages based on keywords in the URL
 const getHeroImage = (slug: string) => {
-  if (slug.includes('fort-myers')) return 'https://images.unsplash.com/photo-1596123063238-60dfd256262d?q=80&w=2070' // Florida Coast
-  if (slug.includes('military') || slug.includes('veteran')) return 'https://images.unsplash.com/photo-1610173827002-6b4e96881d4d?q=80&w=2070' // Flag/Home
-  if (slug.includes('inherited')) return 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073' // Classic Home
-  if (slug.includes('divorce')) return 'https://images.unsplash.com/photo-1633519808920-410fb3ba7398?q=80&w=2070' // Keys on table
-  if (slug.includes('foreclosure')) return 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=1965' // House Exterior
-  return 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=2070' // Default Modern Home
+  // LOCATION PAGES
+  if (slug.includes('orlando') || slug.includes('lakeland') || slug.includes('polk')) {
+    return '/images/orlando-central-flroida-real-estate-cash-sell-buy.jpg'
+  }
+  if (slug.includes('fort-myers') || slug.includes('lee-county')) {
+    return '/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
+  }
+  if (slug.includes('cape-coral')) {
+    return '/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
+  }
+  if (slug.includes('miami') || slug.includes('naples')) {
+    // Using the waterfront home for high-end markets
+    return '/images/home-cash-offer-real-estate-florida-buy-sell-property.jpg'
+  }
+
+  // SITUATION PAGES
+  if (slug.includes('veteran') || slug.includes('military')) {
+    return '/images/military-veteran-real-estate-florida-cash-buy-sell-pride-patriot-honest-trust.jpg'
+  }
+  if (slug.includes('inherited') || slug.includes('probate')) {
+    return '/images/inheritance-estate-family-inherited-probate-cash-offer.jpg'
+  }
+  if (slug.includes('divorce')) {
+    return '/images/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
+  }
+  if (slug.includes('foreclosure')) {
+    return '/images/deal-forclosure-cash-closing-title-florida-.jpg'
+  }
+  if (slug.includes('agent') || slug.includes('expect')) {
+    return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
+  }
+  
+  // DEFAULT FALLBACK (Beautiful Florida Home Exterior)
+  return '/images/florida-home-cash-real-estate-sell-buy-fas.jpg'
 }
 
 interface ContentItem {
@@ -38,7 +66,6 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
 
   const heroImage = getHeroImage(params.slug)
 
-  // Animation Variants (Webflow Style)
   const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
@@ -52,8 +79,7 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
   if (content.type === 'blog') {
     return (
       <div className="min-h-screen bg-[#0F1C2E] text-white">
-        {/* Blog Hero */}
-        <div className="h-[40vh] relative overflow-hidden">
+        <div className="h-[50vh] relative overflow-hidden">
           <motion.div 
             initial={{ scale: 1.1 }}
             animate={{ scale: 1 }}
@@ -61,23 +87,23 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url('${heroImage}')` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0F1C2E] via-[#0F1C2E]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0F1C2E] via-[#0F1C2E]/90 to-transparent" />
         </div>
 
         <motion.div 
           initial="hidden"
           animate="visible"
           variants={stagger}
-          className="max-w-3xl mx-auto px-6 -mt-32 relative z-10"
+          className="max-w-3xl mx-auto px-6 -mt-40 relative z-10"
         >
           <motion.div variants={fadeInUp}>
             <Link href="/blog" className="text-[#C5A572] hover:text-white mb-6 inline-block font-medium tracking-wide uppercase text-sm">
               ← Back to Intel
             </Link>
-            <h1 className="text-4xl md:text-6xl font-serif font-bold mb-8 leading-tight shadow-black drop-shadow-lg">{content.h1}</h1>
+            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-8 leading-tight shadow-black drop-shadow-lg">{content.h1}</h1>
           </motion.div>
 
-          <div className="bg-[#1B365D]/40 backdrop-blur-md border border-[#C5A572]/20 p-8 rounded-2xl mb-12">
+          <div className="bg-[#1B365D]/60 backdrop-blur-md border border-[#C5A572]/20 p-8 rounded-2xl mb-12 shadow-2xl">
             <p className="text-xl text-white/90 leading-relaxed italic">
               {content.intro}
             </p>
@@ -92,7 +118,7 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     key={index} 
-                    className="text-3xl font-bold text-white mt-12 mb-6"
+                    className="text-3xl font-bold text-white mt-12 mb-6 border-b border-[#C5A572]/20 pb-4"
                   >
                     {paragraph.replace('## ', '')}
                   </motion.h2>
@@ -107,10 +133,11 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
             })}
           </div>
 
-          <div className="mt-20 p-10 bg-gradient-to-br from-[#1B365D] to-[#0F1C2E] rounded-3xl border border-[#C5A572]/30 text-center shadow-2xl">
-            <h3 className="text-3xl font-serif font-bold mb-4">Situation Critical?</h3>
-            <p className="mb-8 text-white/70 text-lg">We can deploy resources and have a cash offer on your desk in 24 hours.</p>
-            <Link href="/#contact" className="inline-block bg-[#C5A572] text-[#0F1C2E] px-10 py-4 rounded-xl font-bold hover:bg-[#D4B896] transition-transform hover:scale-105">
+          <div className="mt-20 p-10 bg-gradient-to-br from-[#1B365D] to-[#0F1C2E] rounded-3xl border border-[#C5A572]/30 text-center shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-4 opacity-10"><Shield className="w-32 h-32 text-[#C5A572]" /></div>
+            <h3 className="text-3xl font-serif font-bold mb-4 relative z-10">Situation Critical?</h3>
+            <p className="mb-8 text-white/70 text-lg relative z-10">We can deploy resources and have a cash offer on your desk in 24 hours.</p>
+            <Link href="/#contact" className="inline-block bg-[#C5A572] text-[#0F1C2E] px-10 py-4 rounded-xl font-bold hover:bg-[#D4B896] transition-transform hover:scale-105 relative z-10">
               Request Immediate Offer
             </Link>
           </div>
@@ -123,7 +150,6 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
   // --- LANDING PAGE LAYOUT ---
   return (
     <div className="min-h-screen bg-[#0F1C2E]">
-      {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         <motion.div 
           initial={{ scale: 1.2 }}
@@ -135,12 +161,7 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
         <div className="absolute inset-0 bg-gradient-to-r from-[#0F1C2E] via-[#0F1C2E]/95 to-[#1B365D]/30" />
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
-          <motion.div 
-            initial="hidden"
-            animate="visible"
-            variants={stagger}
-            className="max-w-3xl"
-          >
+          <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-3xl">
             <motion.div variants={fadeInUp} className="inline-flex items-center space-x-2 bg-[#1B365D]/80 border border-[#C5A572]/50 px-4 py-2 rounded-full mb-8 backdrop-blur-sm">
               <Shield className="w-4 h-4 text-[#C5A572]" />
               <span className="text-xs font-bold text-[#C5A572] tracking-widest uppercase">
@@ -170,7 +191,6 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {/* Main Content Grid */}
       <section className="py-32 bg-[#1B365D]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-20">
