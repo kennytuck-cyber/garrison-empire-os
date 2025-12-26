@@ -1,0 +1,57 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 import type \{ Metadata \} from "next"\
+import "./globals.css"\
+import Navbar from "@/components/Navbar"\
+import Footer from "@/components/Footer"\
+\
+export const metadata: Metadata = \{\
+  title: "Garrison Point Solutions | We Buy Houses Florida | Cash Offers in 24 Hours",\
+  description: "Veteran-owned real estate company buying houses in Central Florida, Southwest Florida & South Florida. Get a fair cash offer in 24 hours. No fees, no repairs, close fast.",\
+  keywords: "sell my house fast Florida, cash home buyers, we buy houses, Fort Myers, Orlando, Miami, Cape Coral, Naples, veteran owned",\
+  openGraph: \{\
+    title: "Garrison Point Solutions | Fair Cash Offers for Florida Properties",\
+    description: "23-year Coast Guard veteran buying houses across Florida. Get your cash offer today.",\
+    type: "website",\
+    locale: "en_US",\
+    images: ['/logo.jpg'],\
+  \},\
+  twitter: \{\
+    card: 'summary_large_image',\
+    title: 'Garrison Point Solutions | We Buy Houses Florida',\
+    description: 'Veteran-owned. Fair cash offers. Close in 7-14 days.',\
+  \},\
+  robots: \{\
+    index: true,\
+    follow: true,\
+  \},\
+\}\
+\
+export default function RootLayout(\{\
+  children,\
+\}: \{\
+  children: React.ReactNode\
+\}) \{\
+  return (\
+    <html lang="en" className="scroll-smooth">\
+      <head>\
+        <link rel="icon" href="/favicon.ico" />\
+        <link rel="preconnect" href="https://fonts.googleapis.com" />\
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />\
+        <meta name="theme-color" content="#0F1C2E" />\
+      </head>\
+      <body className="antialiased bg-[#0F1C2E] text-white">\
+        <Navbar />\
+        <div className="pt-24">\
+          \{children\}\
+        </div>\
+        <Footer />\
+      </body>\
+    </html>\
+  )\
+\}}
