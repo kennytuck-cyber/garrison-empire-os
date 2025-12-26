@@ -5,8 +5,7 @@ import Link from 'next/link'
 import { CheckCircle2, ArrowRight, Phone, Clock, Shield, MapPin } from 'lucide-react'
 import { motion } from 'framer-motion'
 
-// --- SMART IMAGE MAPPING ---
-// FIX: Added '/images/' to all paths
+// --- SMART IMAGE MAPPING (Restored /images/ path) ---
 const getHeroImage = (slug: string) => {
   if (slug.includes('orlando')) return '/images/orlando-central-flroida-real-estate-cash-sell-buy.jpg'
   if (slug.includes('fort-myers')) return '/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
@@ -115,7 +114,7 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
     )
   }
 
-  // --- LANDING PAGE LAYOUT ---
+  // --- LANDING PAGE LAYOUT (Dark Theme Restored) ---
   return (
     <div className="min-h-screen bg-[#0F1C2E]">
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
