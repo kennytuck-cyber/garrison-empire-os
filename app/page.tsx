@@ -95,8 +95,8 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="relative min-h-[calc(100vh-6rem)] flex items-center overflow-hidden">
-        {/* HERO IMAGE: Ensure this file exists in public/images/ */}
-        <motion.div initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 10, ease: "linear" }} className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/images/florida-home-cash-real-estate-sell-buy-fas-2.jpg')` }} />
+        {/* HERO IMAGE: Updated to .webp */}
+        <motion.div initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 10, ease: "linear" }} className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/images/florida-home-cash-real-estate-sell-buy-fas-2.webp')` }} />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0F1C2E] via-[#0F1C2E]/80 to-transparent" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -198,7 +198,7 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
-              {/* ABOUT IMAGE: Coast Guard Hat / Military Trust */}
+              {/* ABOUT IMAGE: .jpg confirmed in list */}
               <div className="aspect-[4/3] rounded-2xl bg-cover bg-center shadow-2xl" style={{ backgroundImage: `url('/images/military-veteran-real-estate-florida-cash-buy-sell-pride-patriot-honest-trust.jpg')` }} />
               <div className="absolute -bottom-8 -right-8 bg-[#0F1C2E] p-8 rounded-2xl border border-[#C5A572]/20 shadow-2xl max-w-sm">
                 <div className="text-5xl font-serif font-bold text-[#C5A572] mb-2">23+</div>
@@ -254,6 +254,7 @@ export default function HomePage() {
               </ul>
             </div>
             <div className="order-1 lg:order-2">
+              {/* Medals Image: .jpg confirmed in list */}
               <img 
                 src="/images/military-veteran-cash-real-estate-florida-buy-sell-investment.jpg" 
                 alt="Military Service Medals and Values" 
@@ -273,8 +274,11 @@ export default function HomePage() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: "Central Florida", link: "/sell-house-fast-orlando", img: "/images/orlando-central-flroida-real-estate-cash-sell-buy.jpg" },
+              // Central Florida Image: Updated to .webp
+              { title: "Central Florida", link: "/sell-house-fast-orlando", img: "/images/orlando-central-flroida-real-estate-cash-sell-buy.webp" },
+              // SW Florida Image: .jpg confirmed in list
               { title: "Southwest Florida", link: "/sell-house-fast-fort-myers", img: "/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg" },
+              // South Florida Image: .jpg confirmed in list
               { title: "South Florida", link: "#contact", img: "/images/miami-real-estate-south-florida-cash-buy-offfer-sell.jpg" }
             ].map((market, i) => (
               <Link href={market.link} key={i}>
@@ -293,6 +297,7 @@ export default function HomePage() {
       </section>
 
       {/* MISSION BANNER (FLAGS) */}
+      {/* Flags Image: .JPG confirmed in list */}
       <div className="relative py-20 bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('/images/military-vetean-pride-real-estate-florida-trsut-patriotJPG.JPG')" }}>
         <div className="absolute inset-0 bg-[#0F1C2E]/80" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
@@ -311,7 +316,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Card 1: Pre-Foreclosure */}
+            {/* Card 1: Pre-Foreclosure - .webp confirmed */}
             <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all">
               <div className="h-48 overflow-hidden">
                 <img 
@@ -329,11 +334,11 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Card 2: HOA/Code Violations (FIXED) */}
+            {/* Card 2: HOA/Code Violations - Updated to .webp */}
             <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all">
               <div className="h-48 overflow-hidden">
                 <img 
-                  src="/images/code-violations-home-sell-cash-offer-florida-hoa.jpg" 
+                  src="/images/code-violations-home-sell-cash-offer-florida-hoa.webp" 
                   alt="Sell House with Code Violations" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -347,7 +352,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Card 3: Military PCS */}
+            {/* Card 3: Military PCS - .jpg confirmed */}
             <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all">
               <div className="h-48 overflow-hidden">
                 <img 
@@ -365,7 +370,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Card 4: Inherited Property */}
+            {/* Card 4: Inherited Property - .jpg confirmed */}
             <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all">
               <div className="h-48 overflow-hidden">
                 <img 
@@ -383,7 +388,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Card 5: Divorce */}
+            {/* Card 5: Divorce - .jpg confirmed */}
             <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all">
               <div className="h-48 overflow-hidden">
                 <img 
@@ -401,7 +406,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Card 6: Hurricane/Damage */}
+            {/* Card 6: Hurricane/Damage - .JPG confirmed */}
             <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all">
               <div className="h-48 overflow-hidden">
                 <img 
@@ -438,6 +443,7 @@ export default function HomePage() {
       </section>
 
       {/* Contact Section */}
+      {/* Contact BG Image: .jpg confirmed */}
       <section id="contact" className="py-24 relative bg-cover bg-center" style={{ backgroundImage: `url('/images/central-florida-home-sell-buy-cash-offer.jpg')` }}>
         <div className="absolute inset-0 bg-[#0F1C2E]/90" /> {/* Dark overlay for readability */}
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
