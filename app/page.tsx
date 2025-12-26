@@ -95,7 +95,7 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="relative min-h-[calc(100vh-6rem)] flex items-center overflow-hidden">
-        {/* HERO IMAGE: Grey House with Metal Roof */}
+        {/* HERO IMAGE: Florida Home Exterior (Front View) */}
         <motion.div initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 10, ease: "linear" }} className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/images/florida-home-cash-real-estate-sell-buy-fas.jpg')` }} />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0F1C2E] via-[#0F1C2E]/80 to-transparent" />
         
@@ -228,9 +228,10 @@ export default function HomePage() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
+              // NEW IMAGES: Orlando (Central), Fort Myers Beach (SW), Miami New (South)
               { title: "Central Florida", link: "/sell-house-fast-orlando", img: "/images/orlando-central-flroida-real-estate-cash-sell-buy.jpg" },
               { title: "Southwest Florida", link: "/sell-house-fast-fort-myers", img: "/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg" },
-              { title: "South Florida", link: "#contact", img: "/images/home-cash-offer-real-estate-florida-buy-sell-property.jpg" }
+              { title: "South Florida", link: "#contact", img: "/images/miami-real-estate-south-florida-cash-buy-offfer-sell.jpg" }
             ].map((market, i) => (
               <Link href={market.link} key={i}>
                 <motion.div whileHover={{ scale: 1.03 }} className="group relative overflow-hidden rounded-2xl cursor-pointer h-[400px]">
