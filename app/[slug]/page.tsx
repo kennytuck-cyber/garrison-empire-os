@@ -4,61 +4,29 @@ import Link from 'next/link'
 import { Phone, Calendar, Clock, CheckCircle2 } from 'lucide-react'
 import LeadConcierge from '@/components/LeadConcierge'
 
-// 1. EXACT IMAGE MAPPING (Matches your uploaded files)
+// 1. EXACT IMAGE MAPPING (Must match the blog page)
 const getImageForPost = (title: string) => {
   const t = (title || '').toLowerCase()
 
-  // --- WEBP FILES (Based on your screenshot) ---
-  if (t.includes('pre-foreclosure') && t.includes('options')) {
-    return '/images/deal-forclosure-cash-closing-title-florida--2.webp' 
-  }
-  if (t.includes('code violations')) {
-    return '/images/code-violations-home-sell-cash-offer-florida-hoa.webp' 
-  }
-  if (t.includes('hidden costs') && t.includes('realtor')) {
-    return '/images/home-cash-offer-real-estate-florida-buy-sell-property.webp'
-  }
-  if (t.includes('pre-foreclosure vs foreclosure')) {
-    return '/images/frames-for-your-heart-2d4lAQAlbDA-unsplash.webp'
-  }
-  // This might be .webp or .jpg depending on the specific file, defaulting to .webp based on your note
-  if (t.includes('inherited')) {
-    return '/images/home-inheritance-inherited-estate-probate-family.webp' 
-  }
-  if (t.includes('as-is') || t.includes('fix it up')) {
-    return '/images/home-cash-sell-offer-buy-real-estate-florida-property.webp'
-  }
+  if (t.includes('inherited')) return '/images/home-inheritance-inherited-estate-probate-family.webp'
+  if (t.includes('mortgage') && t.includes('investor')) return '/images/real-estate-cash-buy-sell-offer-florida-home.webp'
+  if (t.includes('as-is') || t.includes('fix it up')) return '/images/home-cash-sell-offer-buy-real-estate-florida-property.webp'
+  if (t.includes('pre-foreclosure') && t.includes('options')) return '/images/deal-forclosure-cash-closing-title-florida--2.webp' 
+  if (t.includes('code violations')) return '/images/code-violations-home-sell-cash-offer-florida-hoa.webp'
+  if (t.includes('hidden costs') && t.includes('realtor')) return '/images/home-cash-offer-real-estate-florida-buy-sell-property.webp'
+  if (t.includes('pre-foreclosure vs foreclosure')) return '/images/frames-for-your-heart-2d4lAQAlbDA-unsplash.webp'
   
-  // --- JPG FILES ---
-  if (t.includes('how much') && t.includes('cash home buyers')) {
-    return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
-  }
-  if (t.includes('vs real estate agents') || t.includes('cash home buyers vs')) {
-    // Reusing the cash offer image or similar suitable image
-    return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
-  }
-  if (t.includes('how fast can you sell')) {
-    return '/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
-  }
-  if (t.includes('mortgage') && t.includes('investor')) {
-    return '/images/real-estate-cash-buy-sell-offer-florida-home.jpg'
-  }
-  if (t.includes('divorce')) {
-    return '/images/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
-  }
-  // Fort Myers specific
-  if (t.includes('fort myers') && t.includes('expect')) {
-    return '/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
-  }
+  if (t.includes('how much') && t.includes('cash home buyers')) return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
+  if (t.includes('vs real estate agents') || t.includes('cash home buyers vs')) return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
+  if (t.includes('how fast can you sell')) return '/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
+  if (t.includes('divorce')) return '/images/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
+  if (t.includes('fort myers') && t.includes('expect')) return '/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
 
-  // Fallback default image
   return '/images/florida-home-cash-real-estate-sell-buy-fas-2.webp'
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  // Cast to any to avoid TypeScript strict indexing errors
   const data = (SITE_CONTENT as any)[params.slug]
-  
   if (!data) return { title: 'Page Not Found' }
   
   return {
@@ -88,7 +56,6 @@ export default function Page({ params }: { params: { slug: string } }) {
       
       {/* HERO SECTION */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
             src={heroImage} 
