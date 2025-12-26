@@ -6,7 +6,6 @@ import { CheckCircle2, ArrowRight, Phone, MapPin, Clock, Shield } from 'lucide-r
 import { motion } from 'framer-motion'
 
 // --- SMART IMAGE MAPPING ---
-// This assigns your specific uploaded images to the correct pages based on keywords in the URL
 const getHeroImage = (slug: string) => {
   // LOCATION PAGES
   if (slug.includes('orlando') || slug.includes('lakeland') || slug.includes('polk')) {
@@ -19,13 +18,13 @@ const getHeroImage = (slug: string) => {
     return '/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
   }
   if (slug.includes('miami') || slug.includes('naples')) {
-    // Using the waterfront home for high-end markets
+    // Luxury Waterfront
     return '/images/home-cash-offer-real-estate-florida-buy-sell-property.jpg'
   }
 
   // SITUATION PAGES
   if (slug.includes('veteran') || slug.includes('military')) {
-    return '/images/military-veteran-real-estate-florida-cash-buy-sell-pride-patriot-honest-trust.jpg'
+    return '/images/military-veteran-cash-real-estate-florida-buy-sell-investment.jpg'
   }
   if (slug.includes('inherited') || slug.includes('probate')) {
     return '/images/inheritance-estate-family-inherited-probate-cash-offer.jpg'
