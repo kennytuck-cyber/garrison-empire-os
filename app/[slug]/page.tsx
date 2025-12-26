@@ -3,8 +3,22 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { CheckCircle2, ArrowRight, Phone, MapPin, Clock, Shield } from 'lucide-react'
 
+// Fix: Define the shape of our content so TypeScript doesn't complain
+interface ContentItem {
+  type: string;
+  title: string;
+  description: string;
+  h1: string;
+  intro: string;
+  // These fields are optional (?) because they don't exist on every page type
+  city?: string;
+  neighborhoods?: string[];
+  painPoints?: string[];
+  solution?: string;
+}
+
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const content = SITE_CONTENT[params.slug as keyof typeof SITE_CONTENT]
+  const content = SITE_CONTENT[params.slug as keyof typeof SITE_CONTENT] as ContentItem | undefined
   if (!content) return {}
   return {
     title: content.title,
@@ -12,7 +26,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-// Crucial: This tells Next.js which pages to build at compile time
 export async function generateStaticParams() {
   return Object.keys(SITE_CONTENT).map((slug) => ({
     slug: slug,
@@ -20,7 +33,8 @@ export async function generateStaticParams() {
 }
 
 export default function DynamicPage({ params }: { params: { slug: string } }) {
-  const content = SITE_CONTENT[params.slug as keyof typeof SITE_CONTENT]
+  // Fix: Cast the content to our new interface
+  const content = SITE_CONTENT[params.slug as keyof typeof SITE_CONTENT] as ContentItem | undefined
 
   if (!content) {
     return notFound()
