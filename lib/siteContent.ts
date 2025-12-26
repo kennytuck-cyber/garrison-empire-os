@@ -1,5 +1,3 @@
-// siteContent.ts
-
 export const siteContent = {
   hero: {
     title: "Sell Your Florida Home Fast—In Any Condition",
