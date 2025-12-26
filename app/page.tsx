@@ -6,22 +6,7 @@ import { motion } from 'framer-motion'
 
 export default function HomePage() {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    phone: '',
-    email: '',
-    address: '',
-    unit: '',
-    city: '',
-    state: 'FL',
-    zip: '',
-    county: '',
-    isOwner: '',
-    occupancy: '',
-    reasonForSelling: '',
-    otherReason: '',
-    askingPrice: '',
-    timeline: ''
+    firstName: '', lastName: '', phone: '', email: '', address: '', unit: '', city: '', state: 'FL', zip: '', county: '', isOwner: '', occupancy: '', reasonForSelling: '', otherReason: '', askingPrice: '', timeline: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
@@ -37,9 +22,7 @@ export default function HomePage() {
     e.preventDefault()
     setIsSubmitting(true)
     setError('')
-
     const fullAddress = `${formData.address}${formData.unit ? ' ' + formData.unit : ''}, ${formData.city}, ${formData.state} ${formData.zip}`
-
     try {
       const response = await fetch('/api/leads', {
         method: 'POST',
@@ -52,12 +35,9 @@ export default function HomePage() {
           source: 'Website Contact Form'
         })
       })
-
       if (response.ok) {
         setShowSuccess(true)
-        setFormData({
-          firstName: '', lastName: '', phone: '', email: '', address: '', unit: '', city: '', state: 'FL', zip: '', county: '', isOwner: '', occupancy: '', reasonForSelling: '', otherReason: '', askingPrice: '', timeline: ''
-        })
+        setFormData({ firstName: '', lastName: '', phone: '', email: '', address: '', unit: '', city: '', state: 'FL', zip: '', county: '', isOwner: '', occupancy: '', reasonForSelling: '', otherReason: '', askingPrice: '', timeline: '' })
       } else {
         const data = await response.json()
         setError(data.error || 'Something went wrong. Please try again.')
@@ -69,12 +49,10 @@ export default function HomePage() {
     }
   }
 
-  // Animation Variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 60 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
   }
-
   const stagger = {
     visible: { transition: { staggerChildren: 0.1 } }
   }
@@ -95,7 +73,6 @@ export default function HomePage() {
   ]
 
   const floridaCounties = ['Alachua', 'Baker', 'Bay', 'Bradford', 'Brevard', 'Broward', 'Calhoun', 'Charlotte', 'Citrus', 'Clay', 'Collier', 'Columbia', 'DeSoto', 'Dixie', 'Duval', 'Escambia', 'Flagler', 'Franklin', 'Gadsden', 'Gilchrist', 'Glades', 'Gulf', 'Hamilton', 'Hardee', 'Hendry', 'Hernando', 'Highlands', 'Hillsborough', 'Holmes', 'Indian River', 'Jackson', 'Jefferson', 'Lafayette', 'Lake', 'Lee', 'Leon', 'Levy', 'Liberty', 'Madison', 'Manatee', 'Marion', 'Martin', 'Miami-Dade', 'Monroe', 'Nassau', 'Okaloosa', 'Okeechobee', 'Orange', 'Osceola', 'Palm Beach', 'Pasco', 'Pinellas', 'Polk', 'Putnam', 'Santa Rosa', 'Sarasota', 'Seminole', 'St. Johns', 'St. Lucie', 'Sumter', 'Suwannee', 'Taylor', 'Union', 'Volusia', 'Wakulla', 'Walton', 'Washington']
-  
   const sellingReasons = ['Inherited Property', 'Pre-Foreclosure', 'Divorce', 'Tired Landlord', 'Code Violations', 'Vacant Property', 'Behind on Payments', 'Relocating', 'Downsizing', 'Major Repairs Needed', 'Problem Tenants', 'Tax Liens', 'Job Loss', 'Medical Bills', 'Bankruptcy', 'Retiring', 'Other']
 
   return (
@@ -103,25 +80,14 @@ export default function HomePage() {
       {/* Success Modal */}
       {showSuccess && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
-          <motion.div 
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            className="bg-[#1B365D] border border-[#C5A572]/30 rounded-2xl p-8 md:p-12 max-w-lg w-full text-center relative shadow-2xl"
-          >
-            <button onClick={() => setShowSuccess(false)} className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors">
-              <X className="w-6 h-6" />
-            </button>
-            <div className="w-20 h-20 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-full flex items-center justify-center mx-auto mb-6">
-              <CheckCircle2 className="w-10 h-10 text-[#0F1C2E]" />
-            </div>
+          <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="bg-[#1B365D] border border-[#C5A572]/30 rounded-2xl p-8 md:p-12 max-w-lg w-full text-center relative shadow-2xl">
+            <button onClick={() => setShowSuccess(false)} className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors"><X className="w-6 h-6" /></button>
+            <div className="w-20 h-20 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-full flex items-center justify-center mx-auto mb-6"><CheckCircle2 className="w-10 h-10 text-[#0F1C2E]" /></div>
             <h2 className="text-3xl font-serif font-bold text-white mb-4">Submission Received!</h2>
             <p className="text-xl text-white/80 mb-8 leading-relaxed">Thank you! You've taken the first step. We will be in contact soon!</p>
             <div className="space-y-4">
               <p className="text-[#C5A572] font-semibold">Need immediate assistance?</p>
-              <a href="tel:2392913444" className="inline-flex items-center justify-center bg-gradient-to-r from-[#B8860B] to-[#C5A572] text-[#0F1C2E] px-8 py-4 rounded-xl font-bold text-lg hover:from-[#C5A572] hover:to-[#D4B896] transition-all">
-                <Phone className="w-5 h-5 mr-2" />
-                Call (239) 291-3444
-              </a>
+              <a href="tel:2392913444" className="inline-flex items-center justify-center bg-gradient-to-r from-[#B8860B] to-[#C5A572] text-[#0F1C2E] px-8 py-4 rounded-xl font-bold text-lg hover:from-[#C5A572] hover:to-[#D4B896] transition-all"><Phone className="w-5 h-5 mr-2" />Call (239) 291-3444</a>
             </div>
           </motion.div>
         </div>
@@ -129,65 +95,32 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="relative min-h-[calc(100vh-6rem)] flex items-center overflow-hidden">
-        {/* Animated Background */}
-        <motion.div 
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 10, ease: "linear" }}
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1605276378624-18ae817c00b5?q=80&w=2070')` }} // Luxury Florida Home
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0F1C2E] via-[#0F1C2E]/90 to-[#0F1C2E]/60" />
+        <motion.div initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 10, ease: "linear" }} className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1605276378624-18ae817c00b5?q=80&w=2070')` }} />
+        {/* Adjusted Gradient: More transparent so image shows through */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0F1C2E] via-[#0F1C2E]/80 to-transparent" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            
-            {/* Left Column - Text */}
             <motion.div initial="hidden" animate="visible" variants={stagger}>
-              <motion.div variants={fadeInUp} className="inline-flex items-center space-x-2 bg-[#1B365D]/50 border border-[#C5A572]/30 px-5 py-2.5 rounded-full mb-8 backdrop-blur-sm">
+              <motion.div variants={fadeInUp} className="inline-flex items-center space-x-2 bg-[#1B365D]/80 border border-[#C5A572]/30 px-5 py-2.5 rounded-full mb-8 backdrop-blur-sm">
                 <Shield className="w-5 h-5 text-[#C5A572]" />
                 <span className="text-sm font-semibold text-[#C5A572] tracking-wide">23-YEAR COAST GUARD VETERAN</span>
               </motion.div>
-
               <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-[1.1] mb-8">
-                Sell Your Florida
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#C5A572] to-[#D4B896]">Property Fast</span>
+                Sell Your Florida <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#C5A572] to-[#D4B896]">Property Fast</span>
               </motion.h1>
-
-              <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-white/70 mb-10 leading-relaxed max-w-xl">
-                Fair cash offers within 24 hours. No repairs. No fees. No commissions. Close on <span className="text-white font-semibold">your</span> timeline.
-              </motion.p>
-
+              <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-white/80 mb-10 leading-relaxed max-w-xl">Fair cash offers within 24 hours. No repairs. No fees. No commissions. Close on <span className="text-white font-semibold">your</span> timeline.</motion.p>
               <motion.div variants={fadeInUp} className="grid grid-cols-2 gap-4 mb-10">
                 {['Close in 7-14 Days', 'As-Is Condition', 'Zero Fees', 'Cash Guarantee'].map((item, i) => (
-                  <div key={i} className="flex items-center space-x-3">
-                    <div className="w-6 h-6 rounded-full bg-[#C5A572]/20 flex items-center justify-center">
-                      <CheckCircle2 className="w-4 h-4 text-[#C5A572]" />
-                    </div>
-                    <span className="text-white/80 font-medium">{item}</span>
-                  </div>
+                  <div key={i} className="flex items-center space-x-3"><div className="w-6 h-6 rounded-full bg-[#C5A572]/20 flex items-center justify-center"><CheckCircle2 className="w-4 h-4 text-[#C5A572]" /></div><span className="text-white/80 font-medium">{item}</span></div>
                 ))}
               </motion.div>
-
               <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
-                <Link href="#contact" className="group bg-gradient-to-r from-[#B8860B] to-[#C5A572] text-[#0F1C2E] px-10 py-5 rounded-lg font-bold text-lg hover:from-[#C5A572] hover:to-[#D4B896] transition-all inline-flex items-center justify-center shadow-2xl shadow-[#B8860B]/30 hover:-translate-y-1">
-                  Get My Cash Offer
-                  <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <a href="tel:2392913444" className="bg-white/5 backdrop-blur-sm text-white border border-white/20 px-10 py-5 rounded-lg font-semibold text-lg hover:bg-white/10 transition-all inline-flex items-center justify-center hover:-translate-y-1">
-                  <Phone className="mr-3 w-5 h-5" />
-                  Call Now
-                </a>
+                <Link href="#contact" className="group bg-gradient-to-r from-[#B8860B] to-[#C5A572] text-[#0F1C2E] px-10 py-5 rounded-lg font-bold text-lg hover:from-[#C5A572] hover:to-[#D4B896] transition-all inline-flex items-center justify-center shadow-2xl shadow-[#B8860B]/30 hover:-translate-y-1">Get My Cash Offer<ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" /></Link>
+                <a href="tel:2392913444" className="bg-white/5 backdrop-blur-sm text-white border border-white/20 px-10 py-5 rounded-lg font-semibold text-lg hover:bg-white/10 transition-all inline-flex items-center justify-center hover:-translate-y-1"><Phone className="mr-3 w-5 h-5" />Call Now</a>
               </motion.div>
             </motion.div>
-
-            {/* Right Column - Stats Card */}
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="hidden lg:block"
-            >
+            <motion.div initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4, duration: 0.8 }} className="hidden lg:block">
               <div className="bg-[#1B365D]/30 backdrop-blur-md border border-[#C5A572]/20 rounded-2xl p-10 shadow-2xl">
                 <h3 className="text-2xl font-serif font-bold text-white mb-8">Why Property Owners Choose Us</h3>
                 <div className="space-y-8">
@@ -196,21 +129,11 @@ export default function HomePage() {
                     { icon: Shield, title: "Military Integrity", desc: "23 years of Coast Guard discipline in every deal" },
                     { icon: HeartHandshake, title: "No Hassle Closing", desc: "We handle everything - just show up and get paid" }
                   ].map((item, i) => (
-                    <div key={i} className="flex items-start space-x-4">
-                      <div className="w-14 h-14 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-xl flex items-center justify-center flex-shrink-0">
-                        <item.icon className="w-7 h-7 text-[#0F1C2E]" />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-xl text-white mb-1">{item.title}</h4>
-                        <p className="text-white/60">{item.desc}</p>
-                      </div>
-                    </div>
+                    <div key={i} className="flex items-start space-x-4"><div className="w-14 h-14 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-xl flex items-center justify-center flex-shrink-0"><item.icon className="w-7 h-7 text-[#0F1C2E]" /></div><div><h4 className="font-bold text-xl text-white mb-1">{item.title}</h4><p className="text-white/60">{item.desc}</p></div></div>
                   ))}
                 </div>
                 <div className="mt-10 pt-8 border-t border-[#C5A572]/20">
-                  <div className="flex items-center space-x-1 mb-3">
-                    {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-[#C5A572] text-[#C5A572]" />)}
-                  </div>
+                  <div className="flex items-center space-x-1 mb-3">{[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-[#C5A572] text-[#C5A572]" />)}</div>
                   <p className="text-white/80 italic mb-3">"Professional from start to finish. They made selling my inherited property stress-free."</p>
                   <p className="text-[#C5A572] font-semibold">— Recent Seller, Fort Myers</p>
                 </div>
@@ -218,9 +141,7 @@ export default function HomePage() {
             </motion.div>
           </div>
         </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-          <ChevronDown className="w-8 h-8 text-[#C5A572]" />
-        </div>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce"><ChevronDown className="w-8 h-8 text-[#C5A572]" /></div>
       </section>
 
       {/* Trust Bar */}
@@ -233,10 +154,7 @@ export default function HomePage() {
               { icon: Star, text: "5-Star Reviews" },
               { icon: Building, text: "Licensed & Insured" }
             ].map((item, i) => (
-              <div key={i} className="flex items-center space-x-2 text-white/60">
-                <item.icon className="w-5 h-5 text-[#C5A572]" />
-                <span className="font-medium">{item.text}</span>
-              </div>
+              <div key={i} className="flex items-center space-x-2 text-white/60"><item.icon className="w-5 h-5 text-[#C5A572]" /><span className="font-medium">{item.text}</span></div>
             ))}
           </div>
         </div>
@@ -245,38 +163,21 @@ export default function HomePage() {
       {/* How It Works */}
       <section id="how-it-works" className="py-24 bg-[#0F1C2E] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-20">
             <span className="text-[#C5A572] text-sm font-bold tracking-[0.2em] uppercase">The Process</span>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-4 mb-6">
-              Three Simple Steps to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5A572] to-[#D4B896]">Your Cash Offer</span>
-            </h2>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-4 mb-6">Three Simple Steps to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5A572] to-[#D4B896]">Your Cash Offer</span></h2>
             <p className="text-xl text-white/60 max-w-2xl mx-auto">We've eliminated the complexity. No agents, no showings, no repairs, no waiting.</p>
           </motion.div>
-
           <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
             {[
               { title: "Contact Us", desc: "Fill out our simple form or call us directly. Tell us about your property — any condition, any situation." },
               { title: "Get Your Offer", desc: "Receive a fair, no-obligation cash offer within 24 hours. Transparent pricing with no hidden fees." },
               { title: "Close & Get Paid", desc: "Pick your closing date. We handle all the paperwork. Walk away with cash in hand." }
             ].map((step, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.2 }}
-                className="relative group"
-              >
+              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.2 }} className="relative group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-[#B8860B] to-[#C5A572] rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
                 <div className="relative bg-[#1B365D]/50 backdrop-blur-sm p-10 rounded-2xl border border-[#C5A572]/10 hover:border-[#C5A572]/30 transition-all h-full hover:-translate-y-2">
-                  <div className="w-20 h-20 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-[#B8860B]/20">
-                    <span className="text-3xl font-serif font-bold text-[#0F1C2E]">{i + 1}</span>
-                  </div>
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-[#B8860B]/20"><span className="text-3xl font-serif font-bold text-[#0F1C2E]">{i + 1}</span></div>
                   <h3 className="text-2xl font-serif font-bold text-white mb-4">{step.title}</h3>
                   <p className="text-white/60 leading-relaxed text-lg">{step.desc}</p>
                 </div>
@@ -291,12 +192,7 @@ export default function HomePage() {
         <div className="absolute inset-0 opacity-5" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #C5A572 1px, transparent 0)`, backgroundSize: '40px 40px' }} />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
+            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
               <div className="aspect-[4/3] rounded-2xl bg-cover bg-center shadow-2xl" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1610173827002-6b4e96881d4d?q=80&w=2070')` }} />
               <div className="absolute -bottom-8 -right-8 bg-[#0F1C2E] p-8 rounded-2xl border border-[#C5A572]/20 shadow-2xl max-w-sm">
                 <div className="text-5xl font-serif font-bold text-[#C5A572] mb-2">23+</div>
@@ -304,12 +200,7 @@ export default function HomePage() {
                 <p className="text-white/60">United States Coast Guard veteran bringing military precision to real estate.</p>
               </div>
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
+            <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <span className="text-[#C5A572] text-sm font-bold tracking-[0.2em] uppercase">About Us</span>
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-4 mb-6">The Garrison Point <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5A572] to-[#D4B896]">Difference</span></h2>
               <p className="text-lg text-white/70 mb-8 leading-relaxed">Founded by a 23-year Coast Guard veteran, Garrison Point Solutions brings military discipline, unwavering integrity, and strategic precision to every real estate transaction.</p>
@@ -319,15 +210,7 @@ export default function HomePage() {
                   { title: "Surgical Precision", desc: "Military-trained attention to detail.", icon: Target },
                   { title: "Concierge Service", desc: "White-glove treatment from first contact.", icon: Users }
                 ].map((val, i) => (
-                  <div key={i} className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-[#C5A572]/10 rounded-xl flex items-center justify-center flex-shrink-0 border border-[#C5A572]/20">
-                      <val.icon className="w-6 h-6 text-[#C5A572]" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-2">{val.title}</h3>
-                      <p className="text-white/60">{val.desc}</p>
-                    </div>
-                  </div>
+                  <div key={i} className="flex items-start space-x-4"><div className="w-12 h-12 bg-[#C5A572]/10 rounded-xl flex items-center justify-center flex-shrink-0 border border-[#C5A572]/20"><val.icon className="w-6 h-6 text-[#C5A572]" /></div><div><h3 className="text-xl font-bold text-white mb-2">{val.title}</h3><p className="text-white/60">{val.desc}</p></div></div>
                 ))}
               </div>
             </motion.div>
@@ -349,18 +232,13 @@ export default function HomePage() {
               { title: "South Florida", link: "#contact", img: "https://images.unsplash.com/photo-1535498730771-e735b998cd64?q=80&w=1974" }
             ].map((market, i) => (
               <Link href={market.link} key={i}>
-                <motion.div 
-                  whileHover={{ scale: 1.03 }}
-                  className="group relative overflow-hidden rounded-2xl cursor-pointer h-[400px]"
-                >
+                <motion.div whileHover={{ scale: 1.03 }} className="group relative overflow-hidden rounded-2xl cursor-pointer h-[400px]">
                   <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: `url('${market.img}')` }} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F1C2E] via-[#0F1C2E]/40 to-transparent" />
+                  {/* Adjusted Gradient: Lighter top so image shows */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F1C2E] via-[#0F1C2E]/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-8">
                     <h3 className="text-3xl font-serif font-bold text-white mb-3">{market.title}</h3>
-                    <div className="flex items-center text-[#C5A572] font-semibold group-hover:translate-x-2 transition-transform">
-                      <span>View Market</span>
-                      <ArrowRight className="w-5 h-5 ml-2" />
-                    </div>
+                    <div className="flex items-center text-[#C5A572] font-semibold group-hover:translate-x-2 transition-transform"><span>View Market</span><ArrowRight className="w-5 h-5 ml-2" /></div>
                   </div>
                 </motion.div>
               </Link>
@@ -372,24 +250,15 @@ export default function HomePage() {
       {/* Situations */}
       <section className="py-24 bg-[#1B365D]/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">Every Situation Has a Solution</h2>
-          </div>
+          <div className="text-center mb-16"><h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">Every Situation Has a Solution</h2></div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { label: 'Inherited Property', link: '/sell-inherited-house-florida' },
-              { label: 'Pre-Foreclosure', link: '/sell-house-pre-foreclosure' },
-              { label: 'Divorce', link: '/sell-house-during-divorce' },
-              { label: 'Tired Landlord', link: '/sell-rental-property-with-tenants' },
-              { label: 'Code Violations', link: '/sell-house-with-code-violations' },
-              { label: 'Vacant Property', link: '/sell-house-as-is-florida' },
-              { label: 'Relocating', link: '/sell-house-as-is-florida' },
-              { label: 'Any Situation', link: '#contact' }
+              { label: 'Inherited Property', link: '/sell-inherited-house-florida' }, { label: 'Pre-Foreclosure', link: '/sell-house-pre-foreclosure' },
+              { label: 'Divorce', link: '/sell-house-during-divorce' }, { label: 'Tired Landlord', link: '/sell-rental-property-with-tenants' },
+              { label: 'Code Violations', link: '/sell-house-with-code-violations' }, { label: 'Vacant Property', link: '/sell-house-as-is-florida' },
+              { label: 'Relocating', link: '/sell-house-as-is-florida' }, { label: 'Any Situation', link: '#contact' }
             ].map((item, index) => (
-              <Link href={item.link} key={index} className="bg-[#0F1C2E] border border-[#C5A572]/10 hover:border-[#C5A572]/40 rounded-xl p-5 text-center hover:bg-[#1B365D]/50 transition-all cursor-pointer group">
-                <CheckCircle2 className="w-6 h-6 text-[#C5A572] mx-auto mb-3 group-hover:scale-110 transition-transform" />
-                <span className="text-white/80 font-medium">{item.label}</span>
-              </Link>
+              <Link href={item.link} key={index} className="bg-[#0F1C2E] border border-[#C5A572]/10 hover:border-[#C5A572]/40 rounded-xl p-5 text-center hover:bg-[#1B365D]/50 transition-all cursor-pointer group"><CheckCircle2 className="w-6 h-6 text-[#C5A572] mx-auto mb-3 group-hover:scale-110 transition-transform" /><span className="text-white/80 font-medium">{item.label}</span></Link>
             ))}
           </div>
         </div>
@@ -398,17 +267,11 @@ export default function HomePage() {
       {/* FAQ Section */}
       <section className="py-24 bg-[#0F1C2E] border-t border-[#C5A572]/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-[#C5A572] text-sm font-bold tracking-[0.2em] uppercase">Common Questions</span>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-4 mb-6">Frequently Asked Questions</h2>
-          </div>
+          <div className="text-center mb-16"><span className="text-[#C5A572] text-sm font-bold tracking-[0.2em] uppercase">Common Questions</span><h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-4 mb-6">Frequently Asked Questions</h2></div>
           <div className="grid md:grid-cols-2 gap-6">
             {faqs.map((faq, index) => (
               <div key={index} className="bg-[#1B365D]/20 border border-[#C5A572]/10 rounded-xl p-6 hover:border-[#C5A572]/30 transition-all cursor-pointer" onClick={() => setOpenFaq(openFaq === index ? null : index)}>
-                <div className="flex justify-between items-start">
-                  <h3 className="text-lg font-bold text-white pr-4">{faq.question}</h3>
-                  <ChevronDown className={`w-5 h-5 text-[#C5A572] flex-shrink-0 transition-transform ${openFaq === index ? 'rotate-180' : ''}`} />
-                </div>
+                <div className="flex justify-between items-start"><h3 className="text-lg font-bold text-white pr-4">{faq.question}</h3><ChevronDown className={`w-5 h-5 text-[#C5A572] flex-shrink-0 transition-transform ${openFaq === index ? 'rotate-180' : ''}`} /></div>
                 {openFaq === index && <p className="text-white/70 mt-4 leading-relaxed animate-fade-in">{faq.answer}</p>}
               </div>
             ))}
@@ -430,7 +293,6 @@ export default function HomePage() {
                 <div className="flex items-center space-x-4"><div className="w-14 h-14 bg-[#C5A572]/10 rounded-xl flex items-center justify-center border border-[#C5A572]/20"><MapPin className="w-6 h-6 text-[#C5A572]" /></div><div><p className="text-white/60 text-sm">Office Location</p><p className="text-xl font-bold text-white">Fort Myers, Florida</p></div></div>
               </div>
             </div>
-
             <div className="lg:col-span-3 bg-[#1B365D]/50 backdrop-blur-sm border border-[#C5A572]/20 rounded-2xl p-8 shadow-2xl">
               <h3 className="text-2xl font-serif font-bold text-white mb-2">Get Your Cash Offer</h3>
               <p className="text-white/60 text-sm mb-6">Complete the form below and we'll prepare your custom offer.</p>
