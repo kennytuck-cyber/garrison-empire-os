@@ -1,11 +1,11 @@
 export const SITE_CONTENT = {
-  // --- LOCATION PAGES ---
+  // --- 7 LOCATION PAGES ---
   'sell-house-fast-fort-myers': {
     type: 'location',
     title: 'Sell Your House Fast in Fort Myers, FL | Cash Offer in 24 Hours',
     description: 'Need to sell your Fort Myers house fast? Get a fair cash offer within 24 hours. No repairs, no fees, no commissions. Close in as little as 7 days.',
     h1: 'Sell Your House Fast in Fort Myers, FL',
-    intro: "Need to sell your Fort Myers home quickly? Whether you're facing foreclosure, dealing with an inherited property, or simply tired of being a landlord, we can help. Garrison Point Solutions buys houses in any condition throughout Fort Myers and Lee County for cash.",
+    intro: "Need to sell your Fort Myers home quickly? Whether you're facing foreclosure, dealing with an inherited property, relocating for work, or simply tired of being a landlord, we can help. Garrison Point Solutions buys houses in any condition throughout Fort Myers and Lee County for cash.",
     city: 'Fort Myers',
     neighborhoods: ['Downtown Fort Myers', 'McGregor Boulevard', 'Gateway', 'Lehigh Acres', 'San Carlos Park', 'Fort Myers Beach', 'North Fort Myers', 'Tice'],
   },
@@ -45,8 +45,26 @@ export const SITE_CONTENT = {
     city: 'Orlando',
     neighborhoods: ['Downtown Orlando', 'Thornton Park', 'College Park', 'Winter Park', 'Kissimmee', 'Ocoee', 'Winter Garden', 'Lake Nona'],
   },
+  'cash-home-buyers-lee-county': {
+    type: 'location',
+    title: 'Cash Home Buyers in Lee County, FL | We Buy Houses for Cash',
+    description: 'Looking for cash home buyers in Lee County? We buy houses in Fort Myers, Cape Coral, Lehigh Acres & more. Cash offer in 24 hours.',
+    h1: 'Cash Home Buyers in Lee County, FL',
+    intro: "Looking for a cash home buyer in Lee County? Garrison Point Solutions is a local, veteran-owned company that purchases homes directly from homeowners for cash. No real estate agents, no listings, no waiting for buyer financing—just a simple, straightforward sale.",
+    city: 'Lee County',
+    neighborhoods: ['Fort Myers', 'Cape Coral', 'Lehigh Acres', 'Bonita Springs', 'Estero', 'Fort Myers Beach', 'Sanibel & Captiva'],
+  },
+  'cash-home-buyers-polk-county': {
+    type: 'location',
+    title: 'Cash Home Buyers in Polk County, FL | We Buy Houses Lakeland',
+    description: 'Cash home buyers serving all of Polk County, FL. We buy houses in Lakeland, Winter Haven, Bartow & beyond. Cash offer in 24 hours.',
+    h1: 'Cash Home Buyers in Polk County, FL',
+    intro: "Polk County homeowners looking to sell fast have a trusted option in Garrison Point Solutions. As experienced cash home buyers, we purchase properties throughout Lakeland, Winter Haven, Bartow, and all Polk County communities—regardless of condition or situation.",
+    city: 'Polk County',
+    neighborhoods: ['Lakeland', 'Winter Haven', 'Bartow', 'Auburndale', 'Haines City', 'Lake Wales', 'Mulberry', 'Davenport'],
+  },
 
-  // --- SITUATION PAGES ---
+  // --- 7 SITUATION PAGES ---
   'sell-inherited-house-florida': {
     type: 'situation',
     title: 'Sell an Inherited House in Florida | Cash Buyers for Probate',
@@ -92,8 +110,26 @@ export const SITE_CONTENT = {
     painPoints: ['Accumulating daily fines', 'Unpermitted work', 'City liens', 'Unable to list on MLS'],
     solution: "We buy the property and take on the burden of fixing the violations and clearing the titles.",
   },
+  'sell-rental-property-with-tenants': {
+    type: 'situation',
+    title: 'Sell Rental Property with Tenants in Florida | We Buy Tenant-Occupied Homes',
+    description: 'Tired landlord? Sell your rental property with tenants in place. We buy tenant-occupied homes in Florida for cash. No eviction needed.',
+    h1: 'Sell Your Rental Property with Tenants',
+    intro: "Being a landlord isn't for everyone. If you're ready to exit the landlord business without the hassle of evictions, vacancies, or waiting for a lease to end, Garrison Point Solutions can help.",
+    painPoints: ['Problem tenants not paying', 'Eviction process costs', 'Vacancies reducing income', 'Deferred maintenance'],
+    solution: "We buy properties with tenants in place. You don't need to evict anyone; we handle the leases and tenants after closing.",
+  },
+  'avoid-foreclosure-florida': {
+    type: 'situation',
+    title: 'Avoid Foreclosure in Florida | Stop Foreclosure by Selling Your House',
+    description: 'Facing foreclosure? Learn how to avoid it by selling your house for cash. We can close fast enough to stop the foreclosure process.',
+    h1: 'Avoid Foreclosure in Florida',
+    intro: "Foreclosure isn't inevitable. You have options, and time is on your side if you act now. One of the most effective ways to avoid foreclosure is to sell your house before the process completes.",
+    painPoints: ['Deficiency judgments', '7 years of damaged credit', 'Public record of foreclosure', 'Losing 100% of equity'],
+    solution: "A cash sale is the fastest way to stop foreclosure. We can close in days, paying off the debt before the auction occurs.",
+  },
 
-  // --- BLOG POSTS ---
+  // --- 3 BLOG POSTS ---
   'how-to-sell-inherited-house-florida-guide': {
     type: 'blog',
     title: 'How to Sell an Inherited House in Florida (Complete Guide)',
@@ -102,7 +138,9 @@ export const SITE_CONTENT = {
     intro: "Inheriting a house in Florida can be a mixed blessing. While it is a valuable asset, it also comes with responsibilities like taxes, insurance, and maintenance. This guide covers everything you need to know about probate, taxes, and selling options.",
     content: [
       "## Understanding Florida Probate",
-      "Before you can sell an inherited property in Florida, it typically needs to go through probate. There are two main types: **Summary Administration** (for estates under $75k or deaths over 2 years ago) and **Formal Administration**.",
+      "Before you can sell an inherited property in Florida, it typically needs to go through probate. There are two main types:",
+      "**Summary Administration**: For estates under $75k or deaths over 2 years ago. This is faster and simpler.",
+      "**Formal Administration**: Required for larger estates.",
       "## Your Options for Selling",
       "**1. List with an Agent:** Best if the home is in perfect condition and you have time to wait 3-6 months.",
       "**2. FSBO:** Saves commissions but requires you to handle all legal paperwork and marketing.",
@@ -119,7 +157,11 @@ export const SITE_CONTENT = {
     intro: "You have seen the signs, but what does it actually mean to sell to a cash buyer? We pull back the curtain on the process so you know exactly what to expect.",
     content: [
       "## The Process Explained",
-      "Unlike a traditional sale, a cash sale is simple: **1. Contact us**, **2. Get an offer**, **3. Close**. There are no banks, inspections, or appraisals to slow things down.",
+      "Unlike a traditional sale, a cash sale is simple:",
+      "**1. Contact us**: Fill out a form or call.",
+      "**2. Get an offer**: We review the property.",
+      "**3. Close**: We sign papers and you get paid.",
+      "There are no banks, inspections, or appraisals to slow things down.",
       "## How We Calculate Offers",
       "We look at the 'After Repair Value' (ARV) of your home and subtract the cost of renovations and our minimum profit. This gives you a fair, transparent cash offer.",
       "## Who is this for?",
