@@ -95,7 +95,7 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="relative min-h-[calc(100vh-6rem)] flex items-center overflow-hidden">
-        {/* HERO IMAGE: Fixed path to -2.jpg */}
+        {/* HERO IMAGE: Ensure this file exists in public/images/ */}
         <motion.div initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 10, ease: "linear" }} className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/images/florida-home-cash-real-estate-sell-buy-fas-2.jpg')` }} />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0F1C2E] via-[#0F1C2E]/80 to-transparent" />
         
@@ -302,7 +302,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Situations (Restored to Card Layout with Images) */}
+      {/* Situations (Image Cards Restored) */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -329,7 +329,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Card 2: HOA/Code Violations */}
+            {/* Card 2: HOA/Code Violations (FIXED) */}
             <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all">
               <div className="h-48 overflow-hidden">
                 <img 
