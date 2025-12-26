@@ -1,68 +1,30 @@
 import { SITE_CONTENT } from '@/lib/siteContent'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowRight, CheckCircle2, Phone, Calendar, Clock } from 'lucide-react'
+import { Phone, Calendar, Clock, CheckCircle2 } from 'lucide-react'
 import LeadConcierge from '@/components/LeadConcierge'
 
-// 1. EXACT IMAGE MAPPING (Ensures same images as the blog cards)
+// 1. EXACT IMAGE MAPPING
 const getImageForPost = (title: string) => {
   const t = (title || '').toLowerCase()
 
-  // 1. Inherited House
-  if (t.includes('inherited')) {
-    return '/images/home-inheritance-inherited-estate-probate-family.webp'
-  }
-  // 2. Mortgage / Investor
-  if (t.includes('mortgage') && t.includes('investor')) {
-    return '/images/real-estate-cash-buy-sell-offer-florida-home.webp'
-  }
-  // 3. As-Is vs Fix
-  if (t.includes('as-is') || t.includes('fix it up')) {
-    return '/images/home-cash-sell-offer-buy-real-estate-florida-property.webp'
-  }
-  // 4. Pre-Foreclosure Options
-  if (t.includes('pre-foreclosure') && t.includes('options')) {
-    return '/images/deal-forclosure-cash-closing-title-florida--2.webp' 
-  }
-  // 5. How Much Cash Buyers Pay
-  if (t.includes('how much') && t.includes('cash home buyers')) {
-    return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
-  }
-  // 6. Cash Buyers vs Agents
-  if (t.includes('vs real estate agents') || t.includes('cash home buyers vs')) {
-    return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
-  }
-  // 7. Code Violations
-  if (t.includes('code violations')) {
-    return '/images/code-violations-home-sell-cash-offer-florida-hoa.webp'
-  }
-  // 8. How Fast Can You Sell
-  if (t.includes('how fast can you sell')) {
-    return '/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
-  }
-  // 9. Hidden Costs Realtor
-  if (t.includes('hidden costs') && t.includes('realtor')) {
-    return '/images/home-cash-offer-real-estate-florida-buy-sell-property.webp'
-  }
-  // 10. Pre-Foreclosure vs Foreclosure
-  if (t.includes('pre-foreclosure vs foreclosure')) {
-    return '/images/frames-for-your-heart-2d4lAQAlbDA-unsplash.webp'
-  }
-  // 11. Divorce
-  if (t.includes('divorce')) {
-    return '/images/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
-  }
-  // 12. We Buy Houses Fort Myers
-  if (t.includes('fort myers') && t.includes('expect')) {
-    return '/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
-  }
+  if (t.includes('inherited')) return '/images/home-inheritance-inherited-estate-probate-family.webp'
+  if (t.includes('mortgage') && t.includes('investor')) return '/images/real-estate-cash-buy-sell-offer-florida-home.webp'
+  if (t.includes('as-is') || t.includes('fix it up')) return '/images/home-cash-sell-offer-buy-real-estate-florida-property.webp'
+  if (t.includes('pre-foreclosure') && t.includes('options')) return '/images/deal-forclosure-cash-closing-title-florida--2.webp' 
+  if (t.includes('how much') && t.includes('cash home buyers')) return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
+  if (t.includes('vs real estate agents') || t.includes('cash home buyers vs')) return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
+  if (t.includes('code violations')) return '/images/code-violations-home-sell-cash-offer-florida-hoa.webp'
+  if (t.includes('how fast can you sell')) return '/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
+  if (t.includes('hidden costs') && t.includes('realtor')) return '/images/home-cash-offer-real-estate-florida-buy-sell-property.webp'
+  if (t.includes('pre-foreclosure vs foreclosure')) return '/images/frames-for-your-heart-2d4lAQAlbDA-unsplash.webp'
+  if (t.includes('divorce')) return '/images/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
+  if (t.includes('fort myers') && t.includes('expect')) return '/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
 
-  // Fallback default image for generic pages
   return '/images/florida-home-cash-real-estate-sell-buy-fas-2.webp'
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  // FIX: Type casting to 'any' to fix the build error
   const data = (SITE_CONTENT as any)[params.slug]
   if (!data) return { title: 'Page Not Found' }
   
@@ -73,26 +35,25 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default function Page({ params }: { params: { slug: string } }) {
-  // FIX: Type casting to 'any' to fix the build error
   const data = (SITE_CONTENT as any)[params.slug]
 
   if (!data) {
     return notFound()
   }
 
-  // Determine the correct hero image
   const heroImage = getImageForPost(data.h1)
+  // SAFETY CHECK: Ensure content exists before trying to split it
+  const contentParagraphs = data.content ? data.content.split('\n') : []
 
   return (
     <main className="bg-white min-h-screen">
       
       {/* HERO SECTION */}
-      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center">
-        {/* Background Image */}
+      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src={heroImage} 
-            alt={data.h1} 
+            alt={data.h1 || 'Real Estate Guide'} 
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-[#0F1C2E]/80 mix-blend-multiply" />
@@ -132,33 +93,34 @@ export default function Page({ params }: { params: { slug: string } }) {
 
           {/* Main Content */}
           <div className="space-y-8 text-gray-800">
-            {data.content.split('\n').map((paragraph: string, index: number) => {
-              // Handle Headers (lines starting with #)
-              if (paragraph.startsWith('## ')) {
-                return <h2 key={index} className="text-3xl font-bold text-[#0F1C2E] mt-12 mb-6">{paragraph.replace('## ', '')}</h2>
-              }
-              if (paragraph.startsWith('### ')) {
-                return <h3 key={index} className="text-2xl font-bold text-[#0F1C2E] mt-8 mb-4">{paragraph.replace('### ', '')}</h3>
-              }
-              // Handle Bullet Points
-              if (paragraph.trim().startsWith('- ')) {
-                return (
-                  <div key={index} className="flex items-start gap-3 mb-4 ml-4">
-                    <CheckCircle2 className="w-6 h-6 text-[#C5A572] flex-shrink-0 mt-1" />
-                    <p className="text-gray-700 leading-relaxed">{paragraph.replace('- ', '')}</p>
-                  </div>
-                )
-              }
-              // Regular Paragraphs
-              if (paragraph.trim().length > 0) {
-                return <p key={index} className="leading-8 mb-6">{paragraph}</p>
-              }
-              return null
-            })}
+            {contentParagraphs.length > 0 ? (
+              contentParagraphs.map((paragraph: string, index: number) => {
+                if (paragraph.startsWith('## ')) {
+                  return <h2 key={index} className="text-3xl font-bold text-[#0F1C2E] mt-12 mb-6">{paragraph.replace('## ', '')}</h2>
+                }
+                if (paragraph.startsWith('### ')) {
+                  return <h3 key={index} className="text-2xl font-bold text-[#0F1C2E] mt-8 mb-4">{paragraph.replace('### ', '')}</h3>
+                }
+                if (paragraph.trim().startsWith('- ')) {
+                  return (
+                    <div key={index} className="flex items-start gap-3 mb-4 ml-4">
+                      <CheckCircle2 className="w-6 h-6 text-[#C5A572] flex-shrink-0 mt-1" />
+                      <p className="text-gray-700 leading-relaxed">{paragraph.replace('- ', '')}</p>
+                    </div>
+                  )
+                }
+                if (paragraph.trim().length > 0) {
+                  return <p key={index} className="leading-8 mb-6">{paragraph}</p>
+                }
+                return null
+              })
+            ) : (
+              <p className="text-gray-500 italic">Content is currently being updated...</p>
+            )}
           </div>
         </article>
 
-        {/* CTA Footer for Blog Posts */}
+        {/* CTA Footer */}
         <div className="mt-20 bg-[#F5F7FA] rounded-2xl p-10 border border-[#C5A572]/20 text-center">
           <h3 className="text-2xl font-bold text-[#0F1C2E] mb-4">Need help with your property?</h3>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
