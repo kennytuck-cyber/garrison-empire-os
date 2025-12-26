@@ -46,6 +46,7 @@ export const siteContent = {
 };
 
 // --- DYNAMIC SLUG CONTENT (Exported as 'SITE_CONTENT') ---
+// This is the variable your [slug] page looks for.
 export const SITE_CONTENT: Record<string, any> = {
   // SITUATIONS
   'military': {
