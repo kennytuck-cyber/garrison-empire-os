@@ -11,45 +11,64 @@ export const metadata = {
 const getImageForPost = (title: string) => {
   const t = title.toLowerCase()
 
-  // Blog 1: Pre-Foreclosure Options
+  // 1. Inherited House (UPDATED to .webp)
+  if (t.includes('inherited')) {
+    return '/images/home-inheritance-inherited-estate-probate-family.webp'
+  }
+
+  // 2. Mortgage / Investor (UPDATED to .webp)
+  if (t.includes('mortgage') && t.includes('investor')) {
+    return '/images/real-estate-cash-buy-sell-offer-florida-home.webp'
+  }
+
+  // 3. As-Is vs Fix (UPDATED to .webp)
+  if (t.includes('as-is') || t.includes('fix it up')) {
+    return '/images/home-cash-sell-offer-buy-real-estate-florida-property.webp'
+  }
+
+  // 4. Pre-Foreclosure Options (Confirmed .webp)
   if (t.includes('pre-foreclosure') && t.includes('options')) {
     return '/images/deal-forclosure-cash-closing-title-florida--2.webp' 
   }
-  // Blog 2: How Much Cash Buyers Pay
+
+  // 5. How Much Cash Buyers Pay (Confirmed .jpg)
   if (t.includes('how much') && t.includes('cash home buyers')) {
     return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
   }
-  // Blog 3: Code Violations
+
+  // 6. Cash Buyers vs Agents (NEW MAPPING - Uses same image as above or similar)
+  if (t.includes('vs real estate agents') || t.includes('cash home buyers vs')) {
+    return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
+  }
+
+  // 7. Code Violations (Confirmed .webp)
   if (t.includes('code violations')) {
     return '/images/code-violations-home-sell-cash-offer-florida-hoa.webp'
   }
-  // Blog 4: How Fast Can You Sell
+
+  // 8. How Fast Can You Sell (Confirmed .jpg with trailing dash)
   if (t.includes('how fast can you sell')) {
     return '/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
   }
-  // Blog 5: Mortgage / Investor
-  if (t.includes('mortgage') && t.includes('investor')) {
-    return '/images/real-estate-cash-buy-sell-offer-florida-home.jpg'
-  }
-  // Blog 6: As-Is vs Fix
-  if (t.includes('as-is') || t.includes('fix it up')) {
-    return '/images/home-cash-sell-offer-buy-real-estate-florida-property.jpg'
-  }
-  // Blog 7: Hidden Costs Realtor
+
+  // 9. Hidden Costs Realtor (Confirmed .webp)
   if (t.includes('hidden costs') && t.includes('realtor')) {
     return '/images/home-cash-offer-real-estate-florida-buy-sell-property.webp'
   }
-  // Blog 8: Pre-Foreclosure vs Foreclosure
+
+  // 10. Pre-Foreclosure vs Foreclosure (Confirmed .webp)
   if (t.includes('pre-foreclosure vs foreclosure')) {
     return '/images/frames-for-your-heart-2d4lAQAlbDA-unsplash.webp'
   }
-  // Blog 9: Divorce
+
+  // 11. Divorce (Confirmed .jpg)
   if (t.includes('divorce')) {
     return '/images/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
   }
-  // Blog 10: Inherited
-  if (t.includes('inherited')) {
-    return '/images/home-inheritance-inherited-estate-probate-family.jpg'
+
+  // 12. We Buy Houses Fort Myers (NEW MAPPING - Uses Market Image)
+  if (t.includes('fort myers') && t.includes('expect')) {
+    return '/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
   }
 
   // Fallback default image
