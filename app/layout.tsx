@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
+import LeadConcierge from "@/components/LeadConcierge"
 
 export const metadata: Metadata = {
   title: "Garrison Point Solutions | We Buy Houses Florida | Cash Offers in 24 Hours",
@@ -44,6 +45,7 @@ export default function RootLayout({
           {children}
         </div>
         <Footer />
+        <LeadConcierge />
       </body>
     </html>
   )
