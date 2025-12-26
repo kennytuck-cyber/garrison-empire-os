@@ -1,23 +1,46 @@
 'use client'
-import { SITE_CONTENT } from '../siteContent' 
+import { SITE_CONTENT } from '@/lib/siteContent'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { CheckCircle2, ArrowRight, Phone, Clock, Shield, MapPin } from 'lucide-react'
+import { CheckCircle2, ArrowRight, Phone, MapPin, Clock, Shield } from 'lucide-react'
 import { motion } from 'framer-motion'
 
-// --- SMART IMAGE MAPPING (Restored /images/ path) ---
+// --- SMART IMAGE MAPPING ---
 const getHeroImage = (slug: string) => {
-  if (slug.includes('orlando')) return '/images/orlando-central-flroida-real-estate-cash-sell-buy.jpg'
-  if (slug.includes('fort-myers')) return '/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
-  if (slug.includes('cape-coral')) return '/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
-  if (slug.includes('miami')) return '/images/home-cash-offer-real-estate-florida-buy-sell-property.webp'
+  // LOCATION PAGES
+  if (slug.includes('orlando') || slug.includes('lakeland') || slug.includes('polk')) {
+    return '/images/orlando-central-flroida-real-estate-cash-sell-buy.jpg'
+  }
+  if (slug.includes('fort-myers') || slug.includes('lee-county')) {
+    return '/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
+  }
+  if (slug.includes('cape-coral')) {
+    return '/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
+  }
+  if (slug.includes('miami') || slug.includes('naples')) {
+    // Luxury Waterfront
+    return '/images/home-cash-offer-real-estate-florida-buy-sell-property.jpg'
+  }
 
-  if (slug.includes('veteran') || slug.includes('military')) return '/images/military-veteran-cash-real-estate-florida-buy-sell-investment.jpg'
-  if (slug.includes('inherited')) return '/images/inheritance-estate-family-inherited-probate-cash-offer.jpg'
-  if (slug.includes('divorce')) return '/images/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
-  if (slug.includes('foreclosure')) return '/images/deal-forclosure-cash-closing-title-florida--2.webp'
+  // SITUATION PAGES
+  if (slug.includes('veteran') || slug.includes('military')) {
+    return '/images/military-veteran-cash-real-estate-florida-buy-sell-investment.jpg'
+  }
+  if (slug.includes('inherited') || slug.includes('probate')) {
+    return '/images/inheritance-estate-family-inherited-probate-cash-offer.jpg'
+  }
+  if (slug.includes('divorce')) {
+    return '/images/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
+  }
+  if (slug.includes('foreclosure')) {
+    return '/images/deal-forclosure-cash-closing-title-florida-.jpg'
+  }
+  if (slug.includes('agent') || slug.includes('expect')) {
+    return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
+  }
   
-  return '/images/florida-home-cash-real-estate-sell-buy-fas-2.jpg'
+  // DEFAULT FALLBACK (Beautiful Florida Home Exterior)
+  return '/images/florida-home-cash-real-estate-sell-buy-fas.jpg'
 }
 
 interface ContentItem {
@@ -108,13 +131,22 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
               )
             })}
           </div>
+
+          <div className="mt-20 p-10 bg-gradient-to-br from-[#1B365D] to-[#0F1C2E] rounded-3xl border border-[#C5A572]/30 text-center shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-4 opacity-10"><Shield className="w-32 h-32 text-[#C5A572]" /></div>
+            <h3 className="text-3xl font-serif font-bold mb-4 relative z-10">Situation Critical?</h3>
+            <p className="mb-8 text-white/70 text-lg relative z-10">We can deploy resources and have a cash offer on your desk in 24 hours.</p>
+            <Link href="/#contact" className="inline-block bg-[#C5A572] text-[#0F1C2E] px-10 py-4 rounded-xl font-bold hover:bg-[#D4B896] transition-transform hover:scale-105 relative z-10">
+              Request Immediate Offer
+            </Link>
+          </div>
         </motion.div>
         <div className="h-20" />
       </div>
     )
   }
 
-  // --- LANDING PAGE LAYOUT (Dark Theme Restored) ---
+  // --- LANDING PAGE LAYOUT ---
   return (
     <div className="min-h-screen bg-[#0F1C2E]">
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
