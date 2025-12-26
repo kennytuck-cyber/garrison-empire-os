@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { siteContent } from "../siteContent"; 
+import { siteContent } from "./siteContent"; 
 
 export default function Home() {
   return (
@@ -59,7 +59,7 @@ export default function Home() {
               </p>
               <div className="bg-slate-50 p-6 rounded-xl border border-slate-100 mt-6">
                 <p className="italic text-slate-500">
-                  "We operate with the same core values instilled during 23 years of service: Honor, Respect, and Devotion to Duty."
+                  &quot;We operate with the same core values instilled during 23 years of service: Honor, Respect, and Devotion to Duty.&quot;
                 </p>
               </div>
             </div>
