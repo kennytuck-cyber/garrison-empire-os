@@ -1,46 +1,44 @@
 'use client'
-import { SITE_CONTENT } from '@/lib/siteContent'
+import { SITE_CONTENT } from '../siteContent' // <--- FIX: Correct import path
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { CheckCircle2, ArrowRight, Phone, MapPin, Clock, Shield } from 'lucide-react'
+import { CheckCircle2, ArrowRight, Phone, Clock, Shield, MapPin } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 // --- SMART IMAGE MAPPING ---
+// <--- FIX: Updated paths to match your uploaded files (removed '/images/')
 const getHeroImage = (slug: string) => {
   // LOCATION PAGES
   if (slug.includes('orlando') || slug.includes('lakeland') || slug.includes('polk')) {
-    return '/images/orlando-central-flroida-real-estate-cash-sell-buy.jpg'
+    return '/orlando-central-flroida-real-estate-cash-sell-buy.jpg'
   }
   if (slug.includes('fort-myers') || slug.includes('lee-county')) {
-    return '/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
+    return '/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
   }
   if (slug.includes('cape-coral')) {
-    return '/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
+    return '/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
   }
   if (slug.includes('miami') || slug.includes('naples')) {
     // Luxury Waterfront
-    return '/images/home-cash-offer-real-estate-florida-buy-sell-property.jpg'
+    return '/home-cash-offer-real-estate-florida-buy-sell-property.webp'
   }
 
   // SITUATION PAGES
   if (slug.includes('veteran') || slug.includes('military')) {
-    return '/images/military-veteran-cash-real-estate-florida-buy-sell-investment.jpg'
+    return '/military-veteran-cash-real-estate-florida-buy-sell-investment.jpg'
   }
   if (slug.includes('inherited') || slug.includes('probate')) {
-    return '/images/inheritance-estate-family-inherited-probate-cash-offer.jpg'
+    return '/inheritance-estate-family-inherited-probate-cash-offer.jpg'
   }
   if (slug.includes('divorce')) {
-    return '/images/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
+    return '/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
   }
   if (slug.includes('foreclosure')) {
-    return '/images/deal-forclosure-cash-closing-title-florida-.jpg'
-  }
-  if (slug.includes('agent') || slug.includes('expect')) {
-    return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
+    return '/deal-forclosure-cash-closing-title-florida--2.webp'
   }
   
   // DEFAULT FALLBACK (Beautiful Florida Home Exterior)
-  return '/images/florida-home-cash-real-estate-sell-buy-fas.jpg'
+  return '/florida-home-cash-real-estate-sell-buy-fas-2.jpg'
 }
 
 interface ContentItem {
@@ -57,6 +55,7 @@ interface ContentItem {
 }
 
 export default function DynamicPage({ params }: { params: { slug: string } }) {
+  // Safe access to the content
   const content = SITE_CONTENT[params.slug as keyof typeof SITE_CONTENT] as ContentItem | undefined
 
   if (!content) {
