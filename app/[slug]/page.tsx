@@ -3,18 +3,17 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { CheckCircle2, ArrowRight, Phone, MapPin, Clock, Shield } from 'lucide-react'
 
-// Fix: Define the shape of our content so TypeScript doesn't complain
 interface ContentItem {
   type: string;
   title: string;
   description: string;
   h1: string;
   intro: string;
-  // These fields are optional (?) because they don't exist on every page type
   city?: string;
   neighborhoods?: string[];
   painPoints?: string[];
   solution?: string;
+  content?: string[]; // Added for blog posts
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
@@ -33,13 +32,54 @@ export async function generateStaticParams() {
 }
 
 export default function DynamicPage({ params }: { params: { slug: string } }) {
-  // Fix: Cast the content to our new interface
   const content = SITE_CONTENT[params.slug as keyof typeof SITE_CONTENT] as ContentItem | undefined
 
   if (!content) {
     return notFound()
   }
 
+  // --- BLOG POST LAYOUT ---
+  if (content.type === 'blog') {
+    return (
+      <div className="min-h-screen bg-[#0F1C2E] text-white">
+        <div className="max-w-3xl mx-auto px-6 py-20">
+          <Link href="/blog" className="text-[#C5A572] hover:text-white mb-8 inline-block">
+            ← Back to Blog
+          </Link>
+          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">{content.h1}</h1>
+          <p className="text-xl text-white/60 mb-10 leading-relaxed italic border-l-4 border-[#C5A572] pl-4">
+            {content.intro}
+          </p>
+          
+          <div className="prose prose-invert max-w-none">
+            {content.content?.map((paragraph, index) => (
+              <div key={index} className="mb-6">
+                {paragraph.startsWith('##') ? (
+                  <h2 className="text-2xl font-bold text-white mt-8 mb-4">
+                    {paragraph.replace('## ', '')}
+                  </h2>
+                ) : paragraph.startsWith('**') ? (
+                  <p className="text-white/80 font-bold mb-4">{paragraph}</p>
+                ) : (
+                  <p className="text-white/80 leading-relaxed">{paragraph}</p>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 p-8 bg-[#1B365D] rounded-2xl border border-[#C5A572]/20 text-center">
+            <h3 className="text-2xl font-bold mb-4">Need help with your property?</h3>
+            <p className="mb-6 text-white/70">We can give you a fair cash offer today.</p>
+            <Link href="/#contact" className="bg-[#C5A572] text-[#0F1C2E] px-8 py-3 rounded-xl font-bold hover:bg-[#D4B896] transition-colors">
+              Get My Offer
+            </Link>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // --- LANDING PAGE LAYOUT (Existing) ---
   return (
     <div className="min-h-screen bg-[#0F1C2E]">
       {/* Hero Section */}
