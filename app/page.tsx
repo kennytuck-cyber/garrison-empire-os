@@ -95,8 +95,8 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="relative min-h-[calc(100vh-6rem)] flex items-center overflow-hidden">
-        {/* NEW IMAGE: Florida Home Exterior (Front View) */}
-        <motion.div initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 10, ease: "linear" }} className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070')` }} />
+        {/* HERO IMAGE: Grey House with Metal Roof */}
+        <motion.div initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 10, ease: "linear" }} className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/images/florida-home-cash-real-estate-sell-buy-fas.jpg')` }} />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0F1C2E] via-[#0F1C2E]/80 to-transparent" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -193,8 +193,8 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
-              {/* NEW IMAGE: American Flag on Porch (Military Theme) */}
-              <div className="aspect-[4/3] rounded-2xl bg-cover bg-center shadow-2xl" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1610173827002-6b4e96881d4d?q=80&w=2070')` }} />
+              {/* ABOUT IMAGE: Coast Guard Hat / Military Trust */}
+              <div className="aspect-[4/3] rounded-2xl bg-cover bg-center shadow-2xl" style={{ backgroundImage: `url('/images/military-veteran-real-estate-florida-cash-buy-sell-pride-patriot-honest-trust.jpg')` }} />
               <div className="absolute -bottom-8 -right-8 bg-[#0F1C2E] p-8 rounded-2xl border border-[#C5A572]/20 shadow-2xl max-w-sm">
                 <div className="text-5xl font-serif font-bold text-[#C5A572] mb-2">23+</div>
                 <div className="text-xl font-semibold text-white mb-1">Years of Service</div>
@@ -228,14 +228,14 @@ export default function HomePage() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              // NEW IMAGES: Orlando Fountain (Central), Naples/Coast (SW), Miami Sunset (South)
-              { title: "Central Florida", link: "/sell-house-fast-orlando", img: "https://images.unsplash.com/photo-1689201977935-779cb20f2692?q=80&w=2070" },
-              { title: "Southwest Florida", link: "/sell-house-fast-fort-myers", img: "https://images.unsplash.com/photo-1512316609839-ce289d3eba0a?q=80&w=2070" },
-              { title: "South Florida", link: "#contact", img: "https://images.unsplash.com/photo-1535498730771-e735b998cd64?q=80&w=1974" }
+              { title: "Central Florida", link: "/sell-house-fast-orlando", img: "/images/orlando-central-flroida-real-estate-cash-sell-buy.jpg" },
+              { title: "Southwest Florida", link: "/sell-house-fast-fort-myers", img: "/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg" },
+              { title: "South Florida", link: "#contact", img: "/images/home-cash-offer-real-estate-florida-buy-sell-property.jpg" }
             ].map((market, i) => (
               <Link href={market.link} key={i}>
                 <motion.div whileHover={{ scale: 1.03 }} className="group relative overflow-hidden rounded-2xl cursor-pointer h-[400px]">
                   <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: `url('${market.img}')` }} />
+                  {/* Adjusted Gradient for visibility */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F1C2E] via-[#0F1C2E]/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-8">
                     <h3 className="text-3xl font-serif font-bold text-white mb-3">{market.title}</h3>
