@@ -1,143 +1,177 @@
-import Link from 'next/link'
 import { SITE_CONTENT } from '@/lib/siteContent'
-import { ArrowRight, BookOpen, Clock } from 'lucide-react'
+import { notFound } from 'next/navigation'
+import Link from 'next/link'
+import { ArrowRight, CheckCircle2, Phone, Calendar, User, Clock } from 'lucide-react'
+import LeadConcierge from '@/components/LeadConcierge'
 
-export const metadata = {
-  title: 'Real Estate Blog | Garrison Point Solutions',
-  description: 'Expert advice on selling inherited property, foreclosure, divorce, and problem properties in Florida.',
-}
-
-// 1. EXACT FILENAME MAPPING
+// 1. EXACT IMAGE MAPPING (Same as Blog Index)
 const getImageForPost = (title: string) => {
-  const t = title.toLowerCase()
+  const t = (title || '').toLowerCase()
 
-  // 1. Inherited House (UPDATED to .webp)
+  // 1. Inherited House
   if (t.includes('inherited')) {
     return '/images/home-inheritance-inherited-estate-probate-family.webp'
   }
-
-  // 2. Mortgage / Investor (UPDATED to .webp)
+  // 2. Mortgage / Investor
   if (t.includes('mortgage') && t.includes('investor')) {
     return '/images/real-estate-cash-buy-sell-offer-florida-home.webp'
   }
-
-  // 3. As-Is vs Fix (UPDATED to .webp)
+  // 3. As-Is vs Fix
   if (t.includes('as-is') || t.includes('fix it up')) {
     return '/images/home-cash-sell-offer-buy-real-estate-florida-property.webp'
   }
-
-  // 4. Pre-Foreclosure Options (Confirmed .webp)
+  // 4. Pre-Foreclosure Options
   if (t.includes('pre-foreclosure') && t.includes('options')) {
     return '/images/deal-forclosure-cash-closing-title-florida--2.webp' 
   }
-
-  // 5. How Much Cash Buyers Pay (Confirmed .jpg)
+  // 5. How Much Cash Buyers Pay
   if (t.includes('how much') && t.includes('cash home buyers')) {
     return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
   }
-
-  // 6. Cash Buyers vs Agents (NEW MAPPING - Uses same image as above or similar)
+  // 6. Cash Buyers vs Agents
   if (t.includes('vs real estate agents') || t.includes('cash home buyers vs')) {
     return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
   }
-
-  // 7. Code Violations (Confirmed .webp)
+  // 7. Code Violations
   if (t.includes('code violations')) {
     return '/images/code-violations-home-sell-cash-offer-florida-hoa.webp'
   }
-
-  // 8. How Fast Can You Sell (Confirmed .jpg with trailing dash)
+  // 8. How Fast Can You Sell
   if (t.includes('how fast can you sell')) {
     return '/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
   }
-
-  // 9. Hidden Costs Realtor (Confirmed .webp)
+  // 9. Hidden Costs Realtor
   if (t.includes('hidden costs') && t.includes('realtor')) {
     return '/images/home-cash-offer-real-estate-florida-buy-sell-property.webp'
   }
-
-  // 10. Pre-Foreclosure vs Foreclosure (Confirmed .webp)
+  // 10. Pre-Foreclosure vs Foreclosure
   if (t.includes('pre-foreclosure vs foreclosure')) {
     return '/images/frames-for-your-heart-2d4lAQAlbDA-unsplash.webp'
   }
-
-  // 11. Divorce (Confirmed .jpg)
+  // 11. Divorce
   if (t.includes('divorce')) {
     return '/images/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
   }
-
-  // 12. We Buy Houses Fort Myers (NEW MAPPING - Uses Market Image)
+  // 12. We Buy Houses Fort Myers
   if (t.includes('fort myers') && t.includes('expect')) {
     return '/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
   }
 
-  // Fallback default image
+  // Fallback default image for generic pages
   return '/images/florida-home-cash-real-estate-sell-buy-fas-2.webp'
 }
 
-export default function BlogIndex() {
-  // Filter content to only show blog posts
-  const posts = Object.entries(SITE_CONTENT).filter(([_, data]) => data.type === 'blog')
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const data = SITE_CONTENT[params.slug]
+  if (!data) return { title: 'Page Not Found' }
+  
+  return {
+    title: `${data.h1} | Garrison Point Solutions`,
+    description: data.description,
+  }
+}
+
+export default function Page({ params }: { params: { slug: string } }) {
+  const data = SITE_CONTENT[params.slug]
+
+  if (!data) {
+    return notFound()
+  }
+
+  // Determine the correct hero image
+  const heroImage = getImageForPost(data.h1)
 
   return (
-    <div className="min-h-screen bg-[#F5F7FA]">
-      <div className="bg-[#0F1C2E] py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-[#C5A572] text-sm font-bold tracking-[0.2em] uppercase">Knowledge Base</span>
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mt-4 mb-6">
-            Real Estate Resources
+    <main className="bg-white min-h-screen">
+      
+      {/* HERO SECTION */}
+      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={heroImage} 
+            alt={data.h1} 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-[#0F1C2E]/80 mix-blend-multiply" />
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          {data.type === 'blog' && (
+            <div className="flex items-center justify-center gap-4 text-[#C5A572] text-sm font-bold uppercase tracking-wider mb-6">
+              <span className="flex items-center"><Calendar className="w-4 h-4 mr-2" /> Guide</span>
+              <span className="w-1 h-1 bg-[#C5A572] rounded-full" />
+              <span className="flex items-center"><Clock className="w-4 h-4 mr-2" /> 5 min read</span>
+            </div>
+          )}
+          
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            {data.h1}
           </h1>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Expert guidance for Florida homeowners navigating complex property situations.
+          
+          {data.type !== 'blog' && (
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+              <LeadConcierge />
+              <a href="tel:2392913444" className="bg-white text-[#0F1C2E] px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center">
+                <Phone className="w-5 h-5 mr-2" /> (239) 291-3444
+              </a>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* CONTENT SECTION */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <article className="prose prose-lg prose-slate max-w-none">
+          {/* Intro Paragraph */}
+          <p className="text-xl text-gray-600 leading-relaxed mb-12 font-medium border-l-4 border-[#C5A572] pl-6 italic">
+            {data.description}
           </p>
-        </div>
-      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 -mt-10">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.map(([slug, post]) => {
-            // Get the correct image based on the post title
-            const imagePath = getImageForPost(post.h1 || post.title || '')
-            
-            return (
-              <Link key={slug} href={`/${slug}`} className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
-                {/* Image Container */}
-                <div className="relative h-56 overflow-hidden bg-gray-200">
-                  <div className="absolute inset-0 bg-[#0F1C2E]/10 group-hover:bg-transparent transition-colors z-10" />
-                  <img 
-                    src={imagePath} 
-                    alt={post.h1} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                </div>
-
-                {/* Content Container */}
-                <div className="p-6 flex flex-col flex-grow">
-                  <div className="flex items-center text-xs text-[#C5A572] font-semibold uppercase tracking-wider mb-3">
-                    <BookOpen className="w-3 h-3 mr-1" />
-                    <span>Guide</span>
-                    <span className="mx-2">•</span>
-                    <Clock className="w-3 h-3 mr-1" />
-                    <span>5 min read</span>
+          {/* Main Content */}
+          <div className="space-y-8 text-gray-800">
+            {data.content.split('\n').map((paragraph, index) => {
+              // Handle Headers (lines starting with #)
+              if (paragraph.startsWith('## ')) {
+                return <h2 key={index} className="text-3xl font-bold text-[#0F1C2E] mt-12 mb-6">{paragraph.replace('## ', '')}</h2>
+              }
+              if (paragraph.startsWith('### ')) {
+                return <h3 key={index} className="text-2xl font-bold text-[#0F1C2E] mt-8 mb-4">{paragraph.replace('### ', '')}</h3>
+              }
+              // Handle Bullet Points
+              if (paragraph.trim().startsWith('- ')) {
+                return (
+                  <div key={index} className="flex items-start gap-3 mb-4 ml-4">
+                    <CheckCircle2 className="w-6 h-6 text-[#C5A572] flex-shrink-0 mt-1" />
+                    <p className="text-gray-700 leading-relaxed">{paragraph.replace('- ', '')}</p>
                   </div>
+                )
+              }
+              // Regular Paragraphs
+              if (paragraph.trim().length > 0) {
+                return <p key={index} className="leading-8 mb-6">{paragraph}</p>
+              }
+              return null
+            })}
+          </div>
+        </article>
 
-                  <h2 className="text-xl font-bold text-[#0F1C2E] mb-3 group-hover:text-[#C5A572] transition-colors line-clamp-2">
-                    {post.h1}
-                  </h2>
-                  
-                  <p className="text-gray-600 mb-6 line-clamp-3 flex-grow text-sm leading-relaxed">
-                    {post.description}
-                  </p>
-                  
-                  <div className="flex items-center text-[#0F1C2E] font-semibold text-sm uppercase tracking-wide mt-auto group-hover:translate-x-2 transition-transform">
-                    Read Article <ArrowRight className="w-4 h-4 ml-2 text-[#C5A572]" />
-                  </div>
-                </div>
-              </Link>
-            )
-          })}
+        {/* CTA Footer for Blog Posts */}
+        <div className="mt-20 bg-[#F5F7FA] rounded-2xl p-10 border border-[#C5A572]/20 text-center">
+          <h3 className="text-2xl font-bold text-[#0F1C2E] mb-4">Need help with your property?</h3>
+          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+            We buy houses in any condition. Get a fair cash offer today without the hassle of repairs or fees.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/#contact" className="bg-[#0F1C2E] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#1a2b42] transition-colors">
+              Get A Cash Offer
+            </Link>
+            <a href="tel:2392913444" className="bg-white border border-[#0F1C2E]/10 text-[#0F1C2E] px-8 py-3 rounded-lg font-bold hover:bg-gray-50 transition-colors flex items-center justify-center">
+              <Phone className="w-4 h-4 mr-2" /> Call Now
+            </a>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   )
 }
