@@ -1,109 +1,59 @@
-import { Client } from '@notionhq/client'
+'use client'
+import Link from 'next/link'
+import { Phone, Menu, X } from 'lucide-react'
+import { useState } from 'react'
 
-// Initialize the Notion client
-export const notion = new Client({
-  auth: process.env.NOTION_API_KEY,
-})
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false)
 
-// Database IDs from environment variables
-export const DATABASES = {
-  entities: process.env.NOTION_DATABASE_ENTITIES || '',
-  deals: process.env.NOTION_DATABASE_DEALS || '',
-  properties: process.env.NOTION_DATABASE_PROPERTIES || '',
-}
+  return (
+    <nav className="fixed w-full bg-[#0F1C2E]/95 backdrop-blur-md z-50 border-b border-[#C5A572]/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-24">
+          {/* Logo */}
+          <Link href="/" className="flex items-center">
+            <img src="/logo.jpg" alt="Garrison Point Solutions" className="h-20 w-auto" />
+          </Link>
+          
+          {/* Desktop Nav */}
+          <div className="hidden lg:flex items-center space-x-8">
+            <Link href="/#how-it-works" className="text-white/80 hover:text-[#C5A572] transition-colors text-sm font-medium tracking-wide uppercase">How It Works</Link>
+            <Link href="/#about" className="text-white/80 hover:text-[#C5A572] transition-colors text-sm font-medium tracking-wide uppercase">About</Link>
+            <Link href="/#markets" className="text-white/80 hover:text-[#C5A572] transition-colors text-sm font-medium tracking-wide uppercase">Markets</Link>
+            <Link href="/blog" className="text-white/80 hover:text-[#C5A572] transition-colors text-sm font-medium tracking-wide uppercase">Blog</Link>
+            <Link href="/#contact" className="text-white/80 hover:text-[#C5A572] transition-colors text-sm font-medium tracking-wide uppercase">Contact</Link>
+          </div>
 
-// Helper to query a database
-export async function queryDatabase(databaseId: string, filter?: any) {
-  try {
-    const response = await notion.databases.query({
-      database_id: databaseId,
-      filter: filter,
-    })
-    return response.results
-  } catch (error) {
-    console.error('Error querying Notion database:', error)
-    throw error
-  }
-}
+          {/* CTA Button */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <a href="tel:2392913444" className="flex items-center text-[#C5A572] hover:text-[#D4B896] transition-colors">
+              <Phone className="w-4 h-4 mr-2" />
+              <span className="font-semibold">(239) 291-3444</span>
+            </a>
+            <Link href="/#contact" className="bg-gradient-to-r from-[#B8860B] to-[#C5A572] text-[#0F1C2E] px-6 py-3 rounded font-bold hover:from-[#C5A572] hover:to-[#D4B896] transition-all shadow-lg shadow-[#B8860B]/20 text-sm tracking-wide uppercase">
+              Get Cash Offer
+            </Link>
+          </div>
 
-// Helper to create a page (lead/deal)
-export async function createPage(databaseId: string, properties: any) {
-  try {
-    const response = await notion.pages.create({
-      parent: { database_id: databaseId },
-      properties: properties,
-    })
-    return response
-  } catch (error) {
-    console.error('Error creating Notion page:', error)
-    throw error
-  }
-}
+          {/* Mobile Menu Button */}
+          <div className="lg:hidden">
+            <button onClick={() => setIsOpen(!isOpen)} className="text-white p-2">
+              {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+            </button>
+          </div>
+        </div>
+      </div>
 
-// Helper to update a page
-export async function updatePage(pageId: string, properties: any) {
-  try {
-    const response = await notion.pages.update({
-      page_id: pageId,
-      properties: properties,
-    })
-    return response
-  } catch (error) {
-    console.error('Error updating Notion page:', error)
-    throw error
-  }
-}
-
-// Get all deals with optional status filter
-export async function getDeals(status?: string) {
-  const filter = status ? {
-    property: 'Status',
-    select: {
-      equals: status
-    }
-  } : undefined
-
-  return queryDatabase(DATABASES.deals, filter)
-}
-
-// Create a new lead/deal
-export async function createLead(data: {
-  name: string
-  phone: string
-  email: string
-  address: string
-  timeline?: string
-  source?: string
-}) {
-  const properties: any = {
-    'Name': {
-      title: [{ text: { content: data.name } }]
-    },
-    'Phone': {
-      phone_number: data.phone
-    },
-    'Email': {
-      email: data.email
-    },
-    'Property Address': {
-      rich_text: [{ text: { content: data.address } }]
-    },
-    'Status': {
-      select: { name: 'New Lead' }
-    }
-  }
-
-  if (data.timeline) {
-    properties['Timeline'] = {
-      select: { name: data.timeline }
-    }
-  }
-
-  if (data.source) {
-    properties['Source'] = {
-      select: { name: data.source }
-    }
-  }
-
-  return createPage(DATABASES.deals, properties)
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="lg:hidden bg-[#0F1C2E] border-t border-[#C5A572]/10 px-4 pt-2 pb-6 space-y-4">
+          <Link href="/#how-it-works" onClick={() => setIsOpen(false)} className="block text-white/80 py-2 hover:text-[#C5A572]">How It Works</Link>
+          <Link href="/#about" onClick={() => setIsOpen(false)} className="block text-white/80 py-2 hover:text-[#C5A572]">About</Link>
+          <Link href="/#markets" onClick={() => setIsOpen(false)} className="block text-white/80 py-2 hover:text-[#C5A572]">Markets</Link>
+          <Link href="/blog" onClick={() => setIsOpen(false)} className="block text-white/80 py-2 hover:text-[#C5A572]">Blog</Link>
+          <Link href="/#contact" onClick={() => setIsOpen(false)} className="block bg-[#C5A572] text-[#0F1C2E] text-center font-bold py-3 rounded">Get Cash Offer</Link>
+        </div>
+      )}
+    </nav>
+  )
 }
