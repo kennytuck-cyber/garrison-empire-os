@@ -1,308 +1,179 @@
-'use client'
 import { SITE_CONTENT } from '@/lib/siteContent'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { CheckCircle2, ArrowRight, Phone, MapPin, Clock, Shield } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { ArrowRight, CheckCircle2, Phone, Calendar, Clock } from 'lucide-react'
+import LeadConcierge from '@/components/LeadConcierge'
 
-// --- SMART IMAGE MAPPING ---
-const getHeroImage = (slug: string) => {
-  // LOCATION PAGES
-  if (slug.includes('orlando') || slug.includes('lakeland') || slug.includes('polk')) {
-    return '/images/orlando-central-flroida-real-estate-cash-sell-buy.jpg'
-  }
-  if (slug.includes('fort-myers') || slug.includes('lee-county')) {
-    return '/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
-  }
-  if (slug.includes('cape-coral')) {
-    return '/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
-  }
-  if (slug.includes('miami') || slug.includes('naples')) {
-    // Luxury Waterfront
-    return '/images/home-cash-offer-real-estate-florida-buy-sell-property.jpg'
-  }
+// 1. EXACT IMAGE MAPPING (Ensures same images as the blog cards)
+const getImageForPost = (title: string) => {
+  const t = (title || '').toLowerCase()
 
-  // SITUATION PAGES
-  if (slug.includes('veteran') || slug.includes('military')) {
-    return '/images/military-veteran-cash-real-estate-florida-buy-sell-investment.jpg'
+  // 1. Inherited House
+  if (t.includes('inherited')) {
+    return '/images/home-inheritance-inherited-estate-probate-family.webp'
   }
-  if (slug.includes('inherited') || slug.includes('probate')) {
-    return '/images/inheritance-estate-family-inherited-probate-cash-offer.jpg'
+  // 2. Mortgage / Investor
+  if (t.includes('mortgage') && t.includes('investor')) {
+    return '/images/real-estate-cash-buy-sell-offer-florida-home.webp'
   }
-  if (slug.includes('divorce')) {
-    return '/images/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
+  // 3. As-Is vs Fix
+  if (t.includes('as-is') || t.includes('fix it up')) {
+    return '/images/home-cash-sell-offer-buy-real-estate-florida-property.webp'
   }
-  if (slug.includes('foreclosure')) {
-    return '/images/deal-forclosure-cash-closing-title-florida-.jpg'
+  // 4. Pre-Foreclosure Options
+  if (t.includes('pre-foreclosure') && t.includes('options')) {
+    return '/images/deal-forclosure-cash-closing-title-florida--2.webp' 
   }
-  if (slug.includes('agent') || slug.includes('expect')) {
+  // 5. How Much Cash Buyers Pay
+  if (t.includes('how much') && t.includes('cash home buyers')) {
     return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
   }
+  // 6. Cash Buyers vs Agents
+  if (t.includes('vs real estate agents') || t.includes('cash home buyers vs')) {
+    return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
+  }
+  // 7. Code Violations
+  if (t.includes('code violations')) {
+    return '/images/code-violations-home-sell-cash-offer-florida-hoa.webp'
+  }
+  // 8. How Fast Can You Sell
+  if (t.includes('how fast can you sell')) {
+    return '/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
+  }
+  // 9. Hidden Costs Realtor
+  if (t.includes('hidden costs') && t.includes('realtor')) {
+    return '/images/home-cash-offer-real-estate-florida-buy-sell-property.webp'
+  }
+  // 10. Pre-Foreclosure vs Foreclosure
+  if (t.includes('pre-foreclosure vs foreclosure')) {
+    return '/images/frames-for-your-heart-2d4lAQAlbDA-unsplash.webp'
+  }
+  // 11. Divorce
+  if (t.includes('divorce')) {
+    return '/images/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
+  }
+  // 12. We Buy Houses Fort Myers
+  if (t.includes('fort myers') && t.includes('expect')) {
+    return '/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
+  }
+
+  // Fallback default image for generic pages
+  return '/images/florida-home-cash-real-estate-sell-buy-fas-2.webp'
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  // FIX: Type casting to 'any' to fix the build error
+  const data = (SITE_CONTENT as any)[params.slug]
+  if (!data) return { title: 'Page Not Found' }
   
-  // DEFAULT FALLBACK (Beautiful Florida Home Exterior)
-  return '/images/florida-home-cash-real-estate-sell-buy-fas.jpg'
+  return {
+    title: `${data.h1} | Garrison Point Solutions`,
+    description: data.description,
+  }
 }
 
-interface ContentItem {
-  type: string;
-  title: string;
-  description: string;
-  h1: string;
-  intro: string;
-  city?: string;
-  neighborhoods?: string[];
-  painPoints?: string[];
-  solution?: string;
-  content?: string[];
-}
+export default function Page({ params }: { params: { slug: string } }) {
+  // FIX: Type casting to 'any' to fix the build error
+  const data = (SITE_CONTENT as any)[params.slug]
 
-export default function DynamicPage({ params }: { params: { slug: string } }) {
-  const content = SITE_CONTENT[params.slug as keyof typeof SITE_CONTENT] as ContentItem | undefined
-
-  if (!content) {
+  if (!data) {
     return notFound()
   }
 
-  const heroImage = getHeroImage(params.slug)
+  // Determine the correct hero image
+  const heroImage = getImageForPost(data.h1)
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-  }
-
-  const stagger = {
-    visible: { transition: { staggerChildren: 0.2 } }
-  }
-
-  // --- BLOG POST LAYOUT ---
-  if (content.type === 'blog') {
-    return (
-      <div className="min-h-screen bg-[#0F1C2E] text-white">
-        <div className="h-[50vh] relative overflow-hidden">
-          <motion.div 
-            initial={{ scale: 1.1 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 10, ease: "linear" }}
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url('${heroImage}')` }}
+  return (
+    <main className="bg-white min-h-screen">
+      
+      {/* HERO SECTION */}
+      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={heroImage} 
+            alt={data.h1} 
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0F1C2E] via-[#0F1C2E]/90 to-transparent" />
+          <div className="absolute inset-0 bg-[#0F1C2E]/80 mix-blend-multiply" />
         </div>
 
-        <motion.div 
-          initial="hidden"
-          animate="visible"
-          variants={stagger}
-          className="max-w-3xl mx-auto px-6 -mt-40 relative z-10"
-        >
-          <motion.div variants={fadeInUp}>
-            <Link href="/blog" className="text-[#C5A572] hover:text-white mb-6 inline-block font-medium tracking-wide uppercase text-sm">
-              ← Back to Intel
-            </Link>
-            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-8 leading-tight shadow-black drop-shadow-lg">{content.h1}</h1>
-          </motion.div>
-
-          <div className="bg-[#1B365D]/60 backdrop-blur-md border border-[#C5A572]/20 p-8 rounded-2xl mb-12 shadow-2xl">
-            <p className="text-xl text-white/90 leading-relaxed italic">
-              {content.intro}
-            </p>
-          </div>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          {data.type === 'blog' && (
+            <div className="flex items-center justify-center gap-4 text-[#C5A572] text-sm font-bold uppercase tracking-wider mb-6">
+              <span className="flex items-center"><Calendar className="w-4 h-4 mr-2" /> Guide</span>
+              <span className="w-1 h-1 bg-[#C5A572] rounded-full" />
+              <span className="flex items-center"><Clock className="w-4 h-4 mr-2" /> 5 min read</span>
+            </div>
+          )}
           
-          <div className="prose prose-invert prose-lg max-w-none">
-            {content.content?.map((paragraph, index) => {
-              if (paragraph.startsWith('##')) {
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            {data.h1}
+          </h1>
+          
+          {data.type !== 'blog' && (
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+              <LeadConcierge />
+              <a href="tel:2392913444" className="bg-white text-[#0F1C2E] px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center">
+                <Phone className="w-5 h-5 mr-2" /> (239) 291-3444
+              </a>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* CONTENT SECTION */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <article className="prose prose-lg prose-slate max-w-none">
+          {/* Intro Paragraph */}
+          <p className="text-xl text-gray-600 leading-relaxed mb-12 font-medium border-l-4 border-[#C5A572] pl-6 italic">
+            {data.description}
+          </p>
+
+          {/* Main Content */}
+          <div className="space-y-8 text-gray-800">
+            {data.content.split('\n').map((paragraph: string, index: number) => {
+              // Handle Headers (lines starting with #)
+              if (paragraph.startsWith('## ')) {
+                return <h2 key={index} className="text-3xl font-bold text-[#0F1C2E] mt-12 mb-6">{paragraph.replace('## ', '')}</h2>
+              }
+              if (paragraph.startsWith('### ')) {
+                return <h3 key={index} className="text-2xl font-bold text-[#0F1C2E] mt-8 mb-4">{paragraph.replace('### ', '')}</h3>
+              }
+              // Handle Bullet Points
+              if (paragraph.trim().startsWith('- ')) {
                 return (
-                  <motion.h2 
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    key={index} 
-                    className="text-3xl font-bold text-white mt-12 mb-6 border-b border-[#C5A572]/20 pb-4"
-                  >
-                    {paragraph.replace('## ', '')}
-                  </motion.h2>
+                  <div key={index} className="flex items-start gap-3 mb-4 ml-4">
+                    <CheckCircle2 className="w-6 h-6 text-[#C5A572] flex-shrink-0 mt-1" />
+                    <p className="text-gray-700 leading-relaxed">{paragraph.replace('- ', '')}</p>
+                  </div>
                 )
               }
-              const parts = paragraph.split('**');
-              return (
-                <p key={index} className="text-white/80 leading-relaxed mb-6">
-                  {parts.map((part, i) => i % 2 === 1 ? <strong key={i} className="text-[#C5A572] font-bold">{part}</strong> : part)}
-                </p>
-              )
+              // Regular Paragraphs
+              if (paragraph.trim().length > 0) {
+                return <p key={index} className="leading-8 mb-6">{paragraph}</p>
+              }
+              return null
             })}
           </div>
+        </article>
 
-          <div className="mt-20 p-10 bg-gradient-to-br from-[#1B365D] to-[#0F1C2E] rounded-3xl border border-[#C5A572]/30 text-center shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-4 opacity-10"><Shield className="w-32 h-32 text-[#C5A572]" /></div>
-            <h3 className="text-3xl font-serif font-bold mb-4 relative z-10">Situation Critical?</h3>
-            <p className="mb-8 text-white/70 text-lg relative z-10">We can deploy resources and have a cash offer on your desk in 24 hours.</p>
-            <Link href="/#contact" className="inline-block bg-[#C5A572] text-[#0F1C2E] px-10 py-4 rounded-xl font-bold hover:bg-[#D4B896] transition-transform hover:scale-105 relative z-10">
-              Request Immediate Offer
-            </Link>
-          </div>
-        </motion.div>
-        <div className="h-20" />
-      </div>
-    )
-  }
-
-  // --- LANDING PAGE LAYOUT ---
-  return (
-    <div className="min-h-screen bg-[#0F1C2E]">
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        <motion.div 
-          initial={{ scale: 1.2 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 20, ease: "linear" }}
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${heroImage}')` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0F1C2E] via-[#0F1C2E]/95 to-[#1B365D]/30" />
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
-          <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-3xl">
-            <motion.div variants={fadeInUp} className="inline-flex items-center space-x-2 bg-[#1B365D]/80 border border-[#C5A572]/50 px-4 py-2 rounded-full mb-8 backdrop-blur-sm">
-              <Shield className="w-4 h-4 text-[#C5A572]" />
-              <span className="text-xs font-bold text-[#C5A572] tracking-widest uppercase">
-                {content.type === 'location' ? `Serving ${content.city}` : 'We Solve Problems'}
-              </span>
-            </motion.div>
-            
-            <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl font-serif font-bold text-white mb-8 leading-[1.1]">
-              {content.h1}
-            </motion.h1>
-            
-            <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-white/80 mb-12 leading-relaxed max-w-2xl">
-              {content.intro}
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
-              <Link href="/#contact" className="bg-gradient-to-r from-[#B8860B] to-[#C5A572] text-[#0F1C2E] px-10 py-5 rounded-lg font-bold text-lg hover:from-[#C5A572] hover:to-[#D4B896] transition-all inline-flex items-center justify-center shadow-lg shadow-[#B8860B]/20 hover:-translate-y-1">
-                Get Cash Offer
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-              <a href="tel:2392913444" className="bg-white/5 backdrop-blur-sm text-white border border-white/20 px-10 py-5 rounded-lg font-semibold text-lg hover:bg-white/10 transition-all inline-flex items-center justify-center hover:-translate-y-1">
-                <Phone className="mr-2 w-5 h-5" />
-                (239) 291-3444
-              </a>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-32 bg-[#1B365D]/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-20">
-            
-            {/* Left Column: Details */}
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="text-4xl font-serif font-bold text-white mb-10">
-                {content.type === 'location' ? `Why Sell Your ${content.city} Home to Us?` : 'Why Choose a Cash Sale?'}
-              </h2>
-              
-              <div className="space-y-8">
-                <div className="flex items-start space-x-6 group">
-                  <div className="w-14 h-14 bg-[#C5A572]/10 rounded-2xl flex items-center justify-center flex-shrink-0 border border-[#C5A572]/20 group-hover:bg-[#C5A572]/20 transition-colors">
-                    <Clock className="w-7 h-7 text-[#C5A572]" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-2">Speed & Convenience</h3>
-                    <p className="text-white/60 text-lg">We can close in as little as 7 days. No waiting for banks or inspections.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-6 group">
-                  <div className="w-14 h-14 bg-[#C5A572]/10 rounded-2xl flex items-center justify-center flex-shrink-0 border border-[#C5A572]/20 group-hover:bg-[#C5A572]/20 transition-colors">
-                    <Shield className="w-7 h-7 text-[#C5A572]" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-2">Veteran-Owned Integrity</h3>
-                    <p className="text-white/60 text-lg">23 years of Coast Guard service means we operate with discipline and transparency.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-6 group">
-                  <div className="w-14 h-14 bg-[#C5A572]/10 rounded-2xl flex items-center justify-center flex-shrink-0 border border-[#C5A572]/20 group-hover:bg-[#C5A572]/20 transition-colors">
-                    <CheckCircle2 className="w-7 h-7 text-[#C5A572]" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-2">No Repairs Needed</h3>
-                    <p className="text-white/60 text-lg">We buy properties totally as-is. Leave the junk, we handle it.</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Right Column: Specifics */}
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="bg-[#0F1C2E] p-10 rounded-3xl border border-[#C5A572]/20 shadow-2xl"
-            >
-              {content.type === 'location' && content.neighborhoods && (
-                <>
-                  <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
-                    <MapPin className="w-6 h-6 text-[#C5A572] mr-3" />
-                    Areas We Serve in {content.city}
-                  </h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    {content.neighborhoods.map((area: string) => (
-                      <div key={area} className="flex items-center space-x-3 text-white/70">
-                        <div className="w-1.5 h-1.5 bg-[#C5A572] rounded-full" />
-                        <span>{area}</span>
-                      </div>
-                    ))}
-                  </div>
-                </>
-              )}
-
-              {content.type === 'situation' && content.painPoints && (
-                <>
-                  <h3 className="text-2xl font-bold text-white mb-8">Common Issues We Resolve</h3>
-                  <ul className="space-y-6">
-                    {content.painPoints.map((point: string) => (
-                      <li key={point} className="flex items-start space-x-4 text-white/80">
-                        <CheckCircle2 className="w-6 h-6 text-red-400 flex-shrink-0 mt-0.5" />
-                        <span className="text-lg">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-10 p-6 bg-[#1B365D]/30 rounded-2xl border border-[#C5A572]/10">
-                    <p className="text-[#C5A572] font-semibold mb-2 uppercase tracking-wide text-sm">Our Solution</p>
-                    <p className="text-white text-lg italic">"{content.solution}"</p>
-                  </div>
-                </>
-              )}
-            </motion.div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-32 bg-[#0F1C2E] border-t border-[#C5A572]/10 text-center relative overflow-hidden">
-        {/* Decoration */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#C5A572]/5 rounded-full blur-3xl pointer-events-none" />
-        
-        <div className="relative max-w-4xl mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-8">
-            Ready to Sell Your Property?
-          </h2>
-          <p className="text-xl text-white/60 mb-12">
-            Get a fair, no-obligation cash offer within 24 hours.
+        {/* CTA Footer for Blog Posts */}
+        <div className="mt-20 bg-[#F5F7FA] rounded-2xl p-10 border border-[#C5A572]/20 text-center">
+          <h3 className="text-2xl font-bold text-[#0F1C2E] mb-4">Need help with your property?</h3>
+          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+            We buy houses in any condition. Get a fair cash offer today without the hassle of repairs or fees.
           </p>
-          <Link href="/#contact" className="bg-gradient-to-r from-[#B8860B] to-[#C5A572] text-[#0F1C2E] px-12 py-5 rounded-xl font-bold text-xl hover:from-[#C5A572] hover:to-[#D4B896] transition-all inline-flex items-center shadow-2xl shadow-[#B8860B]/20 hover:scale-105">
-            Get My Cash Offer Now
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/#contact" className="bg-[#0F1C2E] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#1a2b42] transition-colors">
+              Get A Cash Offer
+            </Link>
+            <a href="tel:2392913444" className="bg-white border border-[#0F1C2E]/10 text-[#0F1C2E] px-8 py-3 rounded-lg font-bold hover:bg-gray-50 transition-colors flex items-center justify-center">
+              <Phone className="w-4 h-4 mr-2" /> Call Now
+            </a>
+          </div>
         </div>
       </section>
-    </div>
+    </main>
   )
 }
