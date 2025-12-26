@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { ArrowRight, Shield, Clock, Users, Target, Phone, Mail, MapPin, CheckCircle2, Star, ChevronDown, HeartHandshake, X, Building, HelpCircle } from 'lucide-react'
+import { ArrowRight, Shield, Clock, Users, Target, Phone, Mail, MapPin, CheckCircle2, Star, ChevronDown, HeartHandshake, X, Building } from 'lucide-react'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 
@@ -95,8 +95,8 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="relative min-h-[calc(100vh-6rem)] flex items-center overflow-hidden">
-        <motion.div initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 10, ease: "linear" }} className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1605276378624-18ae817c00b5?q=80&w=2070')` }} />
-        {/* Adjusted Gradient: More transparent so image shows through */}
+        {/* UPDATED: Verified Hero Image */}
+        <motion.div initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 10, ease: "linear" }} className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2075&q=80')` }} />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0F1C2E] via-[#0F1C2E]/80 to-transparent" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -193,7 +193,8 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
-              <div className="aspect-[4/3] rounded-2xl bg-cover bg-center shadow-2xl" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1610173827002-6b4e96881d4d?q=80&w=2070')` }} />
+              {/* UPDATED: Verified About Image */}
+              <div className="aspect-[4/3] rounded-2xl bg-cover bg-center shadow-2xl" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2073&q=80')` }} />
               <div className="absolute -bottom-8 -right-8 bg-[#0F1C2E] p-8 rounded-2xl border border-[#C5A572]/20 shadow-2xl max-w-sm">
                 <div className="text-5xl font-serif font-bold text-[#C5A572] mb-2">23+</div>
                 <div className="text-xl font-semibold text-white mb-1">Years of Service</div>
@@ -227,14 +228,15 @@ export default function HomePage() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: "Central Florida", link: "/sell-house-fast-orlando", img: "https://images.unsplash.com/photo-1597040663442-995a975739db?q=80&w=1939" },
-              { title: "Southwest Florida", link: "/sell-house-fast-fort-myers", img: "https://images.unsplash.com/photo-1596123063238-60dfd256262d?q=80&w=2070" },
+              // UPDATED: Verified Market Images
+              { title: "Central Florida", link: "/sell-house-fast-orlando", img: "https://images.unsplash.com/photo-1583324113626-70df0f4deaab?q=80&w=2070" },
+              { title: "Southwest Florida", link: "/sell-house-fast-fort-myers", img: "https://images.unsplash.com/photo-1623568779830-6d432367d341?q=80&w=2070" },
               { title: "South Florida", link: "#contact", img: "https://images.unsplash.com/photo-1535498730771-e735b998cd64?q=80&w=1974" }
             ].map((market, i) => (
               <Link href={market.link} key={i}>
                 <motion.div whileHover={{ scale: 1.03 }} className="group relative overflow-hidden rounded-2xl cursor-pointer h-[400px]">
                   <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: `url('${market.img}')` }} />
-                  {/* Adjusted Gradient: Lighter top so image shows */}
+                  {/* Adjusted Gradient for visibility */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F1C2E] via-[#0F1C2E]/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-8">
                     <h3 className="text-3xl font-serif font-bold text-white mb-3">{market.title}</h3>
