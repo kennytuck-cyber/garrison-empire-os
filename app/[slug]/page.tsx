@@ -6,18 +6,19 @@ import { CheckCircle2, ArrowRight, Phone, Clock, Shield, MapPin } from 'lucide-r
 import { motion } from 'framer-motion'
 
 // --- SMART IMAGE MAPPING ---
+// FIX: Added '/images/' to all paths
 const getHeroImage = (slug: string) => {
-  if (slug.includes('orlando')) return '/orlando-central-flroida-real-estate-cash-sell-buy.jpg'
-  if (slug.includes('fort-myers')) return '/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
-  if (slug.includes('cape-coral')) return '/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
-  if (slug.includes('miami')) return '/home-cash-offer-real-estate-florida-buy-sell-property.webp'
+  if (slug.includes('orlando')) return '/images/orlando-central-flroida-real-estate-cash-sell-buy.jpg'
+  if (slug.includes('fort-myers')) return '/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
+  if (slug.includes('cape-coral')) return '/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
+  if (slug.includes('miami')) return '/images/home-cash-offer-real-estate-florida-buy-sell-property.webp'
 
-  if (slug.includes('veteran') || slug.includes('military')) return '/military-veteran-cash-real-estate-florida-buy-sell-investment.jpg'
-  if (slug.includes('inherited')) return '/inheritance-estate-family-inherited-probate-cash-offer.jpg'
-  if (slug.includes('divorce')) return '/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
-  if (slug.includes('foreclosure')) return '/deal-forclosure-cash-closing-title-florida--2.webp'
+  if (slug.includes('veteran') || slug.includes('military')) return '/images/military-veteran-cash-real-estate-florida-buy-sell-investment.jpg'
+  if (slug.includes('inherited')) return '/images/inheritance-estate-family-inherited-probate-cash-offer.jpg'
+  if (slug.includes('divorce')) return '/images/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
+  if (slug.includes('foreclosure')) return '/images/deal-forclosure-cash-closing-title-florida--2.webp'
   
-  return '/florida-home-cash-real-estate-sell-buy-fas-2.jpg'
+  return '/images/florida-home-cash-real-estate-sell-buy-fas-2.jpg'
 }
 
 interface ContentItem {
