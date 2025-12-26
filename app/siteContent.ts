@@ -1,30 +1,42 @@
 // app/siteContent.ts
 
-// --- HOMEPAGE CONTENT (Exported as 'siteContent') ---
+// --- HOMEPAGE CONTENT ---
 export const siteContent = {
   hero: {
     title: "Sell Your Florida Home Fast—In Any Condition",
-    subtitle: "We are veteran-owned cash buyers serving the entire state. No repairs, no agents, no fees.",
+    subtitle: "We are veteran-owned cash buyers serving Central, Southwest, and South Florida. No repairs, no agents, no fees.",
     cta: "Get My Cash Offer",
-    imageSrc: "/images/home-cash-offer-real-estate-florida-buy-sell-property.webp",
-    alt: "Modern luxury Florida home with pool representing a successful sale",
+    // Switched to the Twilight Waterfront image you provided
+    imageSrc: "/images/real-estate-cash-buy-sell-offer-florida-home.jpg",
+    alt: "Luxury waterfront Florida home at sunset",
   },
   about: {
     title: "Veteran-Owned & Operated",
     heading: "Honor, Integrity, and Service.",
     description: "Real estate transactions should be handled with the same discipline and integrity as a military operation. As a retired Coast Guard family, we bring 23 years of service experience to every deal. We don't just buy houses; we solve problems for our fellow Floridians.",
+    // ONLY the Shadow Box image for the main section
     imageSrc: "/images/military-veteran-cash-real-estate-florida-buy-sell-investment.jpg",
     alt: "Shadow box display showing Coast Guard service medals and insignia",
-    secondaryImageSrc: "/images/military-veteran-real-estate-florida-cash-buy-sell-pride-patriot-honest-trust.jpg",
-    secondaryAlt: "Coast Guard veteran holding dress cover hat",
   },
   locations: [
-    { city: "Miami & South FL", imageSrc: "/images/miami-real-estate-south-florida-cash-buy-offfer-sell.jpg", alt: "Miami skyline at sunset" },
-    { city: "Orlando & Central FL", imageSrc: "/images/orlando-central-flroida-real-estate-cash-sell-buy.jpg", alt: "Orlando city skyline at night" },
-    { city: "Fort Myers & SWFL", imageSrc: "/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg", alt: "Fort Myers beach" },
-    { city: "Cape Coral", imageSrc: "/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg", alt: "Cape Coral canal homes" },
-    { city: "Florida Panhandle", imageSrc: "/images/florida-home-cash-real-estate-sell-buy-fas-2.jpg", alt: "Classic Florida bungalow" },
-    { city: "Statewide Rural", imageSrc: "/images/central-florida-home-sell-buy-cash-offer.jpg", alt: "Oak tree lined street" }
+    { 
+      city: "Central Florida", 
+      slug: "orlando",
+      imageSrc: "/images/orlando-central-flroida-real-estate-cash-sell-buy.jpg", 
+      alt: "Orlando city skyline at night" 
+    },
+    { 
+      city: "Southwest Florida", 
+      slug: "fort-myers",
+      imageSrc: "/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg", 
+      alt: "Fort Myers beach coastline" 
+    },
+    { 
+      city: "South Florida", 
+      slug: "miami",
+      imageSrc: "/images/miami-real-estate-south-florida-cash-buy-offfer-sell.jpg", 
+      alt: "Miami skyline at sunset" 
+    }
   ],
   situations: [
     { id: "military", title: "Military PCS", description: "Orders in hand? We close on your timeline.", imageSrc: "/images/military-moving-pcs-sale-home-real-estate-cash-offer-florida.jpg", alt: "PCS Move" },
@@ -34,10 +46,6 @@ export const siteContent = {
     { id: "distressed", title: "Code Violations", description: "We handle liens and fines.", imageSrc: "/images/code-violations-home-sell-cash-offer-florida-hoa.jpg", alt: "Code Violations" },
     { id: "foreclosure", title: "Stop Foreclosure", description: "Close before the auction.", imageSrc: "/images/deal-forclosure-cash-closing-title-florida--2.webp", alt: "Foreclosure" },
   ],
-  portfolio: [
-    { imageSrc: "/images/real-estate-cash-buy-sell-offer-florida-home.jpg", alt: "Waterfront home" },
-    { imageSrc: "/images/home-cash-sell-offer-buy-real-estate-florida-property.jpg", alt: "White single family home" }
-  ],
   contact: {
     phone: "(239) 291-3444",
     email: "offers@garrisonempire.com", 
@@ -45,8 +53,7 @@ export const siteContent = {
   }
 };
 
-// --- DYNAMIC SLUG CONTENT (Exported as 'SITE_CONTENT') ---
-// This is the variable your [slug] page looks for.
+// --- DYNAMIC SLUG CONTENT (Exported as 'SITE_CONTENT' for slug pages) ---
 export const SITE_CONTENT: Record<string, any> = {
   // SITUATIONS
   'military': {
@@ -98,34 +105,26 @@ export const SITE_CONTENT: Record<string, any> = {
   // LOCATIONS
   'miami': {
     type: 'location',
-    city: 'Miami',
-    h1: 'We Buy Houses in Miami',
-    intro: 'From Brickell to the suburbs, we purchase properties across Miami-Dade County regardless of condition.',
+    city: 'South Florida',
+    h1: 'We Buy Houses in South Florida',
+    intro: 'From Miami to Fort Lauderdale, we purchase properties regardless of condition.',
     description: 'Selling in Miami doesn’t have to mean open houses.',
-    neighborhoods: ['Coral Gables', 'Little Havana', 'Wynwood', 'Kendall', 'Miami Gardens'],
+    neighborhoods: ['Miami', 'Fort Lauderdale', 'Homestead', 'Hollywood', 'Coral Gables'],
   },
   'orlando': {
     type: 'location',
-    city: 'Orlando',
-    h1: 'Sell Your Orlando Home Fast',
-    intro: 'Central Florida market experts ready to make you a cash offer today.',
+    city: 'Central Florida',
+    h1: 'Sell Your Central Florida Home',
+    intro: 'Orlando and Polk County market experts ready to make you a cash offer today.',
     description: 'Skip the tourist traffic and the open houses.',
-    neighborhoods: ['Winter Park', 'Kissimmee', 'Lake Nona', 'Downtown', 'Altamonte Springs'],
+    neighborhoods: ['Orlando', 'Kissimmee', 'Lakeland', 'Winter Park', 'Altamonte Springs'],
   },
   'fort-myers': {
     type: 'location',
-    city: 'Fort Myers',
-    h1: 'Cash Buyers in Fort Myers',
-    intro: 'Recovering from storm damage? We buy properties as-is throughout Lee County.',
+    city: 'Southwest Florida',
+    h1: 'Cash Buyers in SWFL',
+    intro: 'Recovering from storm damage? We buy properties as-is throughout Lee and Collier County.',
     description: 'We live here, we invest here.',
-    neighborhoods: ['Dunbar', 'Gateway', 'Iona', 'North Fort Myers', 'Lehigh Acres'],
-  },
-  'cape-coral': {
-    type: 'location',
-    city: 'Cape Coral',
-    h1: 'Sell in Cape Coral',
-    intro: 'Waterfront or inland, we provide fair market cash offers for Cape Coral homeowners.',
-    description: 'No flood insurance headaches, just a fast sale.',
-    neighborhoods: ['Yacht Club', 'Pelican', 'Burnt Store', 'Matlacha', 'Caloosahatchee'],
+    neighborhoods: ['Fort Myers', 'Cape Coral', 'Naples', 'Bonita Springs', 'Estero'],
   },
 };
