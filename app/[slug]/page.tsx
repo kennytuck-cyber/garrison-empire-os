@@ -1,43 +1,22 @@
 'use client'
-import { SITE_CONTENT } from '../siteContent' // <--- FIX: Correct import path
+import { SITE_CONTENT } from '../siteContent' 
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { CheckCircle2, ArrowRight, Phone, Clock, Shield, MapPin } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 // --- SMART IMAGE MAPPING ---
-// <--- FIX: Updated paths to match your uploaded files (removed '/images/')
 const getHeroImage = (slug: string) => {
-  // LOCATION PAGES
-  if (slug.includes('orlando') || slug.includes('lakeland') || slug.includes('polk')) {
-    return '/orlando-central-flroida-real-estate-cash-sell-buy.jpg'
-  }
-  if (slug.includes('fort-myers') || slug.includes('lee-county')) {
-    return '/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
-  }
-  if (slug.includes('cape-coral')) {
-    return '/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
-  }
-  if (slug.includes('miami') || slug.includes('naples')) {
-    // Luxury Waterfront
-    return '/home-cash-offer-real-estate-florida-buy-sell-property.webp'
-  }
+  if (slug.includes('orlando')) return '/orlando-central-flroida-real-estate-cash-sell-buy.jpg'
+  if (slug.includes('fort-myers')) return '/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
+  if (slug.includes('cape-coral')) return '/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
+  if (slug.includes('miami')) return '/home-cash-offer-real-estate-florida-buy-sell-property.webp'
 
-  // SITUATION PAGES
-  if (slug.includes('veteran') || slug.includes('military')) {
-    return '/military-veteran-cash-real-estate-florida-buy-sell-investment.jpg'
-  }
-  if (slug.includes('inherited') || slug.includes('probate')) {
-    return '/inheritance-estate-family-inherited-probate-cash-offer.jpg'
-  }
-  if (slug.includes('divorce')) {
-    return '/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
-  }
-  if (slug.includes('foreclosure')) {
-    return '/deal-forclosure-cash-closing-title-florida--2.webp'
-  }
+  if (slug.includes('veteran') || slug.includes('military')) return '/military-veteran-cash-real-estate-florida-buy-sell-investment.jpg'
+  if (slug.includes('inherited')) return '/inheritance-estate-family-inherited-probate-cash-offer.jpg'
+  if (slug.includes('divorce')) return '/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
+  if (slug.includes('foreclosure')) return '/deal-forclosure-cash-closing-title-florida--2.webp'
   
-  // DEFAULT FALLBACK (Beautiful Florida Home Exterior)
   return '/florida-home-cash-real-estate-sell-buy-fas-2.jpg'
 }
 
@@ -55,7 +34,6 @@ interface ContentItem {
 }
 
 export default function DynamicPage({ params }: { params: { slug: string } }) {
-  // Safe access to the content
   const content = SITE_CONTENT[params.slug as keyof typeof SITE_CONTENT] as ContentItem | undefined
 
   if (!content) {
@@ -129,15 +107,6 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
                 </p>
               )
             })}
-          </div>
-
-          <div className="mt-20 p-10 bg-gradient-to-br from-[#1B365D] to-[#0F1C2E] rounded-3xl border border-[#C5A572]/30 text-center shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-4 opacity-10"><Shield className="w-32 h-32 text-[#C5A572]" /></div>
-            <h3 className="text-3xl font-serif font-bold mb-4 relative z-10">Situation Critical?</h3>
-            <p className="mb-8 text-white/70 text-lg relative z-10">We can deploy resources and have a cash offer on your desk in 24 hours.</p>
-            <Link href="/#contact" className="inline-block bg-[#C5A572] text-[#0F1C2E] px-10 py-4 rounded-xl font-bold hover:bg-[#D4B896] transition-transform hover:scale-105 relative z-10">
-              Request Immediate Offer
-            </Link>
           </div>
         </motion.div>
         <div className="h-20" />
