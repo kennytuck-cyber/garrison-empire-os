@@ -1,8 +1,6 @@
-'use client'
-
 import Link from 'next/link'
 import { SITE_CONTENT } from '@/lib/siteContent'
-import { ArrowRight, Calendar, Clock, BookOpen } from 'lucide-react'
+import { ArrowRight, BookOpen, Clock } from 'lucide-react'
 
 export const metadata = {
   title: 'Real Estate Blog | Garrison Point Solutions',
@@ -10,7 +8,6 @@ export const metadata = {
 }
 
 // 1. EXACT FILENAME MAPPING
-// We map the *Title* or a *Keyword* to the correct image file.
 const getImageForPost = (title: string) => {
   const t = title.toLowerCase()
 
@@ -28,7 +25,6 @@ const getImageForPost = (title: string) => {
   }
   // Blog 4: How Fast Can You Sell
   if (t.includes('how fast can you sell')) {
-    // Note: The file has a trailing dash based on your file list
     return '/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
   }
   // Blog 5: Mortgage / Investor
