@@ -95,7 +95,7 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="relative min-h-[calc(100vh-6rem)] flex items-center overflow-hidden">
-        {/* HERO IMAGE: Florida Home Exterior (Updated to -2.jpg) */}
+        {/* HERO IMAGE: Fixed path to -2.jpg */}
         <motion.div initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 10, ease: "linear" }} className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/images/florida-home-cash-real-estate-sell-buy-fas-2.jpg')` }} />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0F1C2E] via-[#0F1C2E]/80 to-transparent" />
         
@@ -302,7 +302,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Situations */}
+      {/* Situations (Restored to Card Layout with Images) */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -418,135 +418,6 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* RESOURCES / BLOG GRID (FULL 11 ITEMS) */}
-      <section className="py-24 bg-[#0F1C2E]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-end mb-12">
-            <div>
-              <h2 className="text-4xl font-bold text-white mb-4">Resources for Homeowners</h2>
-              <p className="text-gray-400 text-lg">Expert advice to help you make the right decision.</p>
-            </div>
-            <Link href="/blog" className="hidden sm:flex text-[#C5A572] hover:text-white transition-colors items-center font-semibold">
-              View All Articles <ArrowRight className="w-4 h-4 ml-2" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            
-            {/* 1. Inherited House */}
-            <Link href="/blog/sell-inherited-house-florida" className="group block bg-[#1a2b42] rounded-lg overflow-hidden hover:bg-[#233550] transition-colors">
-              <div className="h-48 overflow-hidden relative">
-                <img src="/images/home-inheritance-inherited-estate-probate-family.jpg" alt="Inherited House Guide" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <div className="p-5">
-                <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#C5A572]">How to Sell an Inherited House in Florida: A Complete Guide</h3>
-              </div>
-            </Link>
-
-            {/* 2. Pre-Foreclosure Options */}
-            <Link href="/blog/pre-foreclosure-options" className="group block bg-[#1a2b42] rounded-lg overflow-hidden hover:bg-[#233550] transition-colors">
-              <div className="h-48 overflow-hidden relative">
-                <img src="/images/deal-forclosure-cash-closing-title-florida--2.webp" alt="Pre-Foreclosure Options" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <div className="p-5">
-                <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#C5A572]">Selling a House in Pre-Foreclosure: 5 Critical Options</h3>
-              </div>
-            </Link>
-
-            {/* 3. Cash Buyers vs Agents */}
-            <Link href="/blog/cash-buyers-vs-agents" className="group block bg-[#1a2b42] rounded-lg overflow-hidden hover:bg-[#233550] transition-colors">
-              <div className="h-48 overflow-hidden relative">
-                <img src="/images/cash-offer-home-selling-buying-real-estate-florida.jpg" alt="Cash Buyers vs Agents" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <div className="p-5">
-                <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#C5A572]">Cash Home Buyers vs Real Estate Agents: What's Right for You?</h3>
-              </div>
-            </Link>
-
-            {/* 4. How Much Do Cash Buyers Pay */}
-            <Link href="/blog/how-much-cash-buyers-pay" className="group block bg-[#1a2b42] rounded-lg overflow-hidden hover:bg-[#233550] transition-colors">
-              <div className="h-48 overflow-hidden relative">
-                <img src="/images/cash-offer-home-selling-buying-real-estate-florida.jpg" alt="How Much Do Cash Buyers Pay" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <div className="p-5">
-                <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#C5A572]">How Much Do Cash Home Buyers Actually Pay?</h3>
-              </div>
-            </Link>
-
-             {/* 5. Code Violations */}
-             <Link href="/blog/selling-house-code-violations" className="group block bg-[#1a2b42] rounded-lg overflow-hidden hover:bg-[#233550] transition-colors">
-              <div className="h-48 overflow-hidden relative">
-                <img src="/images/code-violations-home-sell-cash-offer-florida-hoa.jpg" alt="Code Violations" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <div className="p-5">
-                <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#C5A572]">Selling a House With Code Violations in Florida</h3>
-              </div>
-            </Link>
-
-            {/* 6. How Fast Can You Sell */}
-            <Link href="/blog/how-fast-sell-cash" className="group block bg-[#1a2b42] rounded-lg overflow-hidden hover:bg-[#233550] transition-colors">
-              <div className="h-48 overflow-hidden relative">
-                <img src="/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg" alt="How Fast Can You Sell" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <div className="p-5">
-                <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#C5A572]">How Fast Can You Sell a House for Cash?</h3>
-              </div>
-            </Link>
-
-            {/* 7. Mortgage Investor Sale */}
-            <Link href="/blog/mortgage-investor-sale" className="group block bg-[#1a2b42] rounded-lg overflow-hidden hover:bg-[#233550] transition-colors">
-              <div className="h-48 overflow-hidden relative">
-                <img src="/images/real-estate-cash-buy-sell-offer-florida-home.jpg" alt="Mortgage Investor Sale" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <div className="p-5">
-                <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#C5A572]">What Happens to Your Mortgage When You Sell to an Investor?</h3>
-              </div>
-            </Link>
-
-            {/* 8. As-Is vs Fix */}
-            <Link href="/blog/sell-as-is-vs-fix" className="group block bg-[#1a2b42] rounded-lg overflow-hidden hover:bg-[#233550] transition-colors">
-              <div className="h-48 overflow-hidden relative">
-                <img src="/images/home-cash-sell-offer-buy-real-estate-florida-property.jpg" alt="Sell As Is or Fix" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <div className="p-5">
-                <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#C5A572]">Should I Sell My House As-Is or Fix It Up?</h3>
-              </div>
-            </Link>
-
-             {/* 9. Hidden Costs Realtor */}
-             <Link href="/blog/hidden-costs-realtor" className="group block bg-[#1a2b42] rounded-lg overflow-hidden hover:bg-[#233550] transition-colors">
-              <div className="h-48 overflow-hidden relative">
-                <img src="/images/home-cash-offer-real-estate-florida-buy-sell-property.webp" alt="Hidden Costs Realtor" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <div className="p-5">
-                <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#C5A572]">The Hidden Costs of Selling Through a Realtor</h3>
-              </div>
-            </Link>
-
-             {/* 10. Divorce Sale */}
-             <Link href="/blog/divorce-home-sale" className="group block bg-[#1a2b42] rounded-lg overflow-hidden hover:bg-[#233550] transition-colors">
-              <div className="h-48 overflow-hidden relative">
-                <img src="/images/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg" alt="Divorce Home Sale" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <div className="p-5">
-                <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#C5A572]">Selling a House During Divorce in Florida</h3>
-              </div>
-            </Link>
-            
-            {/* 11. Pre-Foreclosure vs Foreclosure */}
-             <Link href="/blog/pre-foreclosure-vs-foreclosure" className="group block bg-[#1a2b42] rounded-lg overflow-hidden hover:bg-[#233550] transition-colors">
-              <div className="h-48 overflow-hidden relative">
-                <img src="/images/frames-for-your-heart-2d4lAQAlbDA-unsplash.webp" alt="Pre-Foreclosure vs Foreclosure" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <div className="p-5">
-                <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#C5A572]">Pre-Foreclosure vs Foreclosure: Know the Difference</h3>
-              </div>
-            </Link>
-
           </div>
         </div>
       </section>
