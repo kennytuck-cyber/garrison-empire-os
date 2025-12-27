@@ -427,20 +427,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-24 bg-[#1B365D]/30 border-t border-[#C5A572]/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16"><span className="text-[#C5A572] text-sm font-bold tracking-[0.2em] uppercase">Common Questions</span><h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-4 mb-6">Frequently Asked Questions</h2></div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-[#0F1C2E]/50 border border-[#C5A572]/10 rounded-xl p-6 hover:border-[#C5A572]/30 transition-all cursor-pointer" onClick={() => setOpenFaq(openFaq === index ? null : index)}>
-                <div className="flex justify-between items-start"><h3 className="text-lg font-bold text-white pr-4">{faq.question}</h3><ChevronDown className={`w-5 h-5 text-[#C5A572] flex-shrink-0 transition-transform ${openFaq === index ? 'rotate-180' : ''}`} /></div>
-                {openFaq === index && <p className="text-white/70 mt-4 leading-relaxed animate-fade-in">{faq.answer}</p>}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* FAQ Section removed from homepage. FAQs are now on their own page. */}
 
       {/* Contact Section */}
       {/* Contact BG Image: .jpg confirmed */}

@@ -21,6 +21,7 @@ export default function Navbar() {
             <Link href="/#about" className="text-white/80 hover:text-[#C5A572] transition-colors text-sm font-medium tracking-wide uppercase">About</Link>
             <Link href="/#markets" className="text-white/80 hover:text-[#C5A572] transition-colors text-sm font-medium tracking-wide uppercase">Markets</Link>
             <Link href="/blog" className="text-white/80 hover:text-[#C5A572] transition-colors text-sm font-medium tracking-wide uppercase">Blog</Link>
+            <Link href="/faq" className="text-white/80 hover:text-[#C5A572] transition-colors text-sm font-medium tracking-wide uppercase">FAQ</Link>
             <Link href="/#contact" className="text-white/80 hover:text-[#C5A572] transition-colors text-sm font-medium tracking-wide uppercase">Contact</Link>
           </div>
 
@@ -51,6 +52,7 @@ export default function Navbar() {
           <Link href="/#about" onClick={() => setIsOpen(false)} className="block text-white/80 py-2 hover:text-[#C5A572]">About</Link>
           <Link href="/#markets" onClick={() => setIsOpen(false)} className="block text-white/80 py-2 hover:text-[#C5A572]">Markets</Link>
           <Link href="/blog" onClick={() => setIsOpen(false)} className="block text-white/80 py-2 hover:text-[#C5A572]">Blog</Link>
+          <Link href="/faq" onClick={() => setIsOpen(false)} className="block text-white/80 py-2 hover:text-[#C5A572]">FAQ</Link>
           <Link href="/#contact" onClick={() => setIsOpen(false)} className="block bg-[#C5A572] text-[#0F1C2E] text-center font-bold py-3 rounded">Get Cash Offer</Link>
         </div>
       )}

@@ -39,6 +39,27 @@ export default function LeadConcierge() {
     setMessages(prev => [...prev, { role: 'user', text: userText }])
     setInputValue('')
 
+    const lower = userText.toLowerCase()
+
+    // Provide helpful answers for common questions before collecting lead info
+    if (step === 0) {
+      const faqResponses: { triggers: string[]; reply: string }[] = [
+        { triggers: ['foreclosure', 'pre-foreclosure'], reply: "It sounds like you're concerned about foreclosure. Selling your house before the process completes can stop the auction, protect your credit and preserve any equity. We can often close in days to help. Would you like a cash offer?" },
+        { triggers: ['code violation', 'code violations', 'liens'], reply: "We buy houses even if they have code violations, liens or open permits. We handle negotiations with the city and take the property as-is. Would you like to discuss an offer?" },
+        { triggers: ['probate', 'inherited'], reply: "Inherited a house? We understand probate can be confusing. You can usually sell during probate. We buy inherited houses as-is and handle the clean-out so you don't have to travel. Interested in learning more?" },
+        { triggers: ['tenant', 'tenants', 'rental'], reply: "Tired of dealing with tenants? We buy rental properties with tenants in place so you don't need to evict anyone. Would you like a no-obligation offer?" },
+        { triggers: ['divorce'], reply: "Going through a divorce is hard enough. A quick cash sale can help both parties split the proceeds and move on without a lengthy listing. Would you like to see what we can offer?" },
+        { triggers: ['as-is', 'as is'], reply: "We buy properties exactly as they sit—no repairs or cleaning needed. You can leave unwanted belongings behind. Want to know your cash offer?" },
+        { triggers: ['hello', 'hi', 'hey'], reply: "Hi there! I'm here to help you explore selling options for your property. Are you looking for a cash offer?" }
+      ]
+      for (const faq of faqResponses) {
+        if (faq.triggers.some(t => lower.includes(t))) {
+          addAgentMessage(faq.reply)
+          return
+        }
+      }
+    }
+
     // Simple Logic Flow
     setTimeout(() => {
       if (step === 0) {
