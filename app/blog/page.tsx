@@ -7,33 +7,49 @@ export const metadata = {
   description: 'Expert advice on selling inherited property, foreclosure, divorce, and problem properties in Florida.',
 }
 
-// 1. EXACT IMAGE MAPPING (Matches your uploaded files)
+// EXACT IMAGE MAPPING (Aligned with Content Pack Section 3)
 const getImageForPost = (title: string) => {
   const t = (title || '').toLowerCase()
 
-  // --- WEBP FILES ---
+  // 3.1 Inherited House (WEBP)
   if (t.includes('inherited')) return '/images/home-inheritance-inherited-estate-probate-family.webp'
-  if (t.includes('mortgage') && t.includes('investor')) return '/images/real-estate-cash-buy-sell-offer-florida-home.webp'
-  if (t.includes('as-is') || t.includes('fix it up')) return '/images/home-cash-sell-offer-buy-real-estate-florida-property.webp'
-  if (t.includes('pre-foreclosure') && t.includes('options')) return '/images/deal-forclosure-cash-closing-title-florida--2.webp' 
-  if (t.includes('code violations')) return '/images/code-violations-home-sell-cash-offer-florida-hoa.webp'
-  if (t.includes('hidden costs') && t.includes('realtor')) return '/images/home-cash-offer-real-estate-florida-buy-sell-property.webp'
-  if (t.includes('pre-foreclosure vs foreclosure')) return '/images/frames-for-your-heart-2d4lAQAlbDA-unsplash.webp'
   
-  // --- JPG FILES ---
-  if (t.includes('how much') && t.includes('cash home buyers')) return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
-  if (t.includes('vs real estate agents') || t.includes('cash home buyers vs')) return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
-  if (t.includes('how fast can you sell')) return '/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
-  if (t.includes('divorce')) return '/images/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
+  // 3.2 Fort Myers What to Expect (JPG)
   if (t.includes('fort myers') && t.includes('expect')) return '/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg'
+  
+  // 3.3 Pre-Foreclosure Options (WEBP)
+  if (t.includes('pre-foreclosure') && t.includes('options')) return '/images/deal-forclosure-cash-closing-title-florida--2.webp' 
+  
+  // 3.4 & 3.5 Cash Buyers vs Agents / How Much Pay (JPG)
+  if (t.includes('vs real estate agents') || t.includes('how much do cash')) return '/images/cash-offer-home-selling-buying-real-estate-florida.jpg'
+  
+  // 3.6 Code Violations (WEBP)
+  if (t.includes('code violations')) return '/images/code-violations-home-sell-cash-offer-florida-hoa.webp'
+  
+  // 3.7 How Fast Can You Sell (JPG)
+  if (t.includes('how fast can you sell')) return '/images/cape-coral-swfl-real-estate-sell-cash-buy-.jpg'
+  
+  // 3.8 Mortgage Investor (WEBP)
+  if (t.includes('mortgage') && t.includes('investor')) return '/images/real-estate-cash-buy-sell-offer-florida-home.webp'
+  
+  // 3.9 As-Is vs Fix (WEBP)
+  if (t.includes('as-is') || t.includes('fix it up')) return '/images/home-cash-sell-offer-buy-real-estate-florida-property.webp'
+  
+  // 3.10 Hidden Costs Realtor (WEBP)
+  if (t.includes('hidden costs') && t.includes('realtor')) return '/images/home-cash-offer-real-estate-florida-buy-sell-property.webp'
+  
+  // 3.11 Divorce (JPG)
+  if (t.includes('divorce')) return '/images/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg'
+  
+  // 3.12 Pre-Foreclosure vs Foreclosure (WEBP)
+  if (t.includes('pre-foreclosure vs foreclosure')) return '/images/frames-for-your-heart-2d4lAQAlbDA-unsplash.webp'
 
   // Fallback
   return '/images/florida-home-cash-real-estate-sell-buy-fas-2.webp'
 }
 
 export default function BlogIndex() {
-  // Filter content to only show blog posts
-  // Cast to 'any' to prevent TypeScript errors during build
+  // Filter content to only show blog posts (Section 3 of your pack)
   const posts = Object.entries(SITE_CONTENT as any).filter(([_, data]: [string, any]) => data.type === 'blog')
 
   return (
@@ -57,7 +73,6 @@ export default function BlogIndex() {
             
             return (
               <Link key={slug} href={`/${slug}`} className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
-                {/* Image Container */}
                 <div className="relative h-56 overflow-hidden bg-gray-200">
                   <div className="absolute inset-0 bg-[#0F1C2E]/10 group-hover:bg-transparent transition-colors z-10" />
                   <img 
@@ -66,8 +81,6 @@ export default function BlogIndex() {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
-
-                {/* Content Container */}
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="flex items-center text-xs text-[#C5A572] font-semibold uppercase tracking-wider mb-3">
                     <BookOpen className="w-3 h-3 mr-1" />
@@ -76,15 +89,12 @@ export default function BlogIndex() {
                     <Clock className="w-3 h-3 mr-1" />
                     <span>5 min read</span>
                   </div>
-
                   <h2 className="text-xl font-bold text-[#0F1C2E] mb-3 group-hover:text-[#C5A572] transition-colors line-clamp-2">
                     {post.h1}
                   </h2>
-                  
                   <p className="text-gray-600 mb-6 line-clamp-3 flex-grow text-sm leading-relaxed">
                     {post.description}
                   </p>
-                  
                   <div className="flex items-center text-[#0F1C2E] font-semibold text-sm uppercase tracking-wide mt-auto group-hover:translate-x-2 transition-transform">
                     Read Article <ArrowRight className="w-4 h-4 ml-2 text-[#C5A572]" />
                   </div>
