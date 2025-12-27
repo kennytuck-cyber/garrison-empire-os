@@ -407,58 +407,7 @@ Call **(239) 291-3444** or fill out our form for a confidential
 consultation.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
-  'sell-rental-property-with-tenants': `tenants in place. We buy tenant-occupied homes in Florida for cash. No
-eviction needed. No repairs. Close fast.*
-
-with tenants, tired landlord sell property, sell tenant occupied home*
-
-H1: Sell Your Rental Property with Tenants
-
-Being a landlord isn't for everyone—and selling a tenant-occupied
-property through traditional channels can be complicated. If you're
-ready to exit the landlord business without the hassle of evictions,
-vacancies, or waiting for a lease to end, Garrison Point Solutions can
-help.
-
-## We Buy Tenant-Occupied Properties
-
-Unlike traditional buyers who typically want vacant properties, we're
-experienced investors who purchase homes with tenants in place. You
-don't need to evict anyone or wait for leases to expire. We'll handle
-the tenant situation after closing.
-
-## Why Landlords Choose to Sell to Us
-
--   **No Eviction Needed:** Sell with tenants in place—we handle it
-from there
-
--   **No Vacancy Required:** No need to wait for the property to be
-empty
-
--   **No Repairs:** Sell as-is, even with deferred maintenance
-
--   **No Showings:** No disrupting tenants or scheduling around their
-lives
-
--   **Fast Closing:** Close in 7-14 days and walk away
-
-## Common Landlord Situations We Help With
-
--   Problem tenants who don't pay or cause damage
-
--   Out-of-state landlords tired of managing from a distance
-
--   Inherited rental properties you don't want
-
--   Portfolio liquidation for retirement or investment changes
-
--   Properties with negative cash flow
-
-Get Your Rental Property Cash Offer
-
-Call **(239) 291-3444** to discuss your situation.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
+  /* Removed duplicate sell-rental-property-with-tenants definition; see later in file for the final version. */
   'selling-a-house-during-divorce-in-florida': `divorce house sale*
 
 Covers: Legal considerations, both parties agreeing, court-ordered
