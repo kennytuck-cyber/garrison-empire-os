@@ -55,7 +55,7 @@ export default function Page({ params }: { params: { slug: string } }) {
     : ''
   // Split into lines and remove empty lines, metadata (H1 labels) and keyword/tag lines ending with '*'.
   const rawLines = contentString.split('\n')
-  const contentParagraphs = rawLines.filter((line) => {
+  const contentParagraphs = rawLines.filter((line: string) => {
     const trimmed = line.trim()
     if (!trimmed) return false
     if (/^H1:/i.test(trimmed)) return false
