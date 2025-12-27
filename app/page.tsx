@@ -1,8 +1,9 @@
 'use client'
 import Link from 'next/link'
-import { ArrowRight, Shield, Clock, Users, Target, Phone, Mail, MapPin, CheckCircle2, Star, ChevronDown, HeartHandshake, X, Building } from 'lucide-react'
+import { ArrowRight, Shield, Clock, Users, Target, Phone, Mail, MapPin, CheckCircle2, Star, ChevronDown, HeartHandshake, X, Building, DollarSign, Heart } from 'lucide-react'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import LeadConcierge from '@/components/LeadConcierge'
 
 export default function HomePage() {
   const [formData, setFormData] = useState({
@@ -72,7 +73,6 @@ export default function HomePage() {
     { question: "Why should I trust you?", answer: "Garrison Point Solutions is a veteran-owned company built on 23 years of Coast Guard service. We bring military integrity, discipline, and transparency to every transaction." }
   ]
 
-  const floridaCounties = ['Alachua', 'Baker', 'Bay', 'Bradford', 'Brevard', 'Broward', 'Calhoun', 'Charlotte', 'Citrus', 'Clay', 'Collier', 'Columbia', 'DeSoto', 'Dixie', 'Duval', 'Escambia', 'Flagler', 'Franklin', 'Gadsden', 'Gilchrist', 'Glades', 'Gulf', 'Hamilton', 'Hardee', 'Hendry', 'Hernando', 'Highlands', 'Hillsborough', 'Holmes', 'Indian River', 'Jackson', 'Jefferson', 'Lafayette', 'Lake', 'Lee', 'Leon', 'Levy', 'Liberty', 'Madison', 'Manatee', 'Marion', 'Martin', 'Miami-Dade', 'Monroe', 'Nassau', 'Okaloosa', 'Okeechobee', 'Orange', 'Osceola', 'Palm Beach', 'Pasco', 'Pinellas', 'Polk', 'Putnam', 'Santa Rosa', 'Sarasota', 'Seminole', 'St. Johns', 'St. Lucie', 'Sumter', 'Suwannee', 'Taylor', 'Union', 'Volusia', 'Wakulla', 'Walton', 'Washington']
   const sellingReasons = ['Inherited Property', 'Pre-Foreclosure', 'Divorce', 'Tired Landlord', 'Code Violations', 'Vacant Property', 'Behind on Payments', 'Relocating', 'Downsizing', 'Major Repairs Needed', 'Problem Tenants', 'Tax Liens', 'Job Loss', 'Medical Bills', 'Bankruptcy', 'Retiring', 'Other']
 
   return (
@@ -95,8 +95,8 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="relative min-h-[calc(100vh-6rem)] flex items-center overflow-hidden">
-        {/* HERO IMAGE: Florida Home Exterior (Front View) */}
-        <motion.div initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 10, ease: "linear" }} className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/images/florida-home-cash-real-estate-sell-buy-fas.jpg')` }} />
+        {/* HERO IMAGE: Updated to .webp */}
+        <motion.div initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 10, ease: "linear" }} className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/images/florida-home-cash-real-estate-sell-buy-fas-2.webp')` }} />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0F1C2E] via-[#0F1C2E]/80 to-transparent" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -110,6 +110,11 @@ export default function HomePage() {
                 Sell Your Florida <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#C5A572] to-[#D4B896]">Property Fast</span>
               </motion.h1>
               <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-white/80 mb-10 leading-relaxed max-w-xl">Fair cash offers within 24 hours. No repairs. No fees. No commissions. Close on <span className="text-white font-semibold">your</span> timeline.</motion.p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-start items-center mb-10">
+                 <LeadConcierge />
+              </div>
+
               <motion.div variants={fadeInUp} className="grid grid-cols-2 gap-4 mb-10">
                 {['Close in 7-14 Days', 'As-Is Condition', 'Zero Fees', 'Cash Guarantee'].map((item, i) => (
                   <div key={i} className="flex items-center space-x-3"><div className="w-6 h-6 rounded-full bg-[#C5A572]/20 flex items-center justify-center"><CheckCircle2 className="w-4 h-4 text-[#C5A572]" /></div><span className="text-white/80 font-medium">{item}</span></div>
@@ -193,7 +198,7 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
-              {/* ABOUT IMAGE: Coast Guard Hat / Military Trust */}
+              {/* ABOUT IMAGE: .jpg confirmed in list */}
               <div className="aspect-[4/3] rounded-2xl bg-cover bg-center shadow-2xl" style={{ backgroundImage: `url('/images/military-veteran-real-estate-florida-cash-buy-sell-pride-patriot-honest-trust.jpg')` }} />
               <div className="absolute -bottom-8 -right-8 bg-[#0F1C2E] p-8 rounded-2xl border border-[#C5A572]/20 shadow-2xl max-w-sm">
                 <div className="text-5xl font-serif font-bold text-[#C5A572] mb-2">23+</div>
@@ -219,8 +224,49 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* CORE VALUES (MEDALS) */}
+      <section className="py-24 bg-[#0F1C2E] relative overflow-hidden">
+         <div className="absolute top-0 right-0 w-1/3 h-full bg-[#C5A572]/5 skew-x-12 transform origin-top-right" />
+         
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="order-2 lg:order-1">
+              <h2 className="text-[#C5A572] font-bold tracking-wide uppercase text-sm mb-2">The Garrison Standard</h2>
+              <h3 className="text-4xl font-bold text-white mb-6">We Don't Just Buy Houses. We Solve Problems.</h3>
+              <p className="text-gray-300 mb-6 text-lg">
+                In the Coast Guard, there are no excuses—only results. We bring that same level of discipline to real estate. When we make an offer, it’s rock solid. When we say we’ll close, we close.
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <Star className="text-[#C5A572] w-6 h-6 mr-3 mt-1 flex-shrink-0" />
+                  <div>
+                    <strong className="text-white block">Transparent Communication</strong>
+                    <span className="text-gray-400">You will never be left in the dark. We explain every step clearly.</span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <Heart className="text-[#C5A572] w-6 h-6 mr-3 mt-1 flex-shrink-0" />
+                  <div>
+                    <strong className="text-white block">People Over Profit</strong>
+                    <span className="text-gray-400">If selling to us isn't your best option, we will honestly tell you so.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div className="order-1 lg:order-2">
+              {/* Medals Image: .jpg confirmed in list */}
+              <img 
+                src="/images/military-veteran-cash-real-estate-florida-buy-sell-investment.jpg" 
+                alt="Military Service Medals and Values" 
+                className="rounded-lg shadow-2xl border border-[#C5A572]/30 w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Markets Section */}
-      <section id="markets" className="py-24 bg-[#0F1C2E]">
+      <section id="markets" className="py-24 bg-[#1B365D]/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-[#C5A572] text-sm font-bold tracking-[0.2em] uppercase">Service Areas</span>
@@ -228,15 +274,16 @@ export default function HomePage() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              // NEW IMAGES: Orlando (Central), Fort Myers Beach (SW), Miami New (South)
-              { title: "Central Florida", link: "/sell-house-fast-orlando", img: "/images/orlando-central-flroida-real-estate-cash-sell-buy.jpg" },
+              // Central Florida Image: Updated to .webp
+              { title: "Central Florida", link: "/sell-house-fast-orlando", img: "/images/orlando-central-flroida-real-estate-cash-sell-buy.webp" },
+              // SW Florida Image: .jpg confirmed in list
               { title: "Southwest Florida", link: "/sell-house-fast-fort-myers", img: "/images/fort-myers-beach-southwest-florida-swfl-real-estate-cash-buy-sell.jpg" },
+              // South Florida Image: .jpg confirmed in list
               { title: "South Florida", link: "#contact", img: "/images/miami-real-estate-south-florida-cash-buy-offfer-sell.jpg" }
             ].map((market, i) => (
               <Link href={market.link} key={i}>
                 <motion.div whileHover={{ scale: 1.03 }} className="group relative overflow-hidden rounded-2xl cursor-pointer h-[400px]">
                   <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: `url('${market.img}')` }} />
-                  {/* Adjusted Gradient for visibility */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F1C2E] via-[#0F1C2E]/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-8">
                     <h3 className="text-3xl font-serif font-bold text-white mb-3">{market.title}</h3>
@@ -249,30 +296,144 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Situations */}
-      <section className="py-24 bg-[#1B365D]/30">
+      {/* MISSION BANNER (FLAGS) */}
+      {/* Flags Image: .JPG confirmed in list */}
+      <div className="relative py-20 bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('/images/military-vetean-pride-real-estate-florida-trsut-patriotJPG.JPG')" }}>
+        <div className="absolute inset-0 bg-[#0F1C2E]/80" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <Star className="w-12 h-12 text-[#C5A572] mx-auto mb-6" />
+          <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 italic font-serif">"Semper Paratus"</h3>
+          <p className="text-xl text-white/90">Always Ready to serve our community with the same dedication we served our country.</p>
+        </div>
+      </div>
+
+      {/* Situations (Image Cards Restored) */}
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16"><h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">Every Situation Has a Solution</h2></div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { label: 'Inherited Property', link: '/sell-inherited-house-florida' }, { label: 'Pre-Foreclosure', link: '/sell-house-pre-foreclosure' },
-              { label: 'Divorce', link: '/sell-house-during-divorce' }, { label: 'Tired Landlord', link: '/sell-rental-property-with-tenants' },
-              { label: 'Code Violations', link: '/sell-house-with-code-violations' }, { label: 'Vacant Property', link: '/sell-house-as-is-florida' },
-              { label: 'Relocating', link: '/sell-house-as-is-florida' }, { label: 'Any Situation', link: '#contact' }
-            ].map((item, index) => (
-              <Link href={item.link} key={index} className="bg-[#0F1C2E] border border-[#C5A572]/10 hover:border-[#C5A572]/40 rounded-xl p-5 text-center hover:bg-[#1B365D]/50 transition-all cursor-pointer group"><CheckCircle2 className="w-6 h-6 text-[#C5A572] mx-auto mb-3 group-hover:scale-110 transition-transform" /><span className="text-white/80 font-medium">{item.label}</span></Link>
-            ))}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-[#0F1C2E] mb-4">We Help With Any Situation</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">Life happens. When it does, we provide a fast, respectful, and reliable exit strategy.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Card 1: Pre-Foreclosure - .webp confirmed */}
+            <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all">
+              <div className="h-48 overflow-hidden">
+                <img 
+                  src="/images/deal-forclosure-cash-closing-title-florida--2.webp" 
+                  alt="Stop Foreclosure Florida" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-[#0F1C2E] mb-2">Facing Foreclosure?</h3>
+                <p className="text-gray-600 mb-4">Don't let the bank take your future. Sell fast to pay off debts and protect your credit score.</p>
+                <Link href="/foreclosure-help" className="text-[#C5A572] font-semibold hover:text-[#0F1C2E] flex items-center">
+                  Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Card 2: HOA/Code Violations - Updated to .webp */}
+            <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all">
+              <div className="h-48 overflow-hidden">
+                <img 
+                  src="/images/code-violations-home-sell-cash-offer-florida-hoa.webp" 
+                  alt="Sell House with Code Violations" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-[#0F1C2E] mb-2">HOA Liens or Code Violations</h3>
+                <p className="text-gray-600 mb-4">Fines piling up? We buy properties with liens, open permits, and violations—so you don't have to pay them.</p>
+                <Link href="/code-violations" className="text-[#C5A572] font-semibold hover:text-[#0F1C2E] flex items-center">
+                  Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Card 3: Military PCS - .jpg confirmed */}
+            <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all">
+              <div className="h-48 overflow-hidden">
+                <img 
+                  src="/images/military-moving-pcs-sale-home-real-estate-cash-offer-florida.jpg" 
+                  alt="Military PCS Home Sale" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-[#0F1C2E] mb-2">Military PCS Orders</h3>
+                <p className="text-gray-600 mb-4">Receiving orders to move? We understand the timeline. Sell your house before you deploy or transfer.</p>
+                <Link href="/military-relocation" className="text-[#C5A572] font-semibold hover:text-[#0F1C2E] flex items-center">
+                  Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Card 4: Inherited Property - .jpg confirmed */}
+            <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all">
+              <div className="h-48 overflow-hidden">
+                <img 
+                  src="/images/inheritance-estate-family-inherited-probate-cash-offer.jpg" 
+                  alt="Sell Inherited House Florida" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-[#0F1C2E] mb-2">Inherited Property / Probate</h3>
+                <p className="text-gray-600 mb-4">Navigating probate is hard enough. We buy inherited homes "as-is" so you can focus on family.</p>
+                <Link href="/probate-help" className="text-[#C5A572] font-semibold hover:text-[#0F1C2E] flex items-center">
+                  Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Card 5: Divorce - .jpg confirmed */}
+            <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all">
+              <div className="h-48 overflow-hidden">
+                <img 
+                  src="/images/divorce-home-sale-cash-sell-easy-fast-mitigation.jpg" 
+                  alt="Sell House During Divorce" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-[#0F1C2E] mb-2">Divorce Settlements</h3>
+                <p className="text-gray-600 mb-4">Liquidate assets quickly and fairly. We provide a neutral third-party purchase to help you move on.</p>
+                <Link href="/divorce-sale" className="text-[#C5A572] font-semibold hover:text-[#0F1C2E] flex items-center">
+                  Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Card 6: Hurricane/Damage - .JPG confirmed */}
+            <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all">
+              <div className="h-48 overflow-hidden">
+                <img 
+                  src="/images/hurricane-damage-flood-florida-sale-cash-offer-real-estate.JPG" 
+                  alt="Sell Damaged House Florida" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-[#0F1C2E] mb-2">Hurricane or Flood Damage</h3>
+                <p className="text-gray-600 mb-4">Insurance nightmare? Wrecked property? We buy damaged homes for cash—no repairs required.</p>
+                <Link href="/sell-damaged-house" className="text-[#C5A572] font-semibold hover:text-[#0F1C2E] flex items-center">
+                  Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-[#0F1C2E] border-t border-[#C5A572]/10">
+      <section className="py-24 bg-[#1B365D]/30 border-t border-[#C5A572]/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16"><span className="text-[#C5A572] text-sm font-bold tracking-[0.2em] uppercase">Common Questions</span><h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-4 mb-6">Frequently Asked Questions</h2></div>
           <div className="grid md:grid-cols-2 gap-6">
             {faqs.map((faq, index) => (
-              <div key={index} className="bg-[#1B365D]/20 border border-[#C5A572]/10 rounded-xl p-6 hover:border-[#C5A572]/30 transition-all cursor-pointer" onClick={() => setOpenFaq(openFaq === index ? null : index)}>
+              <div key={index} className="bg-[#0F1C2E]/50 border border-[#C5A572]/10 rounded-xl p-6 hover:border-[#C5A572]/30 transition-all cursor-pointer" onClick={() => setOpenFaq(openFaq === index ? null : index)}>
                 <div className="flex justify-between items-start"><h3 className="text-lg font-bold text-white pr-4">{faq.question}</h3><ChevronDown className={`w-5 h-5 text-[#C5A572] flex-shrink-0 transition-transform ${openFaq === index ? 'rotate-180' : ''}`} /></div>
                 {openFaq === index && <p className="text-white/70 mt-4 leading-relaxed animate-fade-in">{faq.answer}</p>}
               </div>
@@ -282,20 +443,22 @@ export default function HomePage() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-[#1B365D]/30 relative">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Contact BG Image: .jpg confirmed */}
+      <section id="contact" className="py-24 relative bg-cover bg-center" style={{ backgroundImage: `url('/images/central-florida-home-sell-buy-cash-offer.jpg')` }}>
+        <div className="absolute inset-0 bg-[#0F1C2E]/90" /> {/* Dark overlay for readability */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-5 gap-12">
             <div className="lg:col-span-2">
               <span className="text-[#C5A572] text-sm font-bold tracking-[0.2em] uppercase">Get Started</span>
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-4 mb-6">Ready for Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5A572] to-[#D4B896]">Cash Offer?</span></h2>
-              <p className="text-lg text-white/60 mb-10">Take the first step toward a stress-free sale. Fill out the form and we'll contact you within 24 hours.</p>
+              <p className="text-lg text-white/80 mb-10">Take the first step toward a stress-free sale. Fill out the form and we'll contact you within 24 hours.</p>
               <div className="space-y-6">
                 <a href="tel:2392913444" className="flex items-center space-x-4 group"><div className="w-14 h-14 bg-[#C5A572]/10 rounded-xl flex items-center justify-center border border-[#C5A572]/20 group-hover:bg-[#C5A572]/20 transition-colors"><Phone className="w-6 h-6 text-[#C5A572]" /></div><div><p className="text-white/60 text-sm">Call Us Directly</p><p className="text-xl font-bold text-white">(239) 291-3444</p></div></a>
                 <a href="mailto:kenny@garrisonvi.com" className="flex items-center space-x-4 group"><div className="w-14 h-14 bg-[#C5A572]/10 rounded-xl flex items-center justify-center border border-[#C5A572]/20 group-hover:bg-[#C5A572]/20 transition-colors"><Mail className="w-6 h-6 text-[#C5A572]" /></div><div><p className="text-white/60 text-sm">Email Us</p><p className="text-xl font-bold text-white">kenny@garrisonvi.com</p></div></a>
                 <div className="flex items-center space-x-4"><div className="w-14 h-14 bg-[#C5A572]/10 rounded-xl flex items-center justify-center border border-[#C5A572]/20"><MapPin className="w-6 h-6 text-[#C5A572]" /></div><div><p className="text-white/60 text-sm">Office Location</p><p className="text-xl font-bold text-white">Fort Myers, Florida</p></div></div>
               </div>
             </div>
-            <div className="lg:col-span-3 bg-[#1B365D]/50 backdrop-blur-sm border border-[#C5A572]/20 rounded-2xl p-8 shadow-2xl">
+            <div className="lg:col-span-3 bg-[#1B365D]/80 backdrop-blur-md border border-[#C5A572]/20 rounded-2xl p-8 shadow-2xl">
               <h3 className="text-2xl font-serif font-bold text-white mb-2">Get Your Cash Offer</h3>
               <p className="text-white/60 text-sm mb-6">Complete the form below and we'll prepare your custom offer.</p>
               {error && <div className="mb-6 p-4 bg-red-500/20 border border-red-500/50 rounded-xl text-red-200 text-sm">{error}</div>}
