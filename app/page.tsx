@@ -9,6 +9,8 @@ export default function HomePage() {
   const [formData, setFormData] = useState({
     firstName: '', lastName: '', phone: '', email: '', address: '', unit: '', city: '', state: 'FL', zip: '', county: '', isOwner: '', occupancy: '', reasonForSelling: '', otherReason: '', askingPrice: '', timeline: ''
   })
+  const [termsConsent, setTermsConsent] = useState(false)
+  const [smsConsent, setSmsConsent] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
   const [error, setError] = useState('')
@@ -39,6 +41,8 @@ export default function HomePage() {
       if (response.ok) {
         setShowSuccess(true)
         setFormData({ firstName: '', lastName: '', phone: '', email: '', address: '', unit: '', city: '', state: 'FL', zip: '', county: '', isOwner: '', occupancy: '', reasonForSelling: '', otherReason: '', askingPrice: '', timeline: '' })
+        setTermsConsent(false)
+        setSmsConsent(false)
       } else {
         const data = await response.json()
         setError(data.error || 'Something went wrong. Please try again.')
@@ -636,20 +640,39 @@ export default function HomePage() {
                     </div>
                   )}
                 </div>
-                {/* Opt-in consent checkbox */}
-                <div className="mt-4 flex items-start space-x-2">
-                  <input
-                    type="checkbox"
-                    id="consent"
-                    required
-                    className="w-4 h-4 text-[#0F1C2E] bg-[#0F1C2E] border-[#C5A572]/50 rounded focus:ring-0"
-                  />
-                  <label htmlFor="consent" className="text-xs text-white/60">
-                    I agree to the{' '}
-                    <Link href="/terms" className="underline text-[#C5A572] hover:text-[#D4B896]">Terms &amp; Conditions</Link>{' '}
-                    and{' '}
-                    <Link href="/privacy" className="underline text-[#C5A572] hover:text-[#D4B896]">Privacy Policy</Link>. By submitting this form, you consent to receive SMS messages and/or calls from Garrison Point Solutions, LLC. To unsubscribe, follow the instructions provided in our communications. Msg &amp; data rates may apply. Your information is secure and will not be sold to third parties. Message frequency varies. Text HELP for Help. Text STOP to cancel.
-                  </label>
+                {/* Opt-in consent checkboxes - 10DLC Compliant */}
+                <div className="mt-4 space-y-3">
+                  {/* Checkbox 1: Terms & Privacy */}
+                  <div className="flex items-start space-x-2">
+                    <input
+                      type="checkbox"
+                      id="termsConsent"
+                      checked={termsConsent}
+                      onChange={(e) => setTermsConsent(e.target.checked)}
+                      required
+                      className="w-4 h-4 mt-0.5 text-[#C5A572] bg-[#0F1C2E] border-[#C5A572]/50 rounded focus:ring-[#C5A572] focus:ring-offset-0"
+                    />
+                    <label htmlFor="termsConsent" className="text-xs text-white/60">
+                      I agree to the{' '}
+                      <Link href="/terms" className="underline text-[#C5A572] hover:text-[#D4B896]">Terms &amp; Conditions</Link>{' '}
+                      and{' '}
+                      <Link href="/privacy" className="underline text-[#C5A572] hover:text-[#D4B896]">Privacy Policy</Link>.
+                    </label>
+                  </div>
+                  {/* Checkbox 2: SMS/Call Consent */}
+                  <div className="flex items-start space-x-2">
+                    <input
+                      type="checkbox"
+                      id="smsConsent"
+                      checked={smsConsent}
+                      onChange={(e) => setSmsConsent(e.target.checked)}
+                      required
+                      className="w-4 h-4 mt-0.5 text-[#C5A572] bg-[#0F1C2E] border-[#C5A572]/50 rounded focus:ring-[#C5A572] focus:ring-offset-0"
+                    />
+                    <label htmlFor="smsConsent" className="text-xs text-white/60">
+                      By submitting this form, you agree to receive SMS updates about property offers and related services and/or calls and/or emails from Garrison Point Solutions, LLC. Message frequency varies. Reply STOP to unsubscribe. Msg &amp; data rates may apply for SMS. Your information is secure and will not be sold to third parties. Text HELP for HELP. Text STOP to cancel.
+                    </label>
+                  </div>
                 </div>
                 <button type="submit" disabled={isSubmitting} className="w-full bg-gradient-to-r from-[#B8860B] to-[#C5A572] text-[#0F1C2E] px-8 py-4 rounded-xl font-bold text-lg hover:from-[#C5A572] hover:to-[#D4B896] transition-all shadow-xl shadow-[#B8860B]/25 flex items-center justify-center mt-6 disabled:opacity-50">
                   {isSubmitting ? "Submitting..." : "Get My Cash Offer"} <ArrowRight className="ml-2 w-5 h-5" />
