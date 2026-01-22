@@ -1,0 +1,12 @@
+# Garrison Point Solutions - robots.txt
+# https://garrisonpointsolutions.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://garrisonpointsolutions.com/sitemap.xml
+
+# Disallow admin/private areas
+Disallow: /dashboard
+Disallow: /api/

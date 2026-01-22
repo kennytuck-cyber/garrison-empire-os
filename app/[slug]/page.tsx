@@ -1,6 +1,7 @@
 import { SITE_CONTENT } from '@/lib/siteContent'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Script from 'next/script'
 import { Phone, Calendar, Clock, CheckCircle2, ArrowLeft } from 'lucide-react'
 
 // 1. EXACT IMAGE MAPPING (Must match the blog page)
@@ -83,7 +84,57 @@ export default function Page({ params }: { params: { slug: string } }) {
     return true
   })
 
+  // Generate LocalBusiness schema for location pages
+  const localBusinessSchema = data.type === 'location' ? {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `https://garrisonpointsolutions.com/${params.slug}`,
+    "name": "Garrison Point Solutions",
+    "description": data.description,
+    "url": `https://garrisonpointsolutions.com/${params.slug}`,
+    "telephone": "+1-239-291-3444",
+    "email": "info@garrisonpointsolutions.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "7901 4th Street N, Suite 300",
+      "addressLocality": "St Petersburg",
+      "addressRegion": "FL",
+      "postalCode": "33702",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 27.8006,
+      "longitude": -82.6341
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": data.city || "Florida"
+    },
+    "priceRange": "$$",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "sameAs": [
+      "https://garrisonpointsolutions.com"
+    ],
+    "image": `https://garrisonpointsolutions.com${heroImage}`,
+    "additionalType": "https://schema.org/RealEstateAgent"
+  } : null
+
   return (
+    <>
+      {/* LocalBusiness Schema for Location Pages */}
+      {localBusinessSchema && (
+        <Script
+          id="local-business-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+      )}
     // UPDATED: Changed background to dark blue
     <main className="bg-[#0F1C2E] min-h-screen">
       {/* Back link for easy navigation */}
@@ -212,5 +263,6 @@ export default function Page({ params }: { params: { slug: string } }) {
         </div>
       </section>
     </main>
+    </>
   )
 }

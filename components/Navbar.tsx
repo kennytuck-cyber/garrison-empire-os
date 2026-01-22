@@ -81,18 +81,18 @@ export default function Navbar() {
       {isOpen && (
         <div className="absolute left-0 right-0 top-full bg-[#1B365D] border-t border-[#C5A572]/15 px-6 pt-4 pb-8 space-y-4 shadow-lg">
           <Link
-            href="/#how-it-works"
+            href="/how-it-works"
             onClick={() => setIsOpen(false)}
             className="block text-white/80 py-2 hover:text-[#C5A572]"
           >
             How It Works
           </Link>
           <Link
-            href="/#about"
+            href="/testimonials"
             onClick={() => setIsOpen(false)}
             className="block text-white/80 py-2 hover:text-[#C5A572]"
           >
-            About
+            Testimonials
           </Link>
           <Link
             href="/#markets"

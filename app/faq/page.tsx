@@ -4,8 +4,9 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, Phone } from 'lucide-react'
 import Link from 'next/link'
+import Script from 'next/script'
 
-// FAQ Data from your content pack 
+// FAQ Data from your content pack
 const faqs = [
   { question: "How do you determine your offer price?", answer: "We evaluate several factors: the property's current condition, needed repairs, recent comparable sales in your area, and current market conditions. Our offers typically range from 70-85% of the after-repair value, minus estimated repair costs." },
   { question: "Do I have to accept your offer?", answer: "Absolutely not. Our offers are completely no-obligation. You are free to accept, counter, or decline. There is no pressure and no cost to you for receiving an offer." },
@@ -24,9 +25,30 @@ const faqs = [
 export default function FAQPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
+  // Generate FAQ Schema for SEO
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
+
   return (
-    <div className="min-h-screen bg-[#0F1C2E] text-white">
-      {/* HERO SECTION */}
+    <>
+      {/* FAQ Schema Markup for SEO */}
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <div className="min-h-screen bg-[#0F1C2E] text-white">
+        {/* HERO SECTION */}
       <section className="relative h-[50vh] min-h-[300px] flex items-center justify-center overflow-hidden">
         <img
           src="/images/frequently-asked-questions-cash-home-buyer.jpg"
@@ -100,6 +122,7 @@ export default function FAQPage() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   )
 }
