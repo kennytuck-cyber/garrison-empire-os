@@ -7,6 +7,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [situationsOpen, setSituationsOpen] = useState(false)
   const [areasOpen, setAreasOpen] = useState(false)
+  const [workWithUsOpen, setWorkWithUsOpen] = useState(false)
 
   const situations = [
     { href: "/foreclosure-help", label: "Foreclosure Help" },
@@ -24,6 +25,16 @@ export default function Navbar() {
     { href: "/sell-house-fast-lakeland", label: "Lakeland" },
     { href: "/sell-house-fast-orlando", label: "Orlando" },
     { href: "/sell-house-fast-south-florida", label: "South Florida" },
+  ]
+
+  const workWithUsLinks = [
+    { href: "/work-with-us", label: "All Opportunities" },
+    { href: "/work-with-us/lenders", label: "Lenders" },
+    { href: "/work-with-us/title-closing", label: "Title & Closing" },
+    { href: "/work-with-us/inspectors", label: "Inspectors & Appraisers" },
+    { href: "/contractors", label: "Contractors" },
+    { href: "/work-with-us/property-management", label: "Property Management" },
+    { href: "/work-with-us/services", label: "Other Services" },
   ]
 
   return (
@@ -133,12 +144,30 @@ export default function Navbar() {
             )}
           </div>
 
-          <Link href="/partners" onClick={() => setIsOpen(false)} className="block text-white/80 py-2 hover:text-[#C5A572]">
-            Partners
-          </Link>
-          <Link href="/contractors" onClick={() => setIsOpen(false)} className="block text-white/80 py-2 hover:text-[#C5A572]">
-            Contractors
-          </Link>
+          {/* Work With Us Dropdown */}
+          <div className="py-2">
+            <button
+              onClick={() => setWorkWithUsOpen(!workWithUsOpen)}
+              className="flex items-center justify-between w-full text-white/80 hover:text-[#C5A572]"
+            >
+              <span>Work With Us</span>
+              <ChevronDown className={`w-4 h-4 transition-transform ${workWithUsOpen ? 'rotate-180' : ''}`} />
+            </button>
+            {workWithUsOpen && (
+              <div className="pl-4 mt-2 space-y-2 border-l border-[#C5A572]/20">
+                {workWithUsLinks.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block text-white/60 py-1 hover:text-[#C5A572] text-sm"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
           <Link href="/faq" onClick={() => setIsOpen(false)} className="block text-white/80 py-2 hover:text-[#C5A572]">
             FAQ
           </Link>

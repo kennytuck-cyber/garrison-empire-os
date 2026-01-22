@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { ArrowRight, Shield, Clock, Users, Target, Phone, Mail, MapPin, CheckCircle2, Star, ChevronDown, HeartHandshake, X, Building, DollarSign, Heart, Hammer } from 'lucide-react'
+import { ArrowRight, Shield, Clock, Users, Target, Phone, Mail, MapPin, CheckCircle2, Star, ChevronDown, X, Building, DollarSign, Heart, Hammer, Landmark, Search, Briefcase } from 'lucide-react'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 // LeadConcierge is globally included in the layout; no need to import here
@@ -136,7 +136,7 @@ export default function HomePage() {
                   {[
                     { icon: Clock, title: "24-Hour Offers", desc: "Get a fair cash offer within one business day" },
                     { icon: Shield, title: "Military Integrity", desc: "23 years of Coast Guard discipline in every deal" },
-                    { icon: HeartHandshake, title: "No Hassle Closing", desc: "We handle everything - just show up and get paid" }
+                    { icon: Heart, title: "No Hassle Closing", desc: "We handle everything - just show up and get paid" }
                   ].map((item, i) => (
                     <div key={i} className="flex items-start space-x-4"><div className="w-14 h-14 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-xl flex items-center justify-center flex-shrink-0"><item.icon className="w-7 h-7 text-[#0F1C2E]" /></div><div><h4 className="font-bold text-xl text-white mb-1">{item.title}</h4><p className="text-white/60">{item.desc}</p></div></div>
                   ))}
@@ -438,38 +438,53 @@ export default function HomePage() {
           <div className="text-center mb-16">
             <span className="text-[#C5A572] text-sm font-bold tracking-[0.2em] uppercase">Beyond Buying Houses</span>
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-4 mb-6">Work With <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5A572] to-[#D4B896]">Garrison Point</span></h2>
-            <p className="text-xl text-white/60 max-w-2xl mx-auto">We're building a real estate investment operation in Florida. If you're a lender, contractor, or investor — we'd like to connect.</p>
+            <p className="text-xl text-white/60 max-w-2xl mx-auto">We're building a real estate investment operation in Florida. If you're a lender, contractor, service provider, or investor — we'd like to connect.</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <Link href="/partners">
-              <motion.div whileHover={{ y: -8 }} className="bg-[#0F1C2E] p-8 rounded-2xl border border-[#C5A572]/10 hover:border-[#C5A572]/30 transition-all h-full cursor-pointer group">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-xl flex items-center justify-center mb-6">
-                  <HeartHandshake className="w-8 h-8 text-[#0F1C2E]" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Link href="/work-with-us/lenders">
+              <motion.div whileHover={{ y: -8 }} className="bg-[#0F1C2E] p-6 rounded-2xl border border-[#C5A572]/10 hover:border-[#C5A572]/30 transition-all h-full cursor-pointer group">
+                <div className="w-14 h-14 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-xl flex items-center justify-center mb-4">
+                  <Landmark className="w-7 h-7 text-[#0F1C2E]" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3">Partners & Investors</h3>
-                <p className="text-white/60 mb-4">Private lenders, JV partners, and industry professionals seeking consistent deal flow and professional relationships.</p>
-                <span className="text-[#C5A572] font-semibold flex items-center group-hover:translate-x-2 transition-transform">Learn More <ArrowRight className="w-4 h-4 ml-2" /></span>
+                <h3 className="text-xl font-bold text-white mb-2">Lenders</h3>
+                <p className="text-white/60 text-sm mb-3">Hard money, private equity, and DSCR lenders seeking secured real estate investments.</p>
+                <span className="text-[#C5A572] font-semibold text-sm flex items-center group-hover:translate-x-2 transition-transform">Learn More <ArrowRight className="w-4 h-4 ml-2" /></span>
               </motion.div>
             </Link>
             <Link href="/contractors">
-              <motion.div whileHover={{ y: -8 }} className="bg-[#0F1C2E] p-8 rounded-2xl border border-[#C5A572]/10 hover:border-[#C5A572]/30 transition-all h-full cursor-pointer group">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-xl flex items-center justify-center mb-6">
-                  <Hammer className="w-8 h-8 text-[#0F1C2E]" />
+              <motion.div whileHover={{ y: -8 }} className="bg-[#0F1C2E] p-6 rounded-2xl border border-[#C5A572]/10 hover:border-[#C5A572]/30 transition-all h-full cursor-pointer group">
+                <div className="w-14 h-14 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-xl flex items-center justify-center mb-4">
+                  <Hammer className="w-7 h-7 text-[#0F1C2E]" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3">Contractors & Trades</h3>
-                <p className="text-white/60 mb-4">Licensed contractors and skilled tradespeople looking for a reliable partner and consistent renovation projects.</p>
-                <span className="text-[#C5A572] font-semibold flex items-center group-hover:translate-x-2 transition-transform">Learn More <ArrowRight className="w-4 h-4 ml-2" /></span>
+                <h3 className="text-xl font-bold text-white mb-2">Contractors</h3>
+                <p className="text-white/60 text-sm mb-3">Licensed contractors and tradespeople looking for consistent renovation projects.</p>
+                <span className="text-[#C5A572] font-semibold text-sm flex items-center group-hover:translate-x-2 transition-transform">Learn More <ArrowRight className="w-4 h-4 ml-2" /></span>
               </motion.div>
             </Link>
-            <Link href="/our-approach">
-              <motion.div whileHover={{ y: -8 }} className="bg-[#0F1C2E] p-8 rounded-2xl border border-[#C5A572]/10 hover:border-[#C5A572]/30 transition-all h-full cursor-pointer group">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-xl flex items-center justify-center mb-6">
-                  <Target className="w-8 h-8 text-[#0F1C2E]" />
+            <Link href="/work-with-us/inspectors">
+              <motion.div whileHover={{ y: -8 }} className="bg-[#0F1C2E] p-6 rounded-2xl border border-[#C5A572]/10 hover:border-[#C5A572]/30 transition-all h-full cursor-pointer group">
+                <div className="w-14 h-14 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-xl flex items-center justify-center mb-4">
+                  <Search className="w-7 h-7 text-[#0F1C2E]" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3">Our Approach</h3>
-                <p className="text-white/60 mb-4">Learn about our investment philosophy, how we approach acquisitions, and what we're building for the long term.</p>
-                <span className="text-[#C5A572] font-semibold flex items-center group-hover:translate-x-2 transition-transform">Learn More <ArrowRight className="w-4 h-4 ml-2" /></span>
+                <h3 className="text-xl font-bold text-white mb-2">Inspectors</h3>
+                <p className="text-white/60 text-sm mb-3">Home inspectors and appraisers for our acquisition due diligence needs.</p>
+                <span className="text-[#C5A572] font-semibold text-sm flex items-center group-hover:translate-x-2 transition-transform">Learn More <ArrowRight className="w-4 h-4 ml-2" /></span>
               </motion.div>
+            </Link>
+            <Link href="/work-with-us/services">
+              <motion.div whileHover={{ y: -8 }} className="bg-[#0F1C2E] p-6 rounded-2xl border border-[#C5A572]/10 hover:border-[#C5A572]/30 transition-all h-full cursor-pointer group">
+                <div className="w-14 h-14 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-xl flex items-center justify-center mb-4">
+                  <Briefcase className="w-7 h-7 text-[#0F1C2E]" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Service Providers</h3>
+                <p className="text-white/60 text-sm mb-3">Title companies, attorneys, insurance, and other real estate professionals.</p>
+                <span className="text-[#C5A572] font-semibold text-sm flex items-center group-hover:translate-x-2 transition-transform">Learn More <ArrowRight className="w-4 h-4 ml-2" /></span>
+              </motion.div>
+            </Link>
+          </div>
+          <div className="text-center mt-10">
+            <Link href="/work-with-us" className="inline-flex items-center text-[#C5A572] hover:text-[#D4B896] font-semibold transition-colors">
+              View All Partnership Opportunities <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
           </div>
         </div>

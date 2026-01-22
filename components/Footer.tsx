@@ -91,8 +91,13 @@ export default function Footer() {
               <div>
                 <h4 className="font-bold text-white mb-5 text-sm uppercase tracking-wider">Work With Us</h4>
                 <ul className="space-y-3">
-                  <li><Link href="/partners" className="text-white/60 hover:text-[#C5A572] transition-colors text-sm">Partners &amp; Investors</Link></li>
+                  <li><Link href="/work-with-us" className="text-white/60 hover:text-[#C5A572] transition-colors text-sm">All Opportunities</Link></li>
+                  <li><Link href="/work-with-us/lenders" className="text-white/60 hover:text-[#C5A572] transition-colors text-sm">Lenders</Link></li>
+                  <li><Link href="/work-with-us/title-closing" className="text-white/60 hover:text-[#C5A572] transition-colors text-sm">Title &amp; Closing</Link></li>
+                  <li><Link href="/work-with-us/inspectors" className="text-white/60 hover:text-[#C5A572] transition-colors text-sm">Inspectors</Link></li>
                   <li><Link href="/contractors" className="text-white/60 hover:text-[#C5A572] transition-colors text-sm">Contractors</Link></li>
+                  <li><Link href="/work-with-us/property-management" className="text-white/60 hover:text-[#C5A572] transition-colors text-sm">Property Management</Link></li>
+                  <li><Link href="/work-with-us/services" className="text-white/60 hover:text-[#C5A572] transition-colors text-sm">Other Services</Link></li>
                 </ul>
               </div>
             </div>
