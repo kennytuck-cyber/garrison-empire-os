@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { Phone, FileText, Calendar, DollarSign, CheckCircle2, Clock, ArrowRight, HelpCircle, Home, Handshake } from 'lucide-react'
+import { Phone, FileText, Calendar, DollarSign, CheckCircle2, Clock, ArrowRight, HelpCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export default function HowItWorksPage() {
