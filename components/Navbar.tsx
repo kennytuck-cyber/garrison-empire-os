@@ -123,6 +123,13 @@ export default function Navbar() {
             FAQ
           </Link>
           <Link
+            href="/blog"
+            onClick={() => setIsOpen(false)}
+            className="block text-white/80 py-2 hover:text-[#C5A572]"
+          >
+            Blog
+          </Link>
+          <Link
             href="/#contact"
             onClick={() => setIsOpen(false)}
             className="block bg-gradient-to-r from-[#B8860B] to-[#C5A572] text-[#0F1C2E] text-center font-bold py-3 rounded mt-4 hover:from-[#C5A572] hover:to-[#D4B896] transition-colors"
