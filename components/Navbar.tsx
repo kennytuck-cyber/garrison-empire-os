@@ -1,28 +1,37 @@
 'use client'
 import Link from 'next/link'
-import { Phone, Menu, X } from 'lucide-react'
+import { Phone, Menu, X, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [situationsOpen, setSituationsOpen] = useState(false)
+  const [areasOpen, setAreasOpen] = useState(false)
+
+  const situations = [
+    { href: "/foreclosure-help", label: "Foreclosure Help" },
+    { href: "/probate-help", label: "Probate Sales" },
+    { href: "/divorce-sale", label: "Divorce Sales" },
+    { href: "/code-violations", label: "Code Violations" },
+    { href: "/sell-damaged-house", label: "Damaged Houses" },
+    { href: "/military-relocation", label: "Military Relocation" },
+  ]
+
+  const serviceAreas = [
+    { href: "/sell-house-fast-fort-myers", label: "Fort Myers" },
+    { href: "/sell-house-fast-cape-coral", label: "Cape Coral" },
+    { href: "/sell-house-fast-naples", label: "Naples" },
+    { href: "/sell-house-fast-lakeland", label: "Lakeland" },
+    { href: "/sell-house-fast-orlando", label: "Orlando" },
+    { href: "/sell-house-fast-south-florida", label: "South Florida" },
+  ]
 
   return (
     <>
-      {/*
-        The navigation bar is fixed to the top of the page and uses a
-        lighter navy background to contrast the golden lighthouse logo.  A
-        subtle border at the bottom provides separation from the page
-        content.  The backdrop blur keeps underlying hero images from
-        overpowering the nav on scroll.  Increasing the logo height and
-        font size improves brand visibility.
-      */}
       <nav className="fixed w-full bg-[#1B365D]/80 backdrop-blur-md z-50 border-b border-[#C5A572]/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-28">
           {/* Logo */}
-          {/* Logo and company name.  The lighthouse PNG is scaled up to be
-             easily visible and the name uses a larger font to reinforce
-             branding. */}
           <Link href="/" className="flex items-center">
             <img
               src="/logo Background Removed.png"
@@ -33,20 +42,15 @@ export default function Navbar() {
               Garrison Point Solutions
             </span>
           </Link>
-          
-          {/*
-            On desktop, display the call-to-action and phone number
-            alongside the menu button.  On mobile, these items live
-            inside the dropdown menu below.  Increasing the font sizes
-            improves legibility.
-          */}
+
+          {/* Desktop CTA */}
           <div className="hidden lg:flex items-center space-x-6">
             <a
               href="tel:2392913444"
               className="flex items-center text-[#C5A572] hover:text-[#D4B896] transition-colors text-lg"
             >
               <Phone className="w-5 h-5 mr-2" />
-              <span className="font-semibold">(239) 291‑3444</span>
+              <span className="font-semibold">(239) 291‑3444</span>
             </a>
             <Link
               href="/#contact"
@@ -56,12 +60,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/*
-            Menu button toggles the mobile navigation.  Always visible
-            regardless of screen size.  The icon changes from burger to X
-            based on open state.  A larger click area improves user
-            experience.
-          */}
+          {/* Menu Toggle */}
           <div className="flex">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -74,61 +73,82 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/*
-        Mobile dropdown: absolutely positioned below the nav.  It
-        occupies the full width on mobile and slides down when open.
-      */}
+      {/* Mobile/Tablet Dropdown */}
       {isOpen && (
-        <div className="absolute left-0 right-0 top-full bg-[#1B365D] border-t border-[#C5A572]/15 px-6 pt-4 pb-8 space-y-4 shadow-lg">
-          <Link
-            href="/how-it-works"
-            onClick={() => setIsOpen(false)}
-            className="block text-white/80 py-2 hover:text-[#C5A572]"
-          >
+        <div className="absolute left-0 right-0 top-full bg-[#1B365D] border-t border-[#C5A572]/15 px-6 pt-4 pb-8 shadow-lg max-h-[80vh] overflow-y-auto">
+          <Link href="/how-it-works" onClick={() => setIsOpen(false)} className="block text-white/80 py-2 hover:text-[#C5A572]">
             How It Works
           </Link>
-          <Link
-            href="/our-approach"
-            onClick={() => setIsOpen(false)}
-            className="block text-white/80 py-2 hover:text-[#C5A572]"
-          >
+          <Link href="/our-approach" onClick={() => setIsOpen(false)} className="block text-white/80 py-2 hover:text-[#C5A572]">
             Our Approach
           </Link>
-          <Link
-            href="/partners"
-            onClick={() => setIsOpen(false)}
-            className="block text-white/80 py-2 hover:text-[#C5A572]"
-          >
+
+          {/* Situations Dropdown */}
+          <div className="py-2">
+            <button
+              onClick={() => setSituationsOpen(!situationsOpen)}
+              className="flex items-center justify-between w-full text-white/80 hover:text-[#C5A572]"
+            >
+              <span>We Help With</span>
+              <ChevronDown className={`w-4 h-4 transition-transform ${situationsOpen ? 'rotate-180' : ''}`} />
+            </button>
+            {situationsOpen && (
+              <div className="pl-4 mt-2 space-y-2 border-l border-[#C5A572]/20">
+                {situations.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block text-white/60 py-1 hover:text-[#C5A572] text-sm"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Service Areas Dropdown */}
+          <div className="py-2">
+            <button
+              onClick={() => setAreasOpen(!areasOpen)}
+              className="flex items-center justify-between w-full text-white/80 hover:text-[#C5A572]"
+            >
+              <span>Service Areas</span>
+              <ChevronDown className={`w-4 h-4 transition-transform ${areasOpen ? 'rotate-180' : ''}`} />
+            </button>
+            {areasOpen && (
+              <div className="pl-4 mt-2 space-y-2 border-l border-[#C5A572]/20">
+                {serviceAreas.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block text-white/60 py-1 hover:text-[#C5A572] text-sm"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <Link href="/partners" onClick={() => setIsOpen(false)} className="block text-white/80 py-2 hover:text-[#C5A572]">
             Partners
           </Link>
-          <Link
-            href="/contractors"
-            onClick={() => setIsOpen(false)}
-            className="block text-white/80 py-2 hover:text-[#C5A572]"
-          >
+          <Link href="/contractors" onClick={() => setIsOpen(false)} className="block text-white/80 py-2 hover:text-[#C5A572]">
             Contractors
           </Link>
-          <Link
-            href="/#markets"
-            onClick={() => setIsOpen(false)}
-            className="block text-white/80 py-2 hover:text-[#C5A572]"
-          >
-            Markets
-          </Link>
-          <Link
-            href="/faq"
-            onClick={() => setIsOpen(false)}
-            className="block text-white/80 py-2 hover:text-[#C5A572]"
-          >
+          <Link href="/faq" onClick={() => setIsOpen(false)} className="block text-white/80 py-2 hover:text-[#C5A572]">
             FAQ
           </Link>
-          <Link
-            href="/blog"
-            onClick={() => setIsOpen(false)}
-            className="block text-white/80 py-2 hover:text-[#C5A572]"
-          >
+          <Link href="/blog" onClick={() => setIsOpen(false)} className="block text-white/80 py-2 hover:text-[#C5A572]">
             Blog
           </Link>
+          <Link href="/contact" onClick={() => setIsOpen(false)} className="block text-white/80 py-2 hover:text-[#C5A572]">
+            Contact
+          </Link>
+
           <Link
             href="/#contact"
             onClick={() => setIsOpen(false)}
@@ -139,14 +159,13 @@ export default function Navbar() {
           <a
             href="tel:2392913444"
             onClick={() => setIsOpen(false)}
-            className="block mt-2 text-white/80 py-2 hover:text-[#C5A572] flex items-center justify-center"
+            className="block mt-4 text-white/80 py-2 hover:text-[#C5A572] flex items-center justify-center"
           >
-            <Phone className="w-4 h-4 mr-2" /> (239) 291‑3444
+            <Phone className="w-4 h-4 mr-2" /> (239) 291‑3444
           </a>
         </div>
       )}
     </nav>
-      {/* Close the React fragment opened above */}
     </>
   )
 }
