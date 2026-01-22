@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Phone, Briefcase, TrendingUp, Shield, Handshake, Building2, DollarSign, Users, ArrowRight, CheckCircle2 } from 'lucide-react'
+import { Phone, Briefcase, TrendingUp, Shield, HeartHandshake, Building2, DollarSign, Users, ArrowRight, CheckCircle2 } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Partner With Us | Private Lenders, JV Partners & Investors | Garrison Point',
@@ -22,7 +22,7 @@ export default function PartnersPage() {
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #C5A572 1px, transparent 0)`, backgroundSize: '40px 40px' }} />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <div className="inline-flex items-center space-x-2 bg-[#C5A572]/20 border border-[#C5A572]/30 px-4 py-2 rounded-full mb-6">
-            <Handshake className="w-4 h-4 text-[#C5A572]" />
+            <HeartHandshake className="w-4 h-4 text-[#C5A572]" />
             <span className="text-sm font-bold text-[#C5A572]">STRATEGIC PARTNERSHIPS</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mt-4 mb-6">
@@ -224,7 +224,7 @@ export default function PartnersPage() {
       {/* CTA */}
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <Handshake className="w-12 h-12 text-[#C5A572] mx-auto mb-6" />
+          <HeartHandshake className="w-12 h-12 text-[#C5A572] mx-auto mb-6" />
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-6">
             Let's Build Together
           </h2>

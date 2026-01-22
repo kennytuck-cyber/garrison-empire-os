@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { ArrowRight, Shield, Clock, Users, Target, Phone, Mail, MapPin, CheckCircle2, Star, ChevronDown, HeartHandshake, X, Building, DollarSign, Heart, Handshake, Hammer } from 'lucide-react'
+import { ArrowRight, Shield, Clock, Users, Target, Phone, Mail, MapPin, CheckCircle2, Star, ChevronDown, HeartHandshake, X, Building, DollarSign, Heart, Hammer } from 'lucide-react'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 // LeadConcierge is globally included in the layout; no need to import here
@@ -444,7 +444,7 @@ export default function HomePage() {
             <Link href="/partners">
               <motion.div whileHover={{ y: -8 }} className="bg-[#0F1C2E] p-8 rounded-2xl border border-[#C5A572]/10 hover:border-[#C5A572]/30 transition-all h-full cursor-pointer group">
                 <div className="w-16 h-16 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-xl flex items-center justify-center mb-6">
-                  <Handshake className="w-8 h-8 text-[#0F1C2E]" />
+                  <HeartHandshake className="w-8 h-8 text-[#0F1C2E]" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-3">Partners & Investors</h3>
                 <p className="text-white/60 mb-4">Private lenders, JV partners, and industry professionals seeking consistent deal flow and professional relationships.</p>
