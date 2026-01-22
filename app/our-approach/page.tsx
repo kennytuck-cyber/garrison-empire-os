@@ -61,10 +61,10 @@ export default function OurApproachPage() {
               <span className="text-[#C5A572] text-sm font-bold tracking-[0.2em] uppercase">Our Philosophy</span>
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-4 mb-6">The Garrison <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5A572] to-[#D4B896]">Standard</span></h2>
               <p className="text-lg text-white/70 mb-6 leading-relaxed">
-                In the Coast Guard, "Semper Paratus" — Always Ready — isn't just a motto. It's a way of operating. Every mission required preparation, precision, and the integrity to do things right even when no one was watching.
+                Success in real estate comes from preparation, precision, and the integrity to do things right even when no one is watching. That's the standard we hold ourselves to.
               </p>
               <p className="text-lg text-white/70 mb-6 leading-relaxed">
-                We bring that same standard to real estate. Every acquisition is underwritten with discipline. Every renovation is managed with precision. Every relationship is built on transparency and integrity.
+                Every acquisition is underwritten with discipline. Every renovation is managed with precision. Every relationship is built on transparency and integrity.
               </p>
               <p className="text-lg text-white/70 leading-relaxed">
                 This isn't about getting rich quick. It's about building something that lasts — a real estate operation with institutional-grade systems, ethical practices, and long-term vision.
@@ -79,7 +79,7 @@ export default function OurApproachPage() {
             >
               {[
                 { icon: Shield, title: "Integrity First", desc: "We do what we say. No hidden agendas, no games, no pressure tactics." },
-                { icon: Target, title: "Precision Execution", desc: "Military-trained attention to detail in every transaction and project." },
+                { icon: Target, title: "Precision Execution", desc: "Meticulous attention to detail in every transaction and project." },
                 { icon: Anchor, title: "Long-Term Focus", desc: "Building wealth through assets, not just transactions." }
               ].map((item, i) => (
                 <motion.div
@@ -110,8 +110,8 @@ export default function OurApproachPage() {
         <div className="absolute inset-0 bg-[#0F1C2E]/85" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <Star className="w-12 h-12 text-[#C5A572] mx-auto mb-6" />
-          <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 italic font-serif">"Semper Paratus"</h3>
-          <p className="text-xl text-white/90">Always Ready — to serve, to execute, and to do what's right.</p>
+          <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 font-serif">Our Commitment</h3>
+          <p className="text-xl text-white/90">Always ready to serve, execute with precision, and do what's right.</p>
         </div>
       </div>
 

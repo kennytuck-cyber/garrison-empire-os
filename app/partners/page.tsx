@@ -231,8 +231,8 @@ export default function PartnersPage() {
         <div className="absolute inset-0 bg-[#0F1C2E]/85" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <Star className="w-12 h-12 text-[#C5A572] mx-auto mb-6" />
-          <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 italic font-serif">"Semper Paratus"</h3>
-          <p className="text-xl text-white/90">23 years of Coast Guard discipline. Always ready to build lasting partnerships.</p>
+          <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 font-serif">Built on Trust</h3>
+          <p className="text-xl text-white/90">We believe the best partnerships are built on transparency, reliability, and shared success.</p>
         </div>
       </div>
 
@@ -244,11 +244,11 @@ export default function PartnersPage() {
               <span className="text-[#C5A572] text-sm font-bold tracking-[0.2em] uppercase">Why Us</span>
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-4 mb-6">Why Partner With <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5A572] to-[#D4B896]">Garrison Point</span></h2>
               <p className="text-lg text-white/70 mb-8 leading-relaxed">
-                We bring 23 years of military discipline to real estate. We're at the beginning of building something significant, and we're looking for partners who want to grow with us.
+                We're at the beginning of building something significant, and we're looking for partners who want to grow with us. Integrity, clear communication, and follow-through on every commitment.
               </p>
               <div className="space-y-6">
                 {[
-                  { icon: Shield, title: "Military Discipline", desc: "23 years of Coast Guard service translated into operational excellence" },
+                  { icon: Shield, title: "Integrity First", desc: "We do what we say. Transparent communication and honest dealings." },
                   { icon: Building2, title: "Building for Scale", desc: "Developing systems for acquisitions, renovations, and portfolio growth" },
                   { icon: TrendingUp, title: "Ground Floor", desc: "Opportunity to build relationships as we grow" }
                 ].map((item, i) => (

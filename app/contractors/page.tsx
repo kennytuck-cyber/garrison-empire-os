@@ -69,7 +69,7 @@ export default function ContractorsPage() {
               { icon: Calendar, title: "Long-Term Mindset", desc: "Looking for ongoing relationships, not one-off jobs" },
               { icon: DollarSign, title: "Fair Payment", desc: "Competitive rates and clear payment terms" },
               { icon: ClipboardList, title: "Clear Scopes", desc: "Detailed SOWs and organized project management" },
-              { icon: Shield, title: "Professional Partner", desc: "Military discipline, clear communication, no games" }
+              { icon: Shield, title: "Professional Partner", desc: "Clear communication, fair dealings, no games" }
             ].map((item, i) => (
               <motion.div
                 key={i}
