@@ -70,8 +70,8 @@ export default function HomePage() {
     { question: "Will I have to pay any fees or commissions?", answer: "No. There are no real estate agent commissions, no closing costs for you to pay, and no hidden fees. The price we offer is the amount you receive at closing." },
     { question: "What if I still have a mortgage on the property?", answer: "That is fine—most sellers do. At closing, the proceeds from the sale first pay off your existing mortgage, and you keep the remainder." },
     { question: "What types of houses do you buy?", answer: "We buy single-family homes, condos, townhouses, duplexes, and small multi-family properties throughout Southwest and Central Florida. Any condition, any situation." },
-    { question: "Do you buy houses with tenants?", answer: "Yes. We purchase tenant-occupied properties regularly. You don't need to evict anyone or wait for leases to expire. We handle the tenant situation after closing." },
-    { question: "What if my house has code violations or liens?", answer: "We buy properties with code violations, liens, and other title issues regularly. In many cases, we can negotiate with code enforcement to reduce fines." },
+    { question: "Do you buy houses with tenants?", answer: "Yes. We purchase tenant-occupied properties. You don't need to evict anyone or wait for leases to expire. We handle the tenant situation after closing." },
+    { question: "What if my house has code violations or liens?", answer: "We buy properties with code violations, liens, and other title issues. In many cases, we can negotiate with code enforcement to reduce fines." },
     { question: "Can I sell if I'm in pre-foreclosure?", answer: "Yes, and time is critical. Selling before foreclosure completes can protect your credit and preserve any equity. We can often close fast enough to stop the foreclosure process." },
     { question: "How is this different from listing with a realtor?", answer: "When you list with a realtor, you pay 6% commission, closing costs, and often have to make repairs. It takes 3-6 months. When you sell to us, there are zero fees, zero repairs, and we close in days, not months." },
     { question: "Why should I trust you?", answer: "Garrison Point Solutions is a veteran-owned company built on 23 years of Coast Guard service. We bring military integrity, discipline, and transparency to every transaction." }
@@ -141,11 +141,6 @@ export default function HomePage() {
                     <div key={i} className="flex items-start space-x-4"><div className="w-14 h-14 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-xl flex items-center justify-center flex-shrink-0"><item.icon className="w-7 h-7 text-[#0F1C2E]" /></div><div><h4 className="font-bold text-xl text-white mb-1">{item.title}</h4><p className="text-white/60">{item.desc}</p></div></div>
                   ))}
                 </div>
-                <div className="mt-10 pt-8 border-t border-[#C5A572]/20">
-                  <div className="flex items-center space-x-1 mb-3">{[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-[#C5A572] text-[#C5A572]" />)}</div>
-                  <p className="text-white/80 italic mb-3">"Professional from start to finish. They made selling my inherited property stress-free."</p>
-                  <p className="text-[#C5A572] font-semibold">— Recent Seller, Fort Myers</p>
-                </div>
               </div>
             </motion.div>
           </div>
@@ -159,8 +154,8 @@ export default function HomePage() {
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
             {[
               { icon: Shield, text: 'Veteran Owned' },
-              { icon: Star, text: '5-Star Reviews' },
-              { icon: Building, text: 'Licensed & Insured' }
+              { icon: DollarSign, text: 'Cash Buyers' },
+              { icon: Building, text: 'Florida Based' }
             ].map((item, i) => (
               <div key={i} className="flex items-center space-x-2 text-white/60"><item.icon className="w-5 h-5 text-[#C5A572]" /><span className="font-medium">{item.text}</span></div>
             ))}

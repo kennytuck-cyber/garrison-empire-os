@@ -88,11 +88,11 @@ export default function Navbar() {
             How It Works
           </Link>
           <Link
-            href="/testimonials"
+            href="/sell-house-as-is"
             onClick={() => setIsOpen(false)}
             className="block text-white/80 py-2 hover:text-[#C5A572]"
           >
-            Testimonials
+            Sell As-Is
           </Link>
           <Link
             href="/#markets"

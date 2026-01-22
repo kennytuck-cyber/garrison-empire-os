@@ -1,6 +1,4 @@
 import Link from 'next/link'
-
-// test comment
 import { Phone, Mail, MapPin, Shield } from 'lucide-react'
 
 export default function Footer() {
@@ -14,7 +12,7 @@ export default function Footer() {
             <h4 className="font-bold text-white mb-6 uppercase tracking-wide text-sm">Quick Links</h4>
             <ul className="space-y-4">
               <li><Link href="/how-it-works" className="text-white/60 hover:text-[#C5A572] transition-colors">How It Works</Link></li>
-              <li><Link href="/testimonials" className="text-white/60 hover:text-[#C5A572] transition-colors">Testimonials</Link></li>
+              <li><Link href="/sell-house-fast-7-days" className="text-white/60 hover:text-[#C5A572] transition-colors">Sell Fast</Link></li>
               <li><Link href="/sell-house-as-is" className="text-white/60 hover:text-[#C5A572] transition-colors">Sell As-Is</Link></li>
               <li><Link href="/#markets" className="text-white/60 hover:text-[#C5A572] transition-colors">Markets</Link></li>
               <li><Link href="/blog" className="text-white/60 hover:text-[#C5A572] transition-colors">Blog</Link></li>

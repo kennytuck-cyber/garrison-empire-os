@@ -182,7 +182,7 @@ export default function SellHouseAsIsPage() {
               },
               {
                 title: "Tired Landlord",
-                desc: "Done dealing with a problem rental? We buy tenant-occupied properties without requiring eviction."
+                desc: "Done dealing with a problem rental? We buy tenant-occupied properties without requiring eviction first."
               },
               {
                 title: "Simply Want Out",
