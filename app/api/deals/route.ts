@@ -1,8 +1,22 @@
 import { NextResponse } from 'next/server'
-import { getDeals } from '@/lib/notion'
+import { getDeals, DATABASES } from '@/lib/notion'
+
+// Force dynamic rendering to prevent build-time API calls
+export const dynamic = 'force-dynamic'
 
 export async function GET() {
   try {
+    // Check if Notion is configured
+    if (!process.env.NOTION_API_KEY || !DATABASES.deals) {
+      return NextResponse.json(
+        {
+          deals: [],
+          message: 'Notion integration not configured. Set NOTION_API_KEY and NOTION_DATABASE_DEALS environment variables.'
+        },
+        { status: 200 }
+      )
+    }
+
     // Fetch raw deals from Notion
     const rawDeals = await getDeals()
 
