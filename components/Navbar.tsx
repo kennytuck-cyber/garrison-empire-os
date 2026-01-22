@@ -88,11 +88,25 @@ export default function Navbar() {
             How It Works
           </Link>
           <Link
-            href="/sell-house-as-is"
+            href="/our-approach"
             onClick={() => setIsOpen(false)}
             className="block text-white/80 py-2 hover:text-[#C5A572]"
           >
-            Sell As-Is
+            Our Approach
+          </Link>
+          <Link
+            href="/partners"
+            onClick={() => setIsOpen(false)}
+            className="block text-white/80 py-2 hover:text-[#C5A572]"
+          >
+            Partners
+          </Link>
+          <Link
+            href="/contractors"
+            onClick={() => setIsOpen(false)}
+            className="block text-white/80 py-2 hover:text-[#C5A572]"
+          >
+            Contractors
           </Link>
           <Link
             href="/#markets"
@@ -100,13 +114,6 @@ export default function Navbar() {
             className="block text-white/80 py-2 hover:text-[#C5A572]"
           >
             Markets
-          </Link>
-          <Link
-            href="/blog"
-            onClick={() => setIsOpen(false)}
-            className="block text-white/80 py-2 hover:text-[#C5A572]"
-          >
-            Blog
           </Link>
           <Link
             href="/faq"

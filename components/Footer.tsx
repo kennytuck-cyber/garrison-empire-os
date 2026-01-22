@@ -9,15 +9,19 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-12">
           {/* Quick Links (Left Column) */}
           <div className="text-left">
-            <h4 className="font-bold text-white mb-6 uppercase tracking-wide text-sm">Quick Links</h4>
-            <ul className="space-y-4">
+            <h4 className="font-bold text-white mb-6 uppercase tracking-wide text-sm">Sellers</h4>
+            <ul className="space-y-3">
               <li><Link href="/how-it-works" className="text-white/60 hover:text-[#C5A572] transition-colors">How It Works</Link></li>
-              <li><Link href="/sell-house-fast-7-days" className="text-white/60 hover:text-[#C5A572] transition-colors">Sell Fast</Link></li>
               <li><Link href="/sell-house-as-is" className="text-white/60 hover:text-[#C5A572] transition-colors">Sell As-Is</Link></li>
+              <li><Link href="/sell-house-fast-7-days" className="text-white/60 hover:text-[#C5A572] transition-colors">Sell Fast</Link></li>
               <li><Link href="/#markets" className="text-white/60 hover:text-[#C5A572] transition-colors">Markets</Link></li>
-              <li><Link href="/blog" className="text-white/60 hover:text-[#C5A572] transition-colors">Blog</Link></li>
               <li><Link href="/faq" className="text-white/60 hover:text-[#C5A572] transition-colors">FAQ</Link></li>
-              <li><Link href="/#contact" className="text-white/60 hover:text-[#C5A572] transition-colors">Contact</Link></li>
+            </ul>
+            <h4 className="font-bold text-white mb-4 mt-8 uppercase tracking-wide text-sm">Work With Us</h4>
+            <ul className="space-y-3">
+              <li><Link href="/our-approach" className="text-white/60 hover:text-[#C5A572] transition-colors">Our Approach</Link></li>
+              <li><Link href="/partners" className="text-white/60 hover:text-[#C5A572] transition-colors">Partners & Investors</Link></li>
+              <li><Link href="/contractors" className="text-white/60 hover:text-[#C5A572] transition-colors">Contractors</Link></li>
             </ul>
           </div>
 
