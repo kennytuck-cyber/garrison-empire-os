@@ -1,39 +1,14 @@
 'use client'
-
-import { motion } from 'framer-motion'
 import Link from 'next/link'
-import {
-  Landmark,
-  DollarSign,
-  TrendingUp,
-  Shield,
-  Clock,
-  Building2,
-  Users,
-  CheckCircle,
-  ArrowRight,
-  Phone,
-  Mail,
-  ChevronLeft,
-  BarChart3,
-  Percent,
-  Calendar,
-  Target
-} from 'lucide-react'
+import { Phone, Landmark, CheckCircle2, ArrowRight, Shield, DollarSign, TrendingUp, Clock, Building2, Star, Target, BarChart3 } from 'lucide-react'
+import { motion } from 'framer-motion'
 
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 }
+const fadeInUp = {
+  hidden: { opacity: 0, y: 60 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 }
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
+const stagger = {
+  visible: { transition: { staggerChildren: 0.15 } }
 }
 
 const lenderTypes = [
@@ -41,371 +16,224 @@ const lenderTypes = [
     icon: Landmark,
     title: "Hard Money Lenders",
     description: "Short-term bridge loans for acquisitions and renovations",
-    details: [
-      "Fix & flip financing",
-      "Bridge loans for quick closings",
-      "Renovation/rehab funding",
-      "Short-term (6-18 month) loans",
-      "Asset-based lending"
-    ],
-    idealFor: "Quick acquisitions requiring fast funding and flexible terms"
+    details: ["Fix & flip financing", "Bridge loans for quick closings", "Renovation/rehab funding", "Asset-based lending"]
   },
   {
     icon: Building2,
     title: "Private Equity Partners",
     description: "Equity investment for larger projects and portfolios",
-    details: [
-      "Joint venture partnerships",
-      "Equity investment in deals",
-      "Portfolio acquisitions",
-      "Development projects",
-      "Long-term hold financing"
-    ],
-    idealFor: "Larger deals requiring substantial capital investment"
+    details: ["Joint venture partnerships", "Equity investment in deals", "Portfolio acquisitions", "Development projects"]
   },
   {
     icon: TrendingUp,
     title: "DSCR Lenders",
     description: "Long-term rental property financing based on cash flow",
-    details: [
-      "Debt Service Coverage Ratio loans",
-      "No personal income verification",
-      "Based on property cash flow",
-      "Long-term (30-year) options",
-      "Portfolio lending available"
-    ],
-    idealFor: "Rental property acquisitions and refinancing"
+    details: ["Debt Service Coverage Ratio loans", "No personal income verification", "Based on property cash flow", "Long-term options"]
   },
   {
     icon: DollarSign,
     title: "Private Money Lenders",
     description: "Individual investors seeking secured real estate returns",
-    details: [
-      "First position deed of trust",
-      "Competitive interest rates",
-      "Secured by real property",
-      "Monthly interest payments",
-      "Flexible terms negotiable"
-    ],
-    idealFor: "Investors seeking passive income secured by real estate"
+    details: ["First position deed of trust", "Competitive interest rates", "Secured by real property", "Flexible terms negotiable"]
   }
-]
-
-const whyPartnerWithUs = [
-  {
-    icon: Target,
-    title: "Experienced Operators",
-    description: "Proven track record in Florida real estate acquisitions, renovations, and dispositions"
-  },
-  {
-    icon: Shield,
-    title: "Conservative Underwriting",
-    description: "We maintain healthy LTV ratios and realistic ARV projections to protect lender capital"
-  },
-  {
-    icon: Clock,
-    title: "Reliable Timelines",
-    description: "Professional project management ensures on-time completions and loan payoffs"
-  },
-  {
-    icon: Users,
-    title: "Transparent Communication",
-    description: "Regular updates, clear reporting, and open lines of communication throughout every project"
-  },
-  {
-    icon: BarChart3,
-    title: "Strong Deal Flow",
-    description: "Consistent pipeline of quality deals requiring various funding structures"
-  },
-  {
-    icon: Percent,
-    title: "Competitive Returns",
-    description: "Attractive risk-adjusted returns for lenders and equity partners"
-  }
-]
-
-const dealCriteria = [
-  { label: "Property Types", value: "Single-family, multi-family, small commercial" },
-  { label: "Markets", value: "Florida - Tampa Bay, Orlando, Jacksonville, and surrounding areas" },
-  { label: "Acquisition Range", value: "$75,000 - $500,000" },
-  { label: "Typical LTV", value: "65-75% of ARV" },
-  { label: "Hold Periods", value: "Fix & Flip: 3-9 months | Rentals: Long-term" },
-  { label: "Monthly Volume", value: "Multiple acquisitions per month" }
 ]
 
 export default function LendersClient() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      {/* Back Navigation */}
-      <div className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link
-            href="/work-with-us"
-            className="inline-flex items-center text-emerald-600 hover:text-emerald-700 font-medium transition-colors"
-          >
-            <ChevronLeft className="w-4 h-4 mr-1" />
-            Back to Partner Opportunities
-          </Link>
+    <div className="min-h-screen bg-[#0F1C2E] text-white overflow-x-hidden">
+      {/* Hero Section */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+        <motion.div
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 10, ease: "linear" }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url('/images/cash-offer-home-selling-buying-real-estate-florida.jpg')` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0F1C2E] via-[#0F1C2E]/90 to-[#0F1C2E]/70" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+          <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-3xl">
+            <motion.div variants={fadeInUp}>
+              <Link href="/work-with-us" className="inline-flex items-center text-[#C5A572] hover:text-[#D4B896] mb-6 transition-colors">
+                <ArrowRight className="w-4 h-4 mr-2 rotate-180" /> Back to Partner Opportunities
+              </Link>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="inline-flex items-center space-x-2 bg-[#1B365D]/80 border border-[#C5A572]/30 px-4 py-2 rounded-full mb-8 backdrop-blur-sm">
+              <Landmark className="w-4 h-4 text-[#C5A572]" />
+              <span className="text-sm font-bold text-[#C5A572] tracking-wide">LENDING PARTNERS</span>
+            </motion.div>
+
+            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-[1.1] mb-8">
+              Fund Florida <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#C5A572] to-[#D4B896]">Real Estate</span>
+            </motion.h1>
+
+            <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-white/80 mb-10 leading-relaxed">
+              Partner with experienced operators for hard money loans, private lending, and equity investments. Secure, reliable returns backed by Florida real estate.
+            </motion.p>
+
+            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
+              <Link href="/contact" className="group bg-gradient-to-r from-[#B8860B] to-[#C5A572] text-[#0F1C2E] px-10 py-5 rounded-lg font-bold text-lg hover:from-[#C5A572] hover:to-[#D4B896] transition-all inline-flex items-center justify-center shadow-2xl shadow-[#B8860B]/30 hover:-translate-y-1">
+                Discuss Lending <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <a href="tel:2392913444" className="bg-white/5 backdrop-blur-sm text-white border border-white/20 px-10 py-5 rounded-lg font-semibold text-lg hover:bg-white/10 transition-all inline-flex items-center justify-center hover:-translate-y-1">
+                <Phone className="mr-3 w-5 h-5" />(239) 291-3444
+              </a>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Lender Types */}
+      <section className="py-24 bg-[#1B365D]/30 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #C5A572 1px, transparent 0)`, backgroundSize: '40px 40px' }} />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-20">
+            <span className="text-[#C5A572] text-sm font-bold tracking-[0.2em] uppercase">Lender Types</span>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-4 mb-6">Types of Lenders <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5A572] to-[#D4B896]">We Work With</span></h2>
+            <p className="text-xl text-white/60 max-w-2xl mx-auto">
+              Whether you provide short-term bridge loans or long-term financing, we have opportunities that match your investment criteria.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {lenderTypes.map((type, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="group relative"
+              >
+                <div className="absolute -inset-1 bg-gradient-to-r from-[#B8860B] to-[#C5A572] rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
+                <div className="relative bg-[#0F1C2E] p-8 rounded-2xl border border-[#C5A572]/10 hover:border-[#C5A572]/30 transition-all h-full">
+                  <div className="flex items-start space-x-4 mb-6">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-xl flex items-center justify-center flex-shrink-0">
+                      <type.icon className="w-7 h-7 text-[#0F1C2E]" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-white">{type.title}</h3>
+                      <p className="text-white/60">{type.description}</p>
+                    </div>
+                  </div>
+                  <ul className="space-y-3">
+                    {type.details.map((detail, idx) => (
+                      <li key={idx} className="flex items-center text-white/70">
+                        <CheckCircle2 className="w-5 h-5 text-[#C5A572] mr-3 flex-shrink-0" />
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Parallax Banner */}
+      <div className="relative py-24 bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('/images/military-veteran-cash-real-estate-florida-buy-sell-investment.jpg')" }}>
+        <div className="absolute inset-0 bg-[#0F1C2E]/85" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <Star className="w-12 h-12 text-[#C5A572] mx-auto mb-6" />
+          <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 font-serif">Protected Capital</h3>
+          <p className="text-xl text-white/90">Your investment is secured by real property with conservative LTV ratios and professional documentation.</p>
         </div>
       </div>
 
-      {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-emerald-600 via-emerald-700 to-teal-800 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-10"></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-400 rounded-full filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            className="text-center"
-          >
-            <motion.div variants={fadeIn} className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-              <Landmark className="w-5 h-5 text-emerald-300" />
-              <span className="text-emerald-100 font-medium">Lending Partners</span>
-            </motion.div>
-
-            <motion.h1 variants={fadeIn} className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Fund Florida Real Estate
-              <span className="block text-emerald-300">With Confidence</span>
-            </motion.h1>
-
-            <motion.p variants={fadeIn} className="text-xl text-emerald-100 max-w-3xl mx-auto mb-10">
-              Partner with experienced operators for hard money loans, private lending,
-              and equity investments. Secure, reliable returns backed by Florida real estate.
-            </motion.p>
-
-            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-emerald-700 font-semibold rounded-xl hover:bg-emerald-50 transition-all shadow-lg hover:shadow-xl"
-              >
-                Discuss Lending Opportunities
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
-              <a
-                href="tel:+18138370548"
-                className="inline-flex items-center justify-center px-8 py-4 bg-emerald-500/20 backdrop-blur-sm text-white font-semibold rounded-xl border border-emerald-400/30 hover:bg-emerald-500/30 transition-all"
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                (813) 837-0548
-              </a>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Lender Types Section */}
-      <section className="py-20">
+      {/* Why Lenders Choose Us */}
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="text-center mb-16"
-          >
-            <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Types of Lenders We Work With
-            </motion.h2>
-            <motion.p variants={fadeIn} className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Whether you provide short-term bridge loans or long-term financing,
-              we have opportunities that match your investment criteria.
-            </motion.p>
-          </motion.div>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <span className="text-[#C5A572] text-sm font-bold tracking-[0.2em] uppercase">Why Us</span>
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-4 mb-6">Why Lenders <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5A572] to-[#D4B896]">Choose Us</span></h2>
+              <p className="text-lg text-white/70 mb-8 leading-relaxed">
+                We understand that protecting your capital is paramount. Here's how we ensure your investment is secure and your returns are reliable.
+              </p>
+              <div className="grid gap-4">
+                {[
+                  { icon: Target, text: "Experienced operators with proven track record" },
+                  { icon: Shield, text: "Conservative underwriting and realistic ARV projections" },
+                  { icon: Clock, text: "Reliable timelines and on-time loan payoffs" },
+                  { icon: BarChart3, text: "Consistent deal flow for capital deployment" }
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex items-center space-x-4 bg-[#1B365D]/50 p-5 rounded-xl border border-[#C5A572]/10"
+                  >
+                    <item.icon className="w-6 h-6 text-[#C5A572] flex-shrink-0" />
+                    <span className="text-white/80 text-lg">{item.text}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid md:grid-cols-2 gap-8"
-          >
-            {lenderTypes.map((type, index) => (
-              <motion.div
-                key={index}
-                variants={fadeIn}
-                className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 hover:border-emerald-300 hover:shadow-xl transition-all"
-              >
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="p-3 bg-emerald-100 rounded-xl">
-                    <type.icon className="w-8 h-8 text-emerald-600" />
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#1B365D]/50 p-10 rounded-2xl border border-[#C5A572]/20"
+            >
+              <h3 className="text-2xl font-serif font-bold text-white mb-8">Typical Deal Profile</h3>
+              <div className="space-y-6">
+                {[
+                  { label: "Property Types", value: "Single-family, multi-family, small commercial" },
+                  { label: "Markets", value: "Tampa Bay, Orlando, Jacksonville, SWFL" },
+                  { label: "Acquisition Range", value: "$75,000 - $500,000" },
+                  { label: "Typical LTV", value: "65-75% of ARV" },
+                  { label: "Hold Periods", value: "Fix & Flip: 3-9 months | Rentals: Long-term" }
+                ].map((item, i) => (
+                  <div key={i} className="bg-[#0F1C2E] p-4 rounded-xl border border-[#C5A572]/10">
+                    <p className="text-[#C5A572] text-sm font-bold uppercase tracking-wide mb-1">{item.label}</p>
+                    <p className="text-white">{item.value}</p>
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-slate-900">{type.title}</h3>
-                    <p className="text-slate-600">{type.description}</p>
-                  </div>
-                </div>
-
-                <ul className="space-y-3 mb-6">
-                  {type.details.map((detail, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-slate-700">{detail}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="bg-slate-50 rounded-xl p-4">
-                  <p className="text-sm text-slate-500 font-medium">IDEAL FOR</p>
-                  <p className="text-slate-700">{type.idealFor}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Why Partner Section */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="text-center mb-16"
-          >
-            <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Why Lenders Choose Us
-            </motion.h2>
-            <motion.p variants={fadeIn} className="text-xl text-slate-600 max-w-3xl mx-auto">
-              We understand that protecting your capital is paramount. Here's how we ensure
-              your investment is secure and your returns are reliable.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {whyPartnerWithUs.map((item, index) => (
-              <motion.div
-                key={index}
-                variants={fadeIn}
-                className="bg-white rounded-xl p-6 shadow-md border border-slate-200"
-              >
-                <div className="p-3 bg-emerald-100 rounded-lg w-fit mb-4">
-                  <item.icon className="w-6 h-6 text-emerald-600" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
-                <p className="text-slate-600">{item.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Deal Criteria Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <motion.div variants={fadeIn}>
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-                  Our Typical Deal Profile
-                </h2>
-                <p className="text-xl text-slate-600 mb-8">
-                  Understanding our investment criteria helps you determine if we're a good fit
-                  for your lending program. Here's what our typical deals look like.
-                </p>
-
-                <div className="space-y-4">
-                  {dealCriteria.map((item, index) => (
-                    <div key={index} className="flex items-start gap-4 p-4 bg-slate-50 rounded-xl">
-                      <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2"></div>
-                      <div>
-                        <p className="text-sm font-semibold text-slate-500 uppercase tracking-wide">{item.label}</p>
-                        <p className="text-slate-900 font-medium">{item.value}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-
-              <motion.div variants={fadeIn} className="bg-gradient-to-br from-emerald-600 to-teal-700 rounded-2xl p-8 text-white">
-                <Calendar className="w-12 h-12 text-emerald-300 mb-6" />
-                <h3 className="text-2xl font-bold mb-4">Current Funding Needs</h3>
-                <p className="text-emerald-100 mb-6">
-                  We're actively seeking lending partners for our growing acquisition pipeline.
-                  Whether you're an individual investor or institutional lender, let's discuss
-                  how we can work together.
-                </p>
-                <ul className="space-y-3 mb-8">
-                  <li className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-emerald-300" />
-                    <span>Multiple deals closing monthly</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-emerald-300" />
-                    <span>Various loan sizes available</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-emerald-300" />
-                    <span>First position security</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-emerald-300" />
-                    <span>Consistent repayment history</span>
-                  </li>
-                </ul>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center w-full px-6 py-4 bg-white text-emerald-700 font-semibold rounded-xl hover:bg-emerald-50 transition-all"
-                >
-                  Submit Lending Inquiry
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-slate-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
-            <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Ready to Earn Secured Returns?
-            </motion.h2>
-            <motion.p variants={fadeIn} className="text-xl text-slate-400 mb-10">
-              Let's discuss how your capital can work harder with reliable,
-              real estate-backed investments in Florida's growing markets.
-            </motion.p>
-
-            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-all"
-              >
-                <Mail className="w-5 h-5 mr-2" />
-                Contact Us Today
-              </Link>
-              <a
-                href="tel:+18138370548"
-                className="inline-flex items-center justify-center px-8 py-4 bg-slate-800 text-white font-semibold rounded-xl border border-slate-700 hover:bg-slate-700 transition-all"
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                (813) 837-0548
-              </a>
+                ))}
+              </div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1B365D] to-[#0F1C2E]" />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative z-10 max-w-4xl mx-auto px-4 text-center"
+        >
+          <Landmark className="w-16 h-16 text-[#C5A572] mx-auto mb-8" />
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
+            Ready to Earn <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5A572] to-[#D4B896]">Secured Returns?</span>
+          </h2>
+          <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed">
+            Let's discuss how your capital can work harder with reliable, real estate-backed investments in Florida's growing markets.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="group bg-gradient-to-r from-[#B8860B] to-[#C5A572] text-[#0F1C2E] px-12 py-5 rounded-lg font-bold text-lg hover:from-[#C5A572] hover:to-[#D4B896] transition-all inline-flex items-center justify-center shadow-2xl shadow-[#B8860B]/30 hover:-translate-y-1"
+            >
+              Contact Us <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <a
+              href="tel:2392913444"
+              className="bg-white/5 backdrop-blur-sm text-white border border-white/20 px-12 py-5 rounded-lg font-bold text-lg hover:bg-white/10 transition-all inline-flex items-center justify-center hover:-translate-y-1"
+            >
+              <Phone className="w-5 h-5 mr-3" />
+              (239) 291-3444
+            </a>
+          </div>
+        </motion.div>
       </section>
     </div>
   )

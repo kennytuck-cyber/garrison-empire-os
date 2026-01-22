@@ -1,43 +1,14 @@
 'use client'
-
-import { motion } from 'framer-motion'
 import Link from 'next/link'
-import {
-  Building,
-  Home,
-  Users,
-  Wrench,
-  DollarSign,
-  FileText,
-  CheckCircle,
-  ArrowRight,
-  Phone,
-  Mail,
-  ChevronLeft,
-  Clock,
-  Shield,
-  TrendingUp,
-  Key,
-  ClipboardList,
-  Banknote,
-  Heart,
-  AlertCircle,
-  BarChart
-} from 'lucide-react'
+import { Phone, Building, Home, Users, Wrench, CheckCircle2, ArrowRight, Clock, Shield, TrendingUp, Key, ClipboardList, Banknote, Heart, AlertCircle, BarChart, FileText, MapPin } from 'lucide-react'
+import { motion } from 'framer-motion'
 
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 }
+const fadeInUp = {
+  hidden: { opacity: 0, y: 60 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 }
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
+const stagger = {
+  visible: { transition: { staggerChildren: 0.15 } }
 }
 
 const managementServices = [
@@ -80,44 +51,16 @@ const managementServices = [
 ]
 
 const propertyTypes = [
-  {
-    icon: Home,
-    title: "Single-Family Homes",
-    description: "Individual rental homes across Florida markets"
-  },
-  {
-    icon: Building,
-    title: "Multi-Family Properties",
-    description: "Duplexes, triplexes, and small apartment buildings"
-  },
-  {
-    icon: Key,
-    title: "Section 8 Housing",
-    description: "Properties accepting housing voucher tenants"
-  }
+  { icon: Home, title: "Single-Family Homes", description: "Individual rental homes across Florida markets" },
+  { icon: Building, title: "Multi-Family Properties", description: "Duplexes, triplexes, and small apartment buildings" },
+  { icon: Key, title: "Section 8 Housing", description: "Properties accepting housing voucher tenants" }
 ]
 
-const whyPartnerWithUs = [
-  {
-    icon: TrendingUp,
-    title: "Growing Portfolio",
-    description: "Our rental portfolio is expanding across Florida, providing consistent management opportunities"
-  },
-  {
-    icon: Shield,
-    title: "Quality Properties",
-    description: "We renovate to high standards, meaning fewer maintenance issues and happier tenants"
-  },
-  {
-    icon: Heart,
-    title: "Long-Term Partnership",
-    description: "We're building a portfolio for the long haul and value ongoing relationships"
-  },
-  {
-    icon: BarChart,
-    title: "Clear Communication",
-    description: "We expect regular reporting and transparent communication about our properties"
-  }
+const markets = [
+  { name: "Tampa Bay", counties: "Hillsborough, Pinellas, Pasco" },
+  { name: "Orlando", counties: "Orange, Seminole, Osceola" },
+  { name: "Jacksonville", counties: "Duval, Clay, St. Johns" },
+  { name: "Central Florida", counties: "Polk, Lake, Volusia" }
 ]
 
 const whatWeLookFor = [
@@ -132,273 +75,234 @@ const whatWeLookFor = [
   "Proven track record with references"
 ]
 
-const markets = [
-  { name: "Tampa Bay", counties: "Hillsborough, Pinellas, Pasco" },
-  { name: "Orlando", counties: "Orange, Seminole, Osceola" },
-  { name: "Jacksonville", counties: "Duval, Clay, St. Johns" },
-  { name: "Central Florida", counties: "Polk, Lake, Volusia" }
-]
-
 export default function PropertyManagementClient() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      {/* Back Navigation */}
-      <div className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link
-            href="/work-with-us"
-            className="inline-flex items-center text-purple-600 hover:text-purple-700 font-medium transition-colors"
-          >
-            <ChevronLeft className="w-4 h-4 mr-1" />
-            Back to Partner Opportunities
-          </Link>
+    <div className="min-h-screen bg-[#0F1C2E] text-white overflow-x-hidden">
+      {/* Hero Section */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+        <motion.div
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 10, ease: "linear" }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url('/images/cash-offer-home-selling-buying-real-estate-florida.jpg')` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0F1C2E] via-[#0F1C2E]/90 to-[#0F1C2E]/70" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+          <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-3xl">
+            <motion.div variants={fadeInUp}>
+              <Link href="/work-with-us" className="inline-flex items-center text-[#C5A572] hover:text-[#D4B896] mb-6 transition-colors">
+                <ArrowRight className="w-4 h-4 mr-2 rotate-180" /> Back to Partner Opportunities
+              </Link>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="inline-flex items-center space-x-2 bg-[#1B365D]/80 border border-[#C5A572]/30 px-4 py-2 rounded-full mb-8 backdrop-blur-sm">
+              <Building className="w-4 h-4 text-[#C5A572]" />
+              <span className="text-sm font-bold text-[#C5A572] tracking-wide">PROPERTY MANAGEMENT</span>
+            </motion.div>
+
+            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-[1.1] mb-8">
+              Manage Our <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#C5A572] to-[#D4B896]">Growing Portfolio</span>
+            </motion.h1>
+
+            <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-white/80 mb-10 leading-relaxed">
+              We're seeking professional property management companies to partner with as we expand our buy-and-hold rental portfolio across Florida.
+            </motion.p>
+
+            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
+              <Link href="/contact" className="group bg-gradient-to-r from-[#B8860B] to-[#C5A572] text-[#0F1C2E] px-10 py-5 rounded-lg font-bold text-lg hover:from-[#C5A572] hover:to-[#D4B896] transition-all inline-flex items-center justify-center shadow-2xl shadow-[#B8860B]/30 hover:-translate-y-1">
+                Discuss Partnership <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <a href="tel:2392913444" className="bg-white/5 backdrop-blur-sm text-white border border-white/20 px-10 py-5 rounded-lg font-semibold text-lg hover:bg-white/10 transition-all inline-flex items-center justify-center hover:-translate-y-1">
+                <Phone className="mr-3 w-5 h-5" />(239) 291-3444
+              </a>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Property Types */}
+      <section className="py-16 bg-[#1B365D]/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-8">
+            {propertyTypes.map((type, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="flex items-center gap-4 p-6 bg-[#0F1C2E] rounded-xl border border-[#C5A572]/10"
+              >
+                <div className="p-3 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-lg">
+                  <type.icon className="w-8 h-8 text-[#0F1C2E]" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white">{type.title}</h3>
+                  <p className="text-white/60">{type.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Management Services */}
+      <section className="py-24 bg-[#1B365D]/30 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #C5A572 1px, transparent 0)`, backgroundSize: '40px 40px' }} />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-20">
+            <span className="text-[#C5A572] text-sm font-bold tracking-[0.2em] uppercase">Services We Need</span>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-4 mb-6">Full-Service <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5A572] to-[#D4B896]">Management</span></h2>
+            <p className="text-xl text-white/60 max-w-2xl mx-auto">
+              We're looking for full-service property management that handles all aspects of rental operations professionally.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {managementServices.map((service, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="group relative"
+              >
+                <div className="absolute -inset-1 bg-gradient-to-r from-[#B8860B] to-[#C5A572] rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
+                <div className="relative bg-[#0F1C2E] p-8 rounded-2xl border border-[#C5A572]/10 hover:border-[#C5A572]/30 transition-all h-full">
+                  <div className="w-14 h-14 bg-gradient-to-br from-[#B8860B] to-[#C5A572] rounded-xl flex items-center justify-center mb-6">
+                    <service.icon className="w-7 h-7 text-[#0F1C2E]" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
+                  <p className="text-white/60 mb-4">{service.description}</p>
+                  <ul className="space-y-2">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-white/70 text-sm">
+                        <CheckCircle2 className="w-4 h-4 text-[#C5A572] mr-2 flex-shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Markets Banner */}
+      <div className="relative py-16 bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('/images/military-veteran-cash-real-estate-florida-buy-sell-investment.jpg')" }}>
+        <div className="absolute inset-0 bg-[#0F1C2E]/85" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4">
+          <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-10 font-serif">Markets Where We Need Property Managers</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {markets.map((market, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-[#1B365D]/50 backdrop-blur-sm rounded-xl p-6 border border-[#C5A572]/20"
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <MapPin className="w-5 h-5 text-[#C5A572]" />
+                  <h4 className="text-xl font-bold text-white">{market.name}</h4>
+                </div>
+                <p className="text-white/60 text-sm">{market.counties}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-10"></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-400 rounded-full filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            className="text-center"
-          >
-            <motion.div variants={fadeIn} className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-              <Building className="w-5 h-5 text-purple-300" />
-              <span className="text-purple-100 font-medium">Property Management Partners</span>
-            </motion.div>
-
-            <motion.h1 variants={fadeIn} className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Manage Our Growing
-              <span className="block text-purple-300">Rental Portfolio</span>
-            </motion.h1>
-
-            <motion.p variants={fadeIn} className="text-xl text-purple-100 max-w-3xl mx-auto mb-10">
-              We're seeking professional property management companies to partner
-              with as we expand our buy-and-hold rental portfolio across Florida.
-            </motion.p>
-
-            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-purple-700 font-semibold rounded-xl hover:bg-purple-50 transition-all shadow-lg hover:shadow-xl"
-              >
-                Discuss Management Partnership
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
-              <a
-                href="tel:+18138370548"
-                className="inline-flex items-center justify-center px-8 py-4 bg-purple-500/20 backdrop-blur-sm text-white font-semibold rounded-xl border border-purple-400/30 hover:bg-purple-500/30 transition-all"
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                (813) 837-0548
-              </a>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Property Types Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid md:grid-cols-3 gap-8"
-          >
-            {propertyTypes.map((type, index) => (
-              <motion.div
-                key={index}
-                variants={fadeIn}
-                className="flex items-center gap-4 p-6 bg-slate-50 rounded-xl"
-              >
-                <div className="p-3 bg-purple-100 rounded-lg">
-                  <type.icon className="w-8 h-8 text-purple-600" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-slate-900">{type.title}</h3>
-                  <p className="text-slate-600">{type.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Management Services Section */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="text-center mb-16"
-          >
-            <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Services We Need
-            </motion.h2>
-            <motion.p variants={fadeIn} className="text-xl text-slate-600 max-w-3xl mx-auto">
-              We're looking for full-service property management that handles
-              all aspects of rental operations professionally.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {managementServices.map((service, index) => (
-              <motion.div
-                key={index}
-                variants={fadeIn}
-                className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:border-purple-300 hover:shadow-xl transition-all"
-              >
-                <div className="p-3 bg-purple-100 rounded-lg w-fit mb-4">
-                  <service.icon className="w-6 h-6 text-purple-600" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{service.title}</h3>
-                <p className="text-slate-600 mb-4">{service.description}</p>
-                <ul className="space-y-2">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-sm text-slate-600">
-                      <CheckCircle className="w-4 h-4 text-purple-500" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Markets Section */}
-      <section className="py-16 bg-purple-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
-            <motion.h2 variants={fadeIn} className="text-2xl md:text-3xl font-bold text-white text-center mb-10">
-              Markets Where We Need Property Managers
-            </motion.h2>
-            <motion.div
-              variants={staggerContainer}
-              className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
-            >
-              {markets.map((market, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeIn}
-                  className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-purple-400/30"
-                >
-                  <h3 className="text-xl font-bold text-white mb-2">{market.name}</h3>
-                  <p className="text-purple-200 text-sm">{market.counties}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Why Partner Section */}
-      <section className="py-20">
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <motion.div variants={fadeIn}>
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-                  Why Property Managers Choose Us
-                </h2>
-                <p className="text-xl text-slate-600 mb-8">
-                  We're not just adding a few rentals - we're building a substantial
-                  portfolio. This means consistent, long-term business for the right
-                  property management partners.
-                </p>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <span className="text-[#C5A572] text-sm font-bold tracking-[0.2em] uppercase">Why Choose Us</span>
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-4 mb-6">Why Property Managers <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5A572] to-[#D4B896]">Choose Us</span></h2>
+              <p className="text-lg text-white/70 mb-8 leading-relaxed">
+                We're not just adding a few rentals - we're building a substantial portfolio. This means consistent, long-term business for the right property management partners.
+              </p>
+              <div className="grid gap-4">
+                {[
+                  { icon: TrendingUp, text: "Growing portfolio providing consistent management opportunities" },
+                  { icon: Shield, text: "Quality renovated properties mean fewer maintenance issues" },
+                  { icon: Heart, text: "Long-term partnership approach - we value ongoing relationships" },
+                  { icon: BarChart, text: "Clear communication with regular reporting expectations" }
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex items-center space-x-4 bg-[#1B365D]/50 p-5 rounded-xl border border-[#C5A572]/10"
+                  >
+                    <item.icon className="w-6 h-6 text-[#C5A572] flex-shrink-0" />
+                    <span className="text-white/80 text-lg">{item.text}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
 
-                <div className="grid sm:grid-cols-2 gap-6">
-                  {whyPartnerWithUs.map((item, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <div className="p-2 bg-purple-100 rounded-lg flex-shrink-0">
-                        <item.icon className="w-5 h-5 text-purple-600" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-slate-900">{item.title}</h4>
-                        <p className="text-sm text-slate-600">{item.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-
-              <motion.div variants={fadeIn} className="bg-gradient-to-br from-purple-600 to-indigo-700 rounded-2xl p-8 text-white">
-                <h3 className="text-2xl font-bold mb-6">What We Look For in Property Managers</h3>
-                <ul className="space-y-4">
-                  {whatWeLookFor.map((item, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-purple-300 flex-shrink-0 mt-0.5" />
-                      <span className="text-purple-100">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </div>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#1B365D]/50 p-10 rounded-2xl border border-[#C5A572]/20"
+            >
+              <h3 className="text-2xl font-serif font-bold text-white mb-8">What We Look For in Property Managers</h3>
+              <ul className="space-y-4">
+                {whatWeLookFor.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-[#C5A572] flex-shrink-0 mt-0.5" />
+                    <span className="text-white/70">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-slate-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
-            <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Grow With Our Portfolio
-            </motion.h2>
-            <motion.p variants={fadeIn} className="text-xl text-slate-400 mb-10">
-              If you're a licensed property management company looking to add
-              quality investor-owned rentals to your portfolio, let's talk.
-            </motion.p>
-
-            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-purple-600 text-white font-semibold rounded-xl hover:bg-purple-700 transition-all"
-              >
-                <Mail className="w-5 h-5 mr-2" />
-                Contact Us Today
-              </Link>
-              <a
-                href="tel:+18138370548"
-                className="inline-flex items-center justify-center px-8 py-4 bg-slate-800 text-white font-semibold rounded-xl border border-slate-700 hover:bg-slate-700 transition-all"
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                (813) 837-0548
-              </a>
-            </motion.div>
-          </motion.div>
-        </div>
+      {/* CTA */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1B365D] to-[#0F1C2E]" />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative z-10 max-w-4xl mx-auto px-4 text-center"
+        >
+          <Building className="w-16 h-16 text-[#C5A572] mx-auto mb-8" />
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
+            Grow With <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5A572] to-[#D4B896]">Our Portfolio</span>
+          </h2>
+          <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed">
+            If you're a licensed property management company looking to add quality investor-owned rentals to your portfolio, let's talk.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="group bg-gradient-to-r from-[#B8860B] to-[#C5A572] text-[#0F1C2E] px-12 py-5 rounded-lg font-bold text-lg hover:from-[#C5A572] hover:to-[#D4B896] transition-all inline-flex items-center justify-center shadow-2xl shadow-[#B8860B]/30 hover:-translate-y-1"
+            >
+              Contact Us <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <a
+              href="tel:2392913444"
+              className="bg-white/5 backdrop-blur-sm text-white border border-white/20 px-12 py-5 rounded-lg font-bold text-lg hover:bg-white/10 transition-all inline-flex items-center justify-center hover:-translate-y-1"
+            >
+              <Phone className="w-5 h-5 mr-3" />
+              (239) 291-3444
+            </a>
+          </div>
+        </motion.div>
       </section>
     </div>
   )
